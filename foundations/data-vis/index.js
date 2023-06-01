@@ -34,6 +34,9 @@ export default function Graph({ showGraph, connectionData }) {
     const links = connectionData.links.map((d) => Object.create(d));
     const nodes = connectionData.nodes.map((d) => Object.create(d));
 
+    //prevent any zoom effect
+    svg.call(d3.zoom().on("zoom", null));
+
     //cleanup
     initCleanUp({ svg });
     //marker default styling
@@ -106,7 +109,7 @@ export default function Graph({ showGraph, connectionData }) {
 
   return (
     <S.Container show={showGraph}>
-      <svg ref={svgRef} />
+      <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>
   );
 }

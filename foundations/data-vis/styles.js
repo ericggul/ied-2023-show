@@ -12,6 +12,8 @@ export const Container = styled.div`
   svg {
     z-index: 0;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
   }
 
   transition: all 0.5s;
