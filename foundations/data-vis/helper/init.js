@@ -63,17 +63,17 @@ function initNodeStyling({ svg, nodes, simulation, width, height }) {
   node
     .append("circle")
     .attr("id", (d) => `circle-${d.id}`)
-    .attr("r", (width + height) * 0.002)
-    .attr("fill", "rgba(255, 255, 255, 0.3)");
+    .attr("r", (width + height) * 0.003)
+    .attr("fill", "rgba(255, 255, 255, 0.1)");
 
   node
     .append("text")
     .attr("id", (d) => `text-${d.id}`)
-    .attr("x", ".7vw")
-    .attr("y", ".3vw")
-    .attr("font-size", "1.1rem")
+    .attr("x", ".7rem")
+    .attr("y", ".3rem")
+    .attr("font-size", "0.7rem")
     .attr("font-family", "Bebas Neue")
-    .attr("fill", "rgba(255, 255, 255, 0.17)")
+    .attr("fill", "rgba(255, 255, 255, 0.07)")
     .text((d) => d.text)
     .clone(true)
     .lower();

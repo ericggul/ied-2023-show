@@ -4,20 +4,12 @@ import * as d3 from "d3";
 export const DURATION_IN = 150;
 export const DURATION_OUT = 800;
 
-function updateHighlightNode({ d, node }) {
-  let circle = d3.select(`#circle-${d.id}`);
-  let text = node.filter((n) => n.text === d.text).selectAll("text");
-
-  circle.transition().duration(DURATION_IN).attr("fill", "hsl(90, 100%, 93%)");
-  text.transition().duration(DURATION_IN).attr("x", "1vw").attr("y", ".4vw").attr("font-size", "3vw").attr("fill", "hsl(180, 100%, 70%)");
-}
-
 function updateCurrentNode({ d, node }) {
   let circle = d3.select(`#circle-${d.id}`);
   let text = node.filter((n) => n.text === d.text).selectAll("text");
 
   circle.transition().duration(DURATION_IN).attr("fill", "hsl(180, 100%, 93%)");
-  text.transition().duration(DURATION_IN).attr("x", "1vw").attr("y", ".4vw").attr("font-size", "6vw").attr("fill", "white");
+  text.transition().duration(DURATION_IN).attr("x", "1rem").attr("y", ".4rem").attr("font-size", "3rem").attr("fill", "white");
 }
 
 function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef }) {
@@ -55,4 +47,4 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
 }
 
 //export
-export { updateTargetAndSourceNodes, updateCurrentNode, updateHighlightNode };
+export { updateTargetAndSourceNodes, updateCurrentNode };

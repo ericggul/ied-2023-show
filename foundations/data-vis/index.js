@@ -9,7 +9,7 @@ import * as d3 from "d3";
 
 //helper
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
-import { updateHighlightNode, updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
+import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
 const DURATION = 800;
 
@@ -64,6 +64,14 @@ export default function Graph({ showGraph, connectionData }) {
       const { id, text } = d;
       handleNewKeywordClick(text);
     });
+    node.on("touchstart", (event, d) => {
+      const { id, text } = d;
+      handleNewKeywordClick(text);
+    });
+    node.on("touchmove", (event, d) => {
+      const { id, text } = d;
+      handleNewKeywordClick(text);
+    });
     node.on("mouseenter", (event, d) => {
       const { id, text } = d;
       handleNewKeywordClick(text);
@@ -75,7 +83,6 @@ export default function Graph({ showGraph, connectionData }) {
   ////////////
 
   const [currentTarget, setCurrentTarget] = useState(null);
-  const [keywordsChain, setKeywordsChain] = useState([]);
 
   function handleNewKeywordClick(target) {
     setCurrentTarget(target);
@@ -91,8 +98,8 @@ export default function Graph({ showGraph, connectionData }) {
 
     //link and main node clean up
     link.transition().duration(DURATION).attr("stroke", "hsl(180, 100%, 70%)").attr("opacity", "0.27");
-    node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.3)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.1vw").attr("fill", "rgba(255, 255, 255, 0.1)");
+    node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", ".8rem").attr("fill", "rgba(255, 255, 255, 0.07)");
 
     if (node && simulation) {
       simulation.alphaTarget(0.1).restart();
@@ -105,7 +112,7 @@ export default function Graph({ showGraph, connectionData }) {
         updateCurrentNode({ d, node });
       });
     }
-  }, [connectionData, currentTarget, keywordsChain, windowWidth, windowHeight]);
+  }, [connectionData, currentTarget, windowWidth, windowHeight]);
 
   return (
     <S.Container show={showGraph}>
