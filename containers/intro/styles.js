@@ -1,15 +1,19 @@
 import { FlexCenterStyle, WholeContainer } from "styles/common";
 import styled from "styled-components";
+
 const BUTTON_COLOR = `hsl(180, 100%, 70%)`;
 
 export const Container = styled.div`
   ${WholeContainer}
   ${FlexCenterStyle}
   flex-direction: column;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
 
-  font-family: Courier New;
+  font-family: Times New Roman;
+  transition: all 0.5s;
 
-  ${({ show }) => (show ? `opacity: 1; pointer-events: all;` : `opacity: 0; pointer-events: none;`)}
+  input {
+    font-family: Times New Roman;
+  }
 `;

@@ -7,14 +7,14 @@ import axios from "axios";
 //foundations
 import Graph from "foundations/data-vis";
 
-export default function DataUploader() {
+export default function DataVis({ show = true }) {
   ///data store
   const [showGraph, setShowGraph] = useState(false);
   const [metaData, setMetaData] = useState(DATA);
   const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);
 
   return (
-    <S.Container>
+    <S.Container show={show}>
       <Graph connectionData={connectionData} />
     </S.Container>
   );
