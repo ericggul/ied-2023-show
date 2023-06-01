@@ -14,9 +14,9 @@ function initCreateSimulation({ nodes, links, width, height }) {
       "link",
       d3.forceLink(links).id((d) => d.text)
     )
-    .force("charge", d3.forceManyBody().strength(-60 * ((width + height) / 1000) ** 2))
+    .force("charge", d3.forceManyBody().strength(-60 * ((width + height) / 900) ** 2))
     .force("center", d3.forceCenter())
-    .force("boundary", forceBoundary(-width * 0.6, -height * 0.45, width * 0.6, height * 0.45));
+    .force("boundary", forceBoundary(-width * 0.45, -height * 0.45, width * 0.45, height * 0.45));
 
   return simulation;
 }

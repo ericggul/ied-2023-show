@@ -9,10 +9,12 @@ export const Container = styled.div`
   font-family: Courier New;
   transition: all 0.5s;
 
+  overflow-x: scroll;
+
   svg {
     z-index: 0;
     cursor: pointer;
-    width: 100%;
+    min-width: 100%;
     height: 100%;
   }
 
