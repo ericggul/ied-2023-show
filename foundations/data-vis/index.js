@@ -23,6 +23,7 @@ export default function Graph({ showGraph, connectionData }) {
   const simulationRef = useRef(null);
   const linkRef = useRef(null);
   const nodeRef = useRef(null);
+  const [currentTarget, setCurrentTarget] = useState(null);
 
   useEffect(() => {
     //variables
@@ -47,7 +48,7 @@ export default function Graph({ showGraph, connectionData }) {
     //link styling
     const link = initLinkStyling({ svg, links, color, width, height });
     //node styling
-    const node = initNodeStyling({ svg, nodes, simulation, width, height });
+    const node = initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarget });
 
     simulationRef.current = simulation;
     linkRef.current = link;
@@ -64,14 +65,7 @@ export default function Graph({ showGraph, connectionData }) {
       const { id, text } = d;
       handleNewKeywordClick(text);
     });
-    node.on("touchstart", (event, d) => {
-      const { id, text } = d;
-      handleNewKeywordClick(text);
-    });
-    node.on("touchmove", (event, d) => {
-      const { id, text } = d;
-      handleNewKeywordClick(text);
-    });
+
     node.on("mouseenter", (event, d) => {
       const { id, text } = d;
       handleNewKeywordClick(text);
@@ -81,8 +75,6 @@ export default function Graph({ showGraph, connectionData }) {
   ////////////
   ///interaction///
   ////////////
-
-  const [currentTarget, setCurrentTarget] = useState(null);
 
   function handleNewKeywordClick(target) {
     setCurrentTarget(target);

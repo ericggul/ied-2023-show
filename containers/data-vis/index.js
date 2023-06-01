@@ -7,7 +7,7 @@ import axios from "axios";
 //foundations
 import Graph from "foundations/data-vis";
 
-export default function DataVis({ show = true }) {
+export default function DataVis({ show = true, filter }) {
   ///data store
   const [showGraph, setShowGraph] = useState(false);
   const [metaData, setMetaData] = useState(DATA);

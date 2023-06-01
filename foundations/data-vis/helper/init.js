@@ -14,7 +14,7 @@ function initCreateSimulation({ nodes, links, width, height }) {
       "link",
       d3.forceLink(links).id((d) => d.text)
     )
-    .force("charge", d3.forceManyBody().strength(-60 * ((width + height) / 900) ** 2))
+    .force("charge", d3.forceManyBody().strength(-60 * ((width + height * 1.5) / 1100) ** 2))
     .force("center", d3.forceCenter())
     .force("boundary", forceBoundary(-width * 0.45, -height * 0.45, width * 0.45, height * 0.45));
 
@@ -57,8 +57,16 @@ function initLinkStyling({ svg, links, color, width, height }) {
   return link;
 }
 
-function initNodeStyling({ svg, nodes, simulation, width, height }) {
-  const node = svg.append("g").attr("fill", "currentColor").attr("stroke-linecap", "round").attr("stroke-linejoin", "round").selectAll("g").data(nodes).join("g").call(drag(simulation));
+function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarget }) {
+  const node = svg
+    .append("g")
+    .attr("fill", "currentColor")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .selectAll("g")
+    .data(nodes)
+    .join("g")
+    .call(drag(simulation, setCurrentTarget));
 
   node
     .append("circle")
@@ -81,16 +89,18 @@ function initNodeStyling({ svg, nodes, simulation, width, height }) {
   return node;
 }
 
-function drag(simulation) {
+function drag(simulation, setCurrentTarget) {
   function dragstarted(event, d) {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
+    if (!event.active) simulation.alphaTarget(0.5).restart();
     d.fx = d.x;
     d.fy = d.y;
+    setCurrentTarget(d.text);
   }
 
   function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
+    setCurrentTarget(d.text);
   }
 
   function dragended(event, d) {

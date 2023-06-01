@@ -12,8 +12,12 @@ export const Container = styled.div`
 
   font-family: Times New Roman;
   transition: all 0.5s;
+  font-size: 1.2rem;
 
   input {
+    font-size: 1.1rem;
+    margin-top: 6rem;
     font-family: Times New Roman;
+    width: 10rem;
   }
 `;

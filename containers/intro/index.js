@@ -11,7 +11,7 @@ export default function Intro() {
   const [showDataVis, setShowDataVis] = useState(false);
 
   useEffect(() => {
-    if (storedInputLength.current < input.length) {
+    if (storedInputLength.current < input.length && input.length > 10) {
       timerRef1.current = setTimeout(() => {
         setShowDataVis(true);
       }, 100);
@@ -30,16 +30,20 @@ export default function Intro() {
 
   return (
     <S.Container>
+      {/* <h2>RCA</h2>
+      <h2>IED</h2>
+      <h2>Yr 1</h2>
+      <h2>2023</h2>
+      <h2>Showcase</h2> */}
       <h1>RCA</h1>
       <h2>IED</h2>
       <h3>Yr 1</h3>
       <h4>2023</h4>
       <h5>Showcase</h5>
-      <h6>What are you interested in?</h6>
 
-      <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
+      <input placeholder="I'm Feeling Lucky" type="text" value={input} onChange={(e) => setInput(e.target.value)} />
 
-      <DataVis show={showDataVis} />
+      <DataVis show={showDataVis} filter={input} />
     </S.Container>
   );
 }
