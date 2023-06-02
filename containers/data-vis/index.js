@@ -7,7 +7,13 @@ import axios from "axios";
 //foundations
 import Graph from "foundations/data-vis";
 
-export default function DataVis({ show = true, filter }) {
+export default function DataVis({
+  show = true,
+  filter,
+
+  intensity,
+  setIntensity,
+}) {
   ///data store
   const [showGraph, setShowGraph] = useState(false);
   const [metaData, setMetaData] = useState(DATA);
@@ -15,7 +21,7 @@ export default function DataVis({ show = true, filter }) {
 
   return (
     <S.Container show={show}>
-      <Graph connectionData={connectionData} />
+      <Graph connectionData={connectionData} intensity={intensity} setIntensity={setIntensity} />
     </S.Container>
   );
 }

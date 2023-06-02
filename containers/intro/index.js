@@ -4,6 +4,7 @@ import DataVis from "../data-vis";
 
 export default function Intro() {
   const [input, setInput] = useState("");
+  const [intensity, setIntensity] = useState(0);
   const storedInputLength = useRef(0);
   const timerRef1 = useRef(null);
   const timerRef2 = useRef(null);
@@ -11,7 +12,8 @@ export default function Intro() {
   const [showDataVis, setShowDataVis] = useState(false);
 
   useEffect(() => {
-    if (storedInputLength.current < input.length && input.length > 10) {
+    if (storedInputLength.current < input.length) {
+      setIntensity(Math.min(1, input.length ** 1.3 * 0.01));
       timerRef1.current = setTimeout(() => {
         setShowDataVis(true);
       }, 100);
@@ -43,7 +45,7 @@ export default function Intro() {
 
       <input placeholder="I'm Feeling Lucky" type="text" value={input} onChange={(e) => setInput(e.target.value)} />
 
-      <DataVis show={showDataVis} filter={input} />
+      <DataVis show={showDataVis} filter={input} intensity={intensity} setIntensity={setIntensity} />
     </S.Container>
   );
 }

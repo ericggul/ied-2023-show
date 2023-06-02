@@ -13,7 +13,9 @@ import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
 const DURATION = 800;
 
-export default function Graph({ showGraph, connectionData }) {
+export default function Graph({ showGraph, connectionData, intensity, setIntensity }) {
+  const alphaTargetRef = useRef();
+
   const svgRef = useRef();
 
   //size
@@ -24,6 +26,15 @@ export default function Graph({ showGraph, connectionData }) {
   const linkRef = useRef(null);
   const nodeRef = useRef(null);
   const [currentTarget, setCurrentTarget] = useState(null);
+
+  ///simulation intensity
+  useEffect(() => {
+    if (!simulationRef.current) return;
+    const width = windowWidth;
+    const height = windowHeight;
+    simulationRef.current.force("charge", d3.forceManyBody().strength(-((intensity * 8) ** 2) * ((width + height * 1.5) / 1000) ** 2));
+    alphaTargetRef.current = 1 - intensity;
+  }, [intensity, windowWidth, windowHeight]);
 
   useEffect(() => {
     //variables
@@ -94,7 +105,7 @@ export default function Graph({ showGraph, connectionData }) {
     node.selectAll("text").transition().duration(DURATION).attr("font-size", ".8rem").attr("fill", "rgba(255, 255, 255, 0.07)");
 
     if (node && simulation) {
-      simulation.alphaTarget(0.1).restart();
+      simulation.alphaTarget(1 - alphaTargetRef.current || 0.1).restart();
 
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
@@ -108,7 +119,13 @@ export default function Graph({ showGraph, connectionData }) {
 
   return (
     <S.Container show={showGraph}>
+      {intensity.toFixed(2)}
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
+      <S.ListContainer opacity={1 - intensity}>
+        {connectionData.nodes.map((el, i) => (
+          <div key={i}>{el.text}</div>
+        ))}
+      </S.ListContainer>
     </S.Container>
   );
 }

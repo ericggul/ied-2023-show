@@ -6,6 +6,9 @@ export const Container = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
 
+  color: white;
+  font-size: 3rem;
+
   font-family: Courier New;
   transition: all 0.5s;
 
@@ -19,4 +22,13 @@ export const Container = styled.div`
   }
 
   transition: all 0.5s;
+`;
+
+export const ListContainer = styled.div`
+  ${FlexCenterStyle};
+  flex-direction: column;
+  ${WholeContainer};
+  font-size: 1rem;
+
+  ${({ opacity }) => `opacity: ${opacity}`};
 `;
