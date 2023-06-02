@@ -52,7 +52,7 @@ function initLinkStyling({ svg, links, color, width, height }) {
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
     .attr("stroke", (d) => color(d.isCycle ? "isCycle" : "isNotCycle"))
     .attr("stroke-width", (d) => (width + height) * 0.001)
-    .attr("opacity", "0.47");
+    .attr("opacity", "0.37");
 
   return link;
 }

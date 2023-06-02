@@ -31,4 +31,5 @@ export const ListContainer = styled.div`
   font-size: 1rem;
 
   ${({ opacity }) => `opacity: ${opacity}`};
+  pointer-events: none;
 `;

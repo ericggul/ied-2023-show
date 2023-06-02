@@ -13,7 +13,7 @@ import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
 const DURATION = 800;
 
-export default function Graph({ showGraph, connectionData, intensity, setIntensity }) {
+export default function Graph({ showGraph, connectionData, intensity }) {
   const alphaTargetRef = useRef();
 
   const svgRef = useRef();
@@ -100,7 +100,7 @@ export default function Graph({ showGraph, connectionData, intensity, setIntensi
     let link = linkRef.current;
 
     //link and main node clean up
-    link.transition().duration(DURATION).attr("stroke", "hsl(180, 100%, 70%)").attr("opacity", "0.27");
+    link.transition().duration(DURATION).attr("stroke", "hsl(180, 100%, 70%)").attr("opacity", "0.37");
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
     node.selectAll("text").transition().duration(DURATION).attr("font-size", ".8rem").attr("fill", "rgba(255, 255, 255, 0.07)");
 
