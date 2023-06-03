@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import Intro from "containers/intro";
+import Intro from "containers/intro-test";
 
 export default function Home() {
   return (

@@ -11,25 +11,14 @@ export const Container = styled.div`
 
   font-family: Courier New;
   transition: all 0.5s;
-
-  overflow-x: scroll;
+  z-index: 0 !important;
 
   svg {
-    z-index: 0;
     cursor: pointer;
-    min-width: 100%;
-    height: 100%;
+    ${WholeContainer}
+    z-index: 0 !important;
+    pointer-events: none;
   }
 
   transition: all 0.5s;
-`;
-
-export const ListContainer = styled.div`
-  ${FlexCenterStyle};
-  flex-direction: column;
-  ${WholeContainer};
-  font-size: 1rem;
-
-  ${({ opacity }) => `opacity: ${opacity}`};
-  pointer-events: none;
 `;

@@ -17,9 +17,6 @@ export default function Intro() {
       timerRef1.current = setTimeout(() => {
         setShowDataVis(true);
       }, 100);
-      timerRef2.current = setTimeout(() => {
-        setShowDataVis(false);
-      }, input.length * 100 + 100);
     }
 
     storedInputLength.current = input.length;

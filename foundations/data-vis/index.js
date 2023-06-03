@@ -102,7 +102,7 @@ export default function Graph({ showGraph, connectionData, intensity }) {
     //link and main node clean up
     link.transition().duration(DURATION).attr("stroke", "hsl(180, 100%, 70%)").attr("opacity", "0.37");
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", ".8rem").attr("fill", "rgba(255, 255, 255, 0.07)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1rem").attr("fill", "rgba(255, 255, 255, 0.3)");
 
     if (node && simulation) {
       simulation.alphaTarget(1 - alphaTargetRef.current || 0.1).restart();
@@ -121,11 +121,6 @@ export default function Graph({ showGraph, connectionData, intensity }) {
     <S.Container show={showGraph}>
       {intensity.toFixed(2)}
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
-      <S.ListContainer opacity={1 - intensity}>
-        {connectionData.nodes.map((el, i) => (
-          <div key={i}>{el.text}</div>
-        ))}
-      </S.ListContainer>
     </S.Container>
   );
 }
