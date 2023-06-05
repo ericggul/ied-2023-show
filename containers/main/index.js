@@ -52,24 +52,12 @@ const getRandomFromInterruption = () => {
   return INTERRUPTION[0];
 };
 
-export default function DataVis({ show = true, filter }) {
+export default function MainEl({ show = true, filter }) {
   ///data store
   const [showGraph, setShowGraph] = useState(false);
   const [displayList, setDisplayList] = useState(DUMMY_LIST);
   const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);
   const [intensity, setIntensity] = useState(0);
-
-  // useEffect(() => {
-  //   let originalList = DUMMY_LIST;
-  //   let originalLength = originalList.length;
-  //   //double up the length
-  //   for (let i = 0; i < originalLength * 0.8; i++) {
-  //     let randomEl = getRandomFromInterruption();
-  //     let randomLoc = getRandom(getRandom(0, originalList.length), originalList.length);
-  //     originalList.splice(randomLoc, 0, randomEl);
-  //   }
-  //   setDisplayList(originalList);
-  // }, []);
 
   const [windowWidth, windowHeight] = useResize();
 
@@ -80,19 +68,11 @@ export default function DataVis({ show = true, filter }) {
   }
 
   return (
-    <S.Container
-      show={show}
-      onScroll={(e) => {
-        // e.stopPropagation();
-        // console.log(e.target.scrollTop);
-        // setIntensity((i) => e.target.scrollTop / 1000);
-      }}
-    >
+    <S.Container show={show}>
       <S.ListContainer
         ref={listContainerRef}
         onScroll={(e) => {
           e.stopPropagation();
-          console.log(e.target.scrollTop);
           setIntensity((i) => Math.min(e.target.scrollTop / 2000, 1) ** 0.8);
         }}
       >
@@ -157,5 +137,5 @@ function SingleCharacter({ origin, target, intensity, transformThreshold }) {
     }
   }, [intensity, changeTarget]);
 
-  return <span>{letter}</span>;
+  return <S.SingleCharacter changed={changed}>{letter}</S.SingleCharacter>;
 }

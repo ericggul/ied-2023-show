@@ -16,19 +16,10 @@ import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 export const PRIMARY_COLOR = `hsl(240, 100%, 70%)`;
 const DURATION = 150;
 
+const getRandom = (a, b) => Math.random() * (b - a) + a;
+
 export default function Graph({ showGraph, connectionData, intensity, handleTopClick }) {
-  //scroll event
-  useEffect(() => {
-    document.addEventListener("scroll", onScroll);
-    return () => document.removeEventListener("scroll", onScroll);
-  }, []);
-
-  function onScroll(e) {
-    console.log(e);
-  }
-
   const alphaTargetRef = useRef();
-
   const svgRef = useRef();
 
   //size
@@ -122,9 +113,13 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
     let link = linkRef.current;
 
     //link and main node clean up
-    link.transition().duration(DURATION).attr("stroke", PRIMARY_COLOR).attr("opacity", "0.37");
+    link
+      .transition()
+      .duration(DURATION)
+      .attr("stroke", `hsl(${(180 + (currentTarget ? currentTarget.length : 0) * 40) % 360}, 100%, 70%)`)
+      .attr("opacity", "0.42");
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1rem").attr("fill", "rgba(255, 255, 255, 0.05)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("fill", "rgba(255, 255, 255, 0.02)");
 
     if (node && simulation) {
       simulation.alphaTarget(1 - alphaTargetRef.current || 0.1).restart();
@@ -154,6 +149,13 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
 }
 
 ///helper functions
+
+function straightLine(d) {
+  return `
+       M${d.source.x},${d.source.y}
+       L${d.target.x},${d.target.y}
+     `;
+}
 
 function linkArc(d) {
   const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);

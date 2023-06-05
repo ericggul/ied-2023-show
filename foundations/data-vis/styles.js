@@ -15,7 +15,6 @@ export const Container = styled.div`
 
   font-family: Courier New;
   transition: all 1s;
-  // z-index: 0 !important;
   z-index: 150;
 
   pointer-events: ${(props) => (props.intensity > 0.8 ? "auto" : "none")};
@@ -26,7 +25,7 @@ export const Container = styled.div`
 
   svg {
     cursor: pointer;
-    ${WholeContainer}// z-index: 0 !important;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ${WholeContainer}
   }
 
   transition: all 0.5s;
@@ -34,11 +33,11 @@ export const Container = styled.div`
 
 export const TopButton = styled.div`
   position: absolute;
-  bottom: 1.6rem;
+  bottom: 1.3rem;
   right: 1rem;
   background: white;
-  width: 4rem;
-  height: 4rem;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 50%;
   color: white;
   box-shadow: 0 0 2rem white;
@@ -49,7 +48,7 @@ export const TopButton = styled.div`
   transition: all 0.5s;
 
   img {
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
   }
 `;

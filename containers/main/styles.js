@@ -65,3 +65,14 @@ export const SingleProject = styled.div`
 
   ${({ opacity }) => `opacity: ${opacity}`};
 `;
+
+export const SingleCharacter = styled.span`
+  ${({ changed }) =>
+    changed
+      ? `
+    color: red;
+  `
+      : `
+    color: black;
+      `}
+`;

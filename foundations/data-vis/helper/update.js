@@ -11,7 +11,7 @@ function updateCurrentNode({ d, node }) {
   let text = node.filter((n) => n.text === d.text).selectAll("text");
 
   circle.transition().duration(DURATION_IN).attr("fill", "white");
-  text.transition().duration(DURATION_IN).attr("x", "2rem").attr("y", ".4rem").attr("font-size", "3rem").attr("fill", "white");
+  text.transition().duration(DURATION_IN).attr("x", "1rem").attr("y", "1rem").attr("font-size", "3.4rem").attr("fill", "white");
 }
 
 function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef }) {
@@ -31,9 +31,9 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
 
   //new styling
   targetNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", PRIMARY_COLOR);
-  targetNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, .5)");
+  targetNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
   sourceNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "hsl(0, 100%, 70%)");
-  sourceNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, .5)");
+  sourceNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
 
   //update ref
   targetNodesRef.current = targetNodes;
