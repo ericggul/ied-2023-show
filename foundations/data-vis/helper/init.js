@@ -7,14 +7,14 @@ function initCleanUp({ svg }) {
   everything.remove();
 }
 
-function initCreateSimulation({ nodes, links, width, height }) {
+function initCreateSimulation({ nodes, links, width, height, force }) {
   const simulation = d3
     .forceSimulation(nodes)
     .force(
       "link",
       d3.forceLink(links).id((d) => d.text)
     )
-    .force("charge", d3.forceManyBody().strength(0))
+    .force("charge", d3.forceManyBody().strength(force))
     .force("center", d3.forceCenter())
     .force("boundary", forceBoundary(-width * 0.45, -height * 0.45, width * 0.45, height * 0.45));
 

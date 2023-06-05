@@ -2,7 +2,7 @@
 import * as d3 from "d3";
 
 export const DURATION_IN = 150;
-export const DURATION_OUT = 800;
+export const DURATION_OUT = 150;
 
 function updateCurrentNode({ d, node }) {
   let circle = d3.select(`#circle-${d.id}`);

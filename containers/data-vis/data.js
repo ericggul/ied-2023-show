@@ -57,8 +57,28 @@ export const DUMMY_LIST = [
     artistName: "Lan Yang",
   },
   {
-    projectName: "This is not an artwork",
-    artistName: "Nobody",
+    projectName: "SWAP: Meat for Plant",
+    artistName: "Anna Tsuda",
+  },
+  {
+    projectName: "CUBe",
+    artistName: "Fiona Lei",
+  },
+  {
+    projectName: "Bystander",
+    artistName: "Harry Hallows",
+  },
+  {
+    projectName: "Learning to Learn To See",
+    artistName: "Josh Murr",
+  },
+  {
+    projectName: "UN road-trip",
+    artistName: "Katharina Botel-Azzinnaro",
+  },
+  {
+    projectName: "Pocket Zoo AR",
+    artistName: "Lan Yang",
   },
   {
     projectName: "SWAP: Meat for Plant",
@@ -85,8 +105,124 @@ export const DUMMY_LIST = [
     artistName: "Lan Yang",
   },
   {
-    projectName: "This is not an artwork",
-    artistName: "Nobody",
+    projectName: "SWAP: Meat for Plant",
+    artistName: "Anna Tsuda",
+  },
+  {
+    projectName: "CUBe",
+    artistName: "Fiona Lei",
+  },
+  {
+    projectName: "Bystander",
+    artistName: "Harry Hallows",
+  },
+  {
+    projectName: "Learning to Learn To See",
+    artistName: "Josh Murr",
+  },
+  {
+    projectName: "UN road-trip",
+    artistName: "Katharina Botel-Azzinnaro",
+  },
+  {
+    projectName: "Pocket Zoo AR",
+    artistName: "Lan Yang",
+  },
+  {
+    projectName: "SWAP: Meat for Plant",
+    artistName: "Anna Tsuda",
+  },
+  {
+    projectName: "CUBe",
+    artistName: "Fiona Lei",
+  },
+  {
+    projectName: "Bystander",
+    artistName: "Harry Hallows",
+  },
+  {
+    projectName: "Learning to Learn To See",
+    artistName: "Josh Murr",
+  },
+  {
+    projectName: "UN road-trip",
+    artistName: "Katharina Botel-Azzinnaro",
+  },
+  {
+    projectName: "Pocket Zoo AR",
+    artistName: "Lan Yang",
+  },
+  {
+    projectName: "SWAP: Meat for Plant",
+    artistName: "Anna Tsuda",
+  },
+  {
+    projectName: "CUBe",
+    artistName: "Fiona Lei",
+  },
+  {
+    projectName: "Bystander",
+    artistName: "Harry Hallows",
+  },
+  {
+    projectName: "Learning to Learn To See",
+    artistName: "Josh Murr",
+  },
+  {
+    projectName: "UN road-trip",
+    artistName: "Katharina Botel-Azzinnaro",
+  },
+  {
+    projectName: "Pocket Zoo AR",
+    artistName: "Lan Yang",
+  },
+  {
+    projectName: "SWAP: Meat for Plant",
+    artistName: "Anna Tsuda",
+  },
+  {
+    projectName: "CUBe",
+    artistName: "Fiona Lei",
+  },
+  {
+    projectName: "Bystander",
+    artistName: "Harry Hallows",
+  },
+  {
+    projectName: "Learning to Learn To See",
+    artistName: "Josh Murr",
+  },
+  {
+    projectName: "UN road-trip",
+    artistName: "Katharina Botel-Azzinnaro",
+  },
+  {
+    projectName: "Pocket Zoo AR",
+    artistName: "Lan Yang",
+  },
+  {
+    projectName: "SWAP: Meat for Plant",
+    artistName: "Anna Tsuda",
+  },
+  {
+    projectName: "CUBe",
+    artistName: "Fiona Lei",
+  },
+  {
+    projectName: "Bystander",
+    artistName: "Harry Hallows",
+  },
+  {
+    projectName: "Learning to Learn To See",
+    artistName: "Josh Murr",
+  },
+  {
+    projectName: "UN road-trip",
+    artistName: "Katharina Botel-Azzinnaro",
+  },
+  {
+    projectName: "Pocket Zoo AR",
+    artistName: "Lan Yang",
   },
 ];
 

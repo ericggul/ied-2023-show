@@ -7,13 +7,15 @@ import { useResizeDebounce } from "utils/hooks/useResize";
 //d3
 import * as d3 from "d3";
 
+import { MdKeyboardArrowUp } from "react-icons/md";
+
 //helper
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
 import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
-const DURATION = 800;
+const DURATION = 150;
 
-export default function Graph({ showGraph, connectionData, intensity }) {
+export default function Graph({ showGraph, connectionData, intensity, handleTopClick }) {
   const alphaTargetRef = useRef();
 
   const svgRef = useRef();
@@ -27,16 +29,22 @@ export default function Graph({ showGraph, connectionData, intensity }) {
   const nodeRef = useRef(null);
   const [currentTarget, setCurrentTarget] = useState(null);
 
+  const forceRef = useRef(0);
+  useEffect(() => {
+    forceRef.current = -((intensity * 7) ** 2) * ((windowWidth + windowHeight * 1.5) / 1000) ** 2;
+  }, [intensity, windowWidth, windowHeight]);
+
   ///simulation intensity
   useEffect(() => {
     if (!simulationRef.current) return;
     const width = windowWidth;
     const height = windowHeight;
-    simulationRef.current.force("charge", d3.forceManyBody().strength(-((intensity * 8) ** 2) * ((width + height * 1.5) / 1000) ** 2));
+    simulationRef.current.force("charge", d3.forceManyBody().strength(forceRef.current));
     alphaTargetRef.current = 1 - intensity;
   }, [intensity, windowWidth, windowHeight]);
 
   useEffect(() => {
+    if (windowWidth === 0 || windowHeight === 0) return;
     //variables
     const types = ["isCycle", "isNotCycle"];
     const color = d3.scaleOrdinal(types, ["hsl(180, 100%, 70%)", "hsl(180, 100%, 70%)"]);
@@ -55,7 +63,7 @@ export default function Graph({ showGraph, connectionData, intensity }) {
     initMarkerStyling({ svg, types, color, width, height });
 
     //create simulation
-    const simulation = initCreateSimulation({ nodes, links, width, height });
+    const simulation = initCreateSimulation({ nodes, links, width, height, force: forceRef.current });
     //link styling
     const link = initLinkStyling({ svg, links, color, width, height });
     //node styling
@@ -77,9 +85,12 @@ export default function Graph({ showGraph, connectionData, intensity }) {
       handleNewKeywordClick(text);
     });
 
-    node.on("mouseenter", (event, d) => {
-      const { id, text } = d;
-      handleNewKeywordClick(text);
+    ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup", "click"].forEach((eventType) => {
+      node.on(eventType, (ev, d) => {
+        console.log(eventType, d);
+        const { id, text } = d;
+        handleNewKeywordClick(text);
+      });
     });
   }, [connectionData, windowWidth, windowHeight]);
 
@@ -95,6 +106,7 @@ export default function Graph({ showGraph, connectionData, intensity }) {
   const sourceNodesRef = useRef(null);
 
   useEffect(() => {
+    if (!simulationRef.current) return;
     let node = nodeRef.current;
     let simulation = simulationRef.current;
     let link = linkRef.current;
@@ -102,7 +114,7 @@ export default function Graph({ showGraph, connectionData, intensity }) {
     //link and main node clean up
     link.transition().duration(DURATION).attr("stroke", "hsl(180, 100%, 70%)").attr("opacity", "0.37");
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1rem").attr("fill", "rgba(255, 255, 255, 0.3)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1rem").attr("fill", "rgba(255, 255, 255, 0.15)");
 
     if (node && simulation) {
       simulation.alphaTarget(1 - alphaTargetRef.current || 0.1).restart();
@@ -118,9 +130,13 @@ export default function Graph({ showGraph, connectionData, intensity }) {
   }, [connectionData, currentTarget, windowWidth, windowHeight]);
 
   return (
-    <S.Container show={showGraph}>
+    <S.Container show={showGraph} intensity={intensity}>
       {intensity.toFixed(2)}
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
+
+      <S.TopButton onClick={handleTopClick}>
+        <MdKeyboardArrowUp />
+      </S.TopButton>
     </S.Container>
   );
 }
