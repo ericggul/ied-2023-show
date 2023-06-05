@@ -64,7 +64,7 @@ export default function DataVis({ show = true, filter }) {
     let originalLength = originalList.length;
 
     //double up the length
-    for (let i = 0; i < originalLength * 0.5; i++) {
+    for (let i = 0; i < originalLength * 0.8; i++) {
       let randomEl = getRandomFromInterruption();
       //insert in loc
       let randomLoc = getRandom(getRandom(0, originalList.length), originalList.length);
