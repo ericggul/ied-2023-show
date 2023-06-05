@@ -1,6 +1,8 @@
 //d3
 import * as d3 from "d3";
 
+import { PRIMARY_COLOR } from "../index";
+
 export const DURATION_IN = 150;
 export const DURATION_OUT = 150;
 
@@ -8,7 +10,7 @@ function updateCurrentNode({ d, node }) {
   let circle = d3.select(`#circle-${d.id}`);
   let text = node.filter((n) => n.text === d.text).selectAll("text");
 
-  circle.transition().duration(DURATION_IN).attr("fill", "hsl(180, 100%, 93%)");
+  circle.transition().duration(DURATION_IN).attr("fill", "white");
   text.transition().duration(DURATION_IN).attr("x", "2rem").attr("y", ".4rem").attr("font-size", "3rem").attr("fill", "white");
 }
 
@@ -28,7 +30,7 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
   }
 
   //new styling
-  targetNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "hsl(180, 100%, 70%)");
+  targetNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", PRIMARY_COLOR);
   targetNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, .5)");
   sourceNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "hsl(0, 100%, 70%)");
   sourceNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, .5)");

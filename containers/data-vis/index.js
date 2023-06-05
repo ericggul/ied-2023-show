@@ -59,21 +59,17 @@ export default function DataVis({ show = true, filter }) {
   const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);
   const [intensity, setIntensity] = useState(0);
 
-  useEffect(() => {
-    let originalList = DUMMY_LIST;
-    let originalLength = originalList.length;
-
-    //double up the length
-    for (let i = 0; i < originalLength * 0.8; i++) {
-      let randomEl = getRandomFromInterruption();
-      //insert in loc
-      let randomLoc = getRandom(getRandom(0, originalList.length), originalList.length);
-
-      originalList.splice(randomLoc, 0, randomEl);
-    }
-
-    setDisplayList(originalList);
-  }, []);
+  // useEffect(() => {
+  //   let originalList = DUMMY_LIST;
+  //   let originalLength = originalList.length;
+  //   //double up the length
+  //   for (let i = 0; i < originalLength * 0.8; i++) {
+  //     let randomEl = getRandomFromInterruption();
+  //     let randomLoc = getRandom(getRandom(0, originalList.length), originalList.length);
+  //     originalList.splice(randomLoc, 0, randomEl);
+  //   }
+  //   setDisplayList(originalList);
+  // }, []);
 
   const [windowWidth, windowHeight] = useResize();
 
@@ -102,18 +98,64 @@ export default function DataVis({ show = true, filter }) {
       >
         <DataVisEl connectionData={connectionData} intensity={intensity} handleTopClick={handleTopClick} />
         {displayList.map((el, i) => (
-          <SingleProject key={i} data={el} isMobile={windowWidth < 768} />
+          <SingleProject key={i} data={el} intensity={intensity} isMobile={windowWidth < 768} />
         ))}
       </S.ListContainer>
     </S.Container>
   );
 }
 
-function SingleProject({ data, opacity, isMobile }) {
+function SingleProject({ data, opacity, isMobile, intensity }) {
+  const target = useMemo(
+    () => ({
+      projectName: "This is not an artwork",
+      artistName: "Nobody",
+    }),
+    []
+  );
+
+  const transformThreshold = useMemo(() => getRandom(0.5, 0.8), []);
+
+  const longerText = useMemo(() => {
+    let projectLonger = data.projectName.length > target.projectName.length ? data.projectName : target.projectName;
+    let artistLonger = data.artistName.length > target.artistName.length ? data.artistName : target.artistName;
+
+    return {
+      projectName: projectLonger,
+      artistName: artistLonger,
+    };
+  }, [target, data]);
+
   return (
     <S.SingleProject opacity={opacity} isMobile={isMobile}>
-      <h1>{data.projectName}</h1>
-      <h3>{data.artistName}</h3>
+      <h1>
+        {longerText.projectName.split("").map((letter, i) => (
+          <SingleCharacter key={i} transformThreshold={transformThreshold} origin={data.projectName[i] || ""} target={target.projectName[i] || ""} intensity={intensity} />
+        ))}
+      </h1>
+      <h3>
+        {longerText.artistName.split("").map((letter, i) => (
+          <SingleCharacter key={i} transformThreshold={transformThreshold} origin={data.artistName[i] || ""} target={target.artistName[i] || ""} intensity={intensity} />
+        ))}
+      </h3>
     </S.SingleProject>
   );
+}
+
+function SingleCharacter({ origin, target, intensity, transformThreshold }) {
+  const [changed, setChanged] = useState(false);
+  const [letter, setLetter] = useState(origin);
+  const changeTarget = useMemo(() => getRandom(getRandom(0, transformThreshold), transformThreshold), [transformThreshold]);
+
+  useEffect(() => {
+    if (intensity > changeTarget) {
+      setChanged(true);
+      setLetter(target);
+    } else {
+      setChanged(false);
+      setLetter(origin);
+    }
+  }, [intensity, changeTarget]);
+
+  return <span>{letter}</span>;
 }
