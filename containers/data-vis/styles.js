@@ -47,7 +47,10 @@ export const SingleProject = styled.div`
   justify-content: center;
 
   h1{
-    font-size: 32px;
+    font-size: 24px;
+  }
+  h3{
+    font-size: 16px;
   }
   
   `
@@ -56,9 +59,9 @@ export const SingleProject = styled.div`
   align-items: flex-end;
   justify-content: space-between;`}
 
-  padding: 8px 16px;
+  padding: 6px 16px;
 
-  font-size: 23px;
+  font-size: 20px;
 
   ${({ opacity }) => `opacity: ${opacity}`};
 `;

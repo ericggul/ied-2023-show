@@ -9,7 +9,7 @@ function updateCurrentNode({ d, node }) {
   let text = node.filter((n) => n.text === d.text).selectAll("text");
 
   circle.transition().duration(DURATION_IN).attr("fill", "hsl(180, 100%, 93%)");
-  text.transition().duration(DURATION_IN).attr("x", "1rem").attr("y", ".4rem").attr("font-size", "3rem").attr("fill", "white");
+  text.transition().duration(DURATION_IN).attr("x", "2rem").attr("y", ".4rem").attr("font-size", "3rem").attr("fill", "white");
 }
 
 function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef }) {

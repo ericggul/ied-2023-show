@@ -26,7 +26,7 @@ const INTERRUPTION = [
     weight: 0.5,
   },
   {
-    projectName: "Traditional List Layout",
+    projectName: "This Traditional List Layout",
     artistName: "Is Non-Rhizomatic",
     weight: 0.5,
   },
@@ -67,7 +67,7 @@ export default function DataVis({ show = true, filter }) {
     for (let i = 0; i < originalLength * 0.5; i++) {
       let randomEl = getRandomFromInterruption();
       //insert in loc
-      let randomLoc = getRandom(getRandom(5, originalList.length), originalList.length);
+      let randomLoc = getRandom(getRandom(0, originalList.length), originalList.length);
 
       originalList.splice(randomLoc, 0, randomEl);
     }
@@ -97,7 +97,7 @@ export default function DataVis({ show = true, filter }) {
         onScroll={(e) => {
           e.stopPropagation();
           console.log(e.target.scrollTop);
-          setIntensity((i) => Math.min(e.target.scrollTop / 2000, 1) ** 2);
+          setIntensity((i) => Math.min(e.target.scrollTop / 2000, 1) ** 0.8);
         }}
       >
         <DataVisEl connectionData={connectionData} intensity={intensity} handleTopClick={handleTopClick} />

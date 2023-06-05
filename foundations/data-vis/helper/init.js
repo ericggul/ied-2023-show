@@ -77,11 +77,11 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
   node
     .append("text")
     .attr("id", (d) => `text-${d.id}`)
-    .attr("x", ".7rem")
-    .attr("y", ".3rem")
+    .attr("x", "1rem")
+    .attr("y", ".7rem")
     .attr("font-size", "1rem")
     .attr("font-family", "Bebas Neue")
-    .attr("fill", "rgba(255, 255, 255, 0.3)")
+    .attr("fill", "rgba(255, 255, 255, 0.2)")
     .text((d) => d.text)
     .clone(true)
     .lower();

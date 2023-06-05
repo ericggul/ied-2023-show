@@ -114,7 +114,7 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
     //link and main node clean up
     link.transition().duration(DURATION).attr("stroke", "hsl(180, 100%, 70%)").attr("opacity", "0.37");
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1rem").attr("fill", "rgba(255, 255, 255, 0.15)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1rem").attr("fill", "rgba(255, 255, 255, 0.05)");
 
     if (node && simulation) {
       simulation.alphaTarget(1 - alphaTargetRef.current || 0.1).restart();
@@ -134,9 +134,11 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
       {intensity.toFixed(2)}
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
 
-      <S.TopButton onClick={handleTopClick}>
-        <MdKeyboardArrowUp />
-      </S.TopButton>
+      {intensity > 0.8 && (
+        <S.TopButton onClick={handleTopClick}>
+          <img src="/assets/top.svg" alt="arrow-up" />
+        </S.TopButton>
+      )}
     </S.Container>
   );
 }
