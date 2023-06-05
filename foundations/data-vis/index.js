@@ -17,6 +17,16 @@ export const PRIMARY_COLOR = `hsl(240, 100%, 70%)`;
 const DURATION = 150;
 
 export default function Graph({ showGraph, connectionData, intensity, handleTopClick }) {
+  //scroll event
+  useEffect(() => {
+    document.addEventListener("scroll", onScroll);
+    return () => document.removeEventListener("scroll", onScroll);
+  }, []);
+
+  function onScroll(e) {
+    console.log(e);
+  }
+
   const alphaTargetRef = useRef();
 
   const svgRef = useRef();
@@ -88,7 +98,6 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
 
     ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup", "click"].forEach((eventType) => {
       node.on(eventType, (ev, d) => {
-        console.log(eventType, d);
         const { id, text } = d;
         handleNewKeywordClick(text);
       });
