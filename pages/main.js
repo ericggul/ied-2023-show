@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import Intro from "containers/intro";
 import Main from "containers/main";
 
 export default function Home() {
@@ -12,8 +11,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Intro />
-      {/* <Main /> */}
+      <Main />
     </>
   );
 }

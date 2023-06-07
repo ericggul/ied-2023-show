@@ -7,6 +7,7 @@ import axios from "axios";
 import useResize from "utils/hooks/useResize";
 
 //foundations
+import Header from "foundations/header";
 import DataVisEl from "foundations/data-vis";
 
 const INTERRUPTION = [
@@ -38,6 +39,9 @@ const INTERRUPTION = [
 ];
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
+const roundUpFloat = (float, roundUp) => {
+  return Math.round(float * roundUp) / roundUp;
+};
 
 const getRandomFromInterruption = () => {
   ///consider weight
@@ -54,7 +58,6 @@ const getRandomFromInterruption = () => {
 
 export default function MainEl({ show = true, filter }) {
   ///data store
-  const [showGraph, setShowGraph] = useState(false);
   const [displayList, setDisplayList] = useState(DUMMY_LIST);
   const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);
   const [intensity, setIntensity] = useState(0);
@@ -68,20 +71,23 @@ export default function MainEl({ show = true, filter }) {
   }
 
   return (
-    <S.Container show={show}>
-      <S.ListContainer
-        ref={listContainerRef}
-        onScroll={(e) => {
-          e.stopPropagation();
-          setIntensity((i) => Math.min(e.target.scrollTop / 2000, 1) ** 0.8);
-        }}
-      >
-        <DataVisEl connectionData={connectionData} intensity={intensity} handleTopClick={handleTopClick} />
-        {displayList.map((el, i) => (
-          <SingleProject key={i} data={el} intensity={intensity} isMobile={windowWidth < 768} />
-        ))}
-      </S.ListContainer>
-    </S.Container>
+    <>
+      <Header background={intensity < 0.8 ? "black" : "transparent"} />
+      <S.Container show={show}>
+        <S.ListContainer
+          ref={listContainerRef}
+          onScroll={(e) => {
+            e.stopPropagation();
+            setIntensity((i) => Math.min(e.target.scrollTop / 2000, 1) ** 0.8);
+          }}
+        >
+          <DataVisEl connectionData={connectionData} intensity={roundUpFloat(intensity, 10)} handleTopClick={handleTopClick} />
+          {displayList.map((el, i) => (
+            <SingleProject key={i} data={el} intensity={intensity} isMobile={windowWidth < 768} />
+          ))}
+        </S.ListContainer>
+      </S.Container>
+    </>
   );
 }
 

@@ -15,7 +15,7 @@ export const Container = styled.div`
 
   font-family: Courier New;
   transition: all 1s;
-  z-index: 150;
+  z-index: 20;
 
   pointer-events: ${(props) => (props.intensity > 0.8 ? "auto" : "none")};
 

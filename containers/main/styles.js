@@ -1,9 +1,9 @@
-import { FlexCenterStyle, WholeContainer } from "styles/common";
+import { FlexCenterStyle, WholeUIContainer } from "styles/common";
 import styled from "styled-components";
 const BUTTON_COLOR = `hsl(180, 100%, 70%)`;
 
 export const Container = styled.div`
-  ${WholeContainer}
+  ${WholeUIContainer}
   ${FlexCenterStyle}
 
   flex-direction: column;
@@ -21,7 +21,7 @@ export const ListContainer = styled.div`
   flex-direction: column;
   width: 100%;
   min-height: 100%;
-  z-index: 100;
+  z-index: 10;
   overflow-y: scroll;
   font-size: 16px;
 `;
