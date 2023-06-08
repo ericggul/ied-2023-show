@@ -1,33 +1,47 @@
 import { FlexCenterStyle, WholeContainer } from "styles/common";
-import styled from "styled-components";
-const BUTTON_COLOR = `hsl(180, 100%, 70%)`;
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  ${WholeContainer}
-  ${FlexCenterStyle}
+  width: ${({ theme }) => theme.windowWidth}px;
+  height: 200vh;
 
-
-height: ${({ theme }) => theme.windowHeight * 3}px;
-
+  display: flex;
   flex-direction: column;
-  background: white;
+
   color: black;
-  overflow-x: hidden;
+  font-family: Helvetica Neue, sans-serif;
   overflow-y: scroll;
-  font-family: Raleway;
+
+  scroll-snap-type: y mandatory;
+  -webkit-scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 `;
 
 export const TopSection = styled.div`
-  font-family: Times New Roman;
-  position: absolute;
   width: 100%;
-  height: ${({ theme }) => theme.windowHeight}px;
-  top: 0;
-  left: 0;
+  height: 100vh;
+  scroll-snap-align: start;
+`;
+
+export const MidSection = styled.div`
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+`;
+
+export const BottomSection = styled.div`
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
 `;
 
 export const CanvasContainer = styled.div`
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 300vh;
+  overflow: hidden;
+  pointer-events: none;
 `;

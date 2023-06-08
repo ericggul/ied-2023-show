@@ -14,18 +14,28 @@ const SCALE = 1.4;
 
 export default function Intro() {
   return (
-    <S.Container>
-      <S.TopSection>
-        <h1>RCA</h1>
-        <h1>IED</h1>
-      </S.TopSection>
+    <>
       <S.CanvasContainer>
         <Canvas>
           <pointLight position={[10, 10, 10]} color={"white"} />
           <BackgroundTree />
         </Canvas>
       </S.CanvasContainer>
-    </S.Container>
+      <S.Container>
+        <S.TopSection>
+          <h1>RCA</h1>
+          <h1>IED</h1>
+        </S.TopSection>
+        <S.MidSection>
+          <h1>RCA</h1>
+          <h1>IED</h1>
+        </S.MidSection>
+        <S.BottomSection>
+          <h1>RCA</h1>
+          <h1>IED</h1>
+        </S.BottomSection>
+      </S.Container>
+    </>
   );
 }
 

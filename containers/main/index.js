@@ -72,7 +72,7 @@ export default function MainEl({ show = true, filter }) {
 
   return (
     <>
-      <Header background={intensity < 0.8 ? "black" : "transparent"} />
+      {/* <Header background={intensity < 0.8 ? "black" : "transparent"} /> */}
       <S.Container show={show}>
         <S.ListContainer
           ref={listContainerRef}
