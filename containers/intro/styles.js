@@ -3,15 +3,15 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: ${({ theme }) => theme.windowWidth}px;
-  height: 200vh;
+  min-height: 300vh;
 
   display: flex;
   flex-direction: column;
 
   color: black;
   font-family: Helvetica Neue, sans-serif;
-  overflow-y: scroll;
 
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
   -webkit-scroll-snap-type: y mandatory;
   scroll-snap-stop: always;
@@ -21,19 +21,19 @@ export const Container = styled.div`
 `;
 
 export const TopSection = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   scroll-snap-align: start;
 `;
 
 export const MidSection = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   scroll-snap-align: start;
 `;
 
 export const BottomSection = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   scroll-snap-align: start;
 `;
