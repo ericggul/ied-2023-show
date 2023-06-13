@@ -124,12 +124,12 @@ export default function Graph({ connectionData }) {
 
   return (
     <S.Container>
-      {/* <S.ColorPickers>
+      <S.ColorPickers>
         <HexColorPicker color={primaryColor} onChange={setPrimaryColor} />
         <HexColorPicker color={secondaryColor} onChange={setSecondaryColor} />
         {primaryColor}
         {secondaryColor}
-      </S.ColorPickers> */}
+      </S.ColorPickers>
 
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>

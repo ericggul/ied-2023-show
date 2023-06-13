@@ -23,7 +23,9 @@ export default function Navigator({ show, scrollPos }) {
       }}
     >
       <S.Upper>
-        <h2>COUNTERPOINT is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the Information Experience Design MA1 cohort.</h2>
+        <h2>
+          <b>COUNTERPOINT</b> is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the Information Experience Design MA1 cohort.
+        </h2>
       </S.Upper>
 
       <S.ButtonContainer>

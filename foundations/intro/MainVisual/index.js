@@ -42,7 +42,9 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
       >
         <div>
           <h1>RCA IED MA1</h1>
-          <h1>Public Event</h1>
+          <h1>
+            <i>Public Event</i>
+          </h1>
         </div>
         <div>
           <h1>Information Experience</h1>

@@ -1,5 +1,6 @@
 import { FlexCenterStyle } from "styles/common";
 import styled from "styled-components";
+import { Appear } from "styles/common";
 
 export const Container = styled.div`
   z-index: 100;
@@ -16,6 +17,9 @@ export const Container = styled.div`
   ${FlexCenterStyle}
   justify-content: space-between;
   align-items: flex-end;
+
+  animation: ${Appear} 1s ease-in-out both;
+  animation-delay: 1s;
 `;
 
 export const Image = styled.div`

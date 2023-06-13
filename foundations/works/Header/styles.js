@@ -1,6 +1,8 @@
 import { FlexCenterStyle } from "styles/common";
 import styled from "styled-components";
 
+import { Appear } from "styles/common";
+
 export const Container = styled.div`
   z-index: 100;
   width: 100%;
@@ -16,6 +18,9 @@ export const Container = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
   backdrop-filter: blur(1rem) brightness(2);
+
+  animation: ${Appear} 1s ease-in-out both;
+  animation-delay: 0.5s;
 `;
 
 export const Upper = styled.div`
