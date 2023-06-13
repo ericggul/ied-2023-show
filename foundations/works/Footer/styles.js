@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100%;
   position: fixed;
   height: 7rem;
-  padding-top: 0.5rem;
+  padding-bottom: 1.2rem;
   bottom: 0;
   left: 0;
   right: 0;
@@ -14,40 +14,36 @@ export const Container = styled.div`
   pointer-events: all;
 
   ${FlexCenterStyle}
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+
+export const Image = styled.div`
+  display: flex;
   flex-direction: column;
-  backdrop-filter: blur(1rem) brightness(2);
+  margin-left: 1.5rem;
+  position: relative;
+
+  width: 10rem;
+
+  img {
+    position: absolute;
+    width: 100%;
+    bottom: -2.1rem;
+    left: -1.3rem;
+  }
 `;
 
-export const Upper = styled.div`
-  font-size: 0.7rem;
-  font-weight: bold;
-  margin-top: 0.8rem;
-  ${FlexCenterStyle}
-  transform: scaleY(4);
-  width: 100%;
-`;
+export const Texts = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 1.5rem;
 
-export const List = styled.div`
-  margin-top: 1.5rem;
-  ${FlexCenterStyle}
-  width: 100%;
-`;
-
-export const Item = styled.div`
-  width: 8rem;
-  ${FlexCenterStyle}
-  text-align: center;
-  font-size: 1.7rem;
-  transition: all 0.3s;
-  cursor: pointer;
-  font-style: italic;
-  font-family: Times New Roman;
-`;
-
-export const Center = styled.div`
-  font-weight: bold;
-  font-size: 3rem;
-  ${FlexCenterStyle}
-  text-align: center;
-  transform: scaleX(0.7);
+  h1 {
+    color: white;
+    font-size: 1rem;
+    font-family: Times New Roman;
+    font-weight: normal;
+  }
 `;

@@ -19,7 +19,7 @@ export const Container = styled.div`
 `;
 
 export const Upper = styled.div`
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 0.8rem;
   ${FlexCenterStyle}
@@ -27,10 +27,10 @@ export const Upper = styled.div`
   width: 100%;
 
   @keyframes bounce-back {
-    0% {
+    25% {
       transform: scaleY(4);
     }
-    69% {
+    95% {
       transform: scaleY(1);
     }
     100% {
@@ -38,7 +38,7 @@ export const Upper = styled.div`
     }
   }
 
-  animation: bounce-back 1s infinite;
+  animation: bounce-back 8s infinite;
 `;
 
 export const List = styled.div`
