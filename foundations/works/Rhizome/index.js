@@ -18,7 +18,7 @@ const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Graph({ connectionData }) {
+export default function Rhizome({ isVisible, connectionData }) {
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -35,52 +35,56 @@ export default function Graph({ connectionData }) {
 
   useEffect(() => {
     if (windowWidth === 0 || windowHeight === 0) return;
-    //variables
-    const types = ["isCycle", "isNotCycle"];
-    const width = windowWidth;
-    const height = windowHeight;
-    const svg = d3.select(svgRef.current);
-    const links = connectionData.links.map((d) => Object.create(d));
-    const nodes = connectionData.nodes.map((d) => Object.create(d));
+    if (!isVisible) return;
 
-    //prevent any zoom effect
-    svg.call(d3.zoom().on("zoom", null));
+    triggerInit();
+    function triggerInit() {
+      const types = ["isCycle", "isNotCycle"];
+      const width = windowWidth;
+      const height = windowHeight;
+      const svg = d3.select(svgRef.current);
+      const links = connectionData.links.map((d) => Object.create(d));
+      const nodes = connectionData.nodes.map((d) => Object.create(d));
 
-    //cleanup
-    initCleanUp({ svg });
-    //marker default styling
-    initMarkerStyling({ svg, types, width, height });
+      //prevent any zoom effect
+      svg.call(d3.zoom().on("zoom", null));
 
-    //create simulation
-    const simulation = initCreateSimulation({ nodes, links, width, height });
-    //link styling
-    const link = initLinkStyling({ svg, links, width, height });
-    //node styling
-    const node = initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarget });
+      //cleanup
+      initCleanUp({ svg });
+      //marker default styling
+      initMarkerStyling({ svg, types, width, height });
 
-    simulationRef.current = simulation;
-    linkRef.current = link;
-    nodeRef.current = node;
+      //create simulation
+      const simulation = initCreateSimulation({ nodes, links, width, height });
+      //link styling
+      const link = initLinkStyling({ svg, links, width, height });
+      //node styling
+      const node = initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarget });
 
-    //tick simulation
-    simulation.on("tick", () => {
-      link.attr("d", linkArc);
-      node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-    });
+      simulationRef.current = simulation;
+      linkRef.current = link;
+      nodeRef.current = node;
 
-    //on click
-    node.on("click", (event, d) => {
-      const { id, text } = d;
-      handleNewKeywordClick(text);
-    });
+      //tick simulation
+      simulation.on("tick", () => {
+        link.attr("d", linkArc);
+        node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+      });
 
-    ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup", "click"].forEach((eventType) => {
-      node.on(eventType, (ev, d) => {
+      //on click
+      node.on("click", (event, d) => {
         const { id, text } = d;
         handleNewKeywordClick(text);
       });
-    });
-  }, [connectionData, windowWidth, windowHeight]);
+
+      ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup", "click"].forEach((eventType) => {
+        node.on(eventType, (ev, d) => {
+          const { id, text } = d;
+          handleNewKeywordClick(text);
+        });
+      });
+    }
+  }, [isVisible, connectionData, windowWidth, windowHeight]);
 
   ////////////
   ///interaction///
@@ -123,7 +127,7 @@ export default function Graph({ connectionData }) {
   }, [connectionData, currentTarget, windowWidth, windowHeight, primaryColor, secondaryColor]);
 
   return (
-    <S.Container>
+    <S.Container isVisible={isVisible}>
       <S.ColorPickers>
         <HexColorPicker color={primaryColor} onChange={setPrimaryColor} />
         <HexColorPicker color={secondaryColor} onChange={setSecondaryColor} />

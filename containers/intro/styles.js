@@ -12,6 +12,7 @@ export const Container = styled.div`
   background: black;
   color: white;
   font-family: Helvetica !important;
+  overflow-y: scroll;
 
   z-index: 5 !important;
 

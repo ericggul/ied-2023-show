@@ -6,7 +6,7 @@ export const Container = styled.div`
   z-index: 100;
   width: 100%;
   position: fixed;
-  height: 7rem;
+  height: 4rem;
   padding-bottom: 1.2rem;
   bottom: 0;
   left: 0;
@@ -20,6 +20,8 @@ export const Container = styled.div`
 
   animation: ${Appear} 1s ease-in-out both;
   animation-delay: 1s;
+
+  backdrop-filter: blur(1rem) brightness(1.5);
 `;
 
 export const Image = styled.div`

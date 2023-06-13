@@ -1,12 +1,14 @@
-import { FlexCenterStyle, WholeContianer } from "styles/common";
+import { FlexCenterStyle, WholeContainer } from "styles/common";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  ${WholeContianer}
+  ${WholeContainer}
   ${FlexCenterStyle}
+  
 
   flex-direction: column;
   background: black;
   color: white;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
 `;

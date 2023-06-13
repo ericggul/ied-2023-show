@@ -9,6 +9,7 @@ import useSocket from "utils/hooks/socket/useSocketMobile";
 
 //foundations
 import Rhizome from "foundations/works/Rhizome";
+import ListView from "foundations/works/ListView";
 import Header from "foundations/works/Header";
 import Footer from "foundations/works/Footer";
 
@@ -27,7 +28,9 @@ export default function Works() {
     <>
       <S.Container>
         <Header isRhizome={isRhizome} setIsRhizome={setIsRhizome} />
-        <Rhizome connectionData={connectionData} />
+        <Rhizome isVisible={isRhizome} connectionData={connectionData} />
+        <ListView isVisible={!isRhizome} />
+
         <Footer />
       </S.Container>
     </>
