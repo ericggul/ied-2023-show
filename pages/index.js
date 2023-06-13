@@ -1,6 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
+import { Suspense } from "react";
 
 const Intro = dynamic(() => import("containers/intro"), {
   ssr: false,
@@ -19,7 +20,9 @@ export default function Home() {
       </Head>
       <NextSeo title="RCA IED 2023" description="RCA IED 2023: Royal College of Art Information Expereience Design Public Event MA1 2023" />
 
-      <Intro />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Intro />
+      </Suspense>
 
       {/* <Main /> */}
     </>

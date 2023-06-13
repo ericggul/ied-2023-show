@@ -10,6 +10,7 @@ import useSocket from "utils/hooks/socket/useSocketMobile";
 //foundations
 import Rhizome from "foundations/works/Rhizome";
 import Header from "foundations/works/Header";
+import Footer from "foundations/works/Footer";
 
 const roundUpFloat = (float, roundUp) => {
   return Math.round(float * roundUp) / roundUp;
@@ -17,20 +18,17 @@ const roundUpFloat = (float, roundUp) => {
 
 export default function Works() {
   const socket = useSocket();
-  ///data store
-  const [displayList, setDisplayList] = useState(DUMMY_LIST);
+
   const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);
-  const [intensity, setIntensity] = useState(0);
 
-  const [windowWidth, windowHeight] = useResize();
-
-  const listContainerRef = useRef();
+  const [isRhizome, setIsRhizome] = useState(true);
 
   return (
     <>
       <S.Container>
-        <Header />
+        <Header isRhizome={isRhizome} setIsRhizome={setIsRhizome} />
         <Rhizome connectionData={connectionData} />
+        <Footer />
       </S.Container>
     </>
   );

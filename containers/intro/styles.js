@@ -37,3 +37,13 @@ export const InitialText = styled.div`
   opacity: 1;
   z-index: 5;
 `;
+
+export const Loading = styled.div`
+  ${FlexCenterStyle}
+  ${WholeContainer}
+  pointer-events: none;
+  z-index: 100;
+  background: black;
+  ${({ show }) => (show ? "opacity: 1" : "opacity: 0")};
+  transition: all 0.3s;
+`;

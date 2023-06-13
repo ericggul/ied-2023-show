@@ -3,16 +3,15 @@ import { useState, useEffect } from "react";
 import { useSpring } from "react-spring";
 import * as easings from "d3-ease";
 
-export default function MainVisual({ show, scrollPos }) {
+export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
   ///main visual identity
   const [mainVisualIntensity, setMainVisualIntensity] = useState(0);
 
   useSpring({
     from: { progress: 0 },
-    to: { progress: show ? 1 : 0 },
+    to: { progress: show === 1 ? 1 : 0 },
     config: { duration: 2000, easing: easings.easeCubicIn },
     onChange: ({ value }) => {
-      console.log(value);
       setMainVisualIntensity(value.progress);
     },
     onRest: () => {},
@@ -25,10 +24,11 @@ export default function MainVisual({ show, scrollPos }) {
   return (
     <S.MainVisual
       style={{
-        opacity: mainVisualIntensity,
+        opacity: show === 1 ? mainVisualIntensity : 0,
       }}
     >
       <S.Image
+        onLoad={handleImageLoaded}
         src="/assets/Counterpoint.png"
         style={{
           transform: `scaleY(${(mainVisualIntensity * 1) ** 4})`,

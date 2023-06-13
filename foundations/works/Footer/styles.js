@@ -7,7 +7,7 @@ export const Container = styled.div`
   position: fixed;
   height: 7rem;
   padding-top: 0.5rem;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   transition: all 0.5s;
@@ -25,20 +25,6 @@ export const Upper = styled.div`
   ${FlexCenterStyle}
   transform: scaleY(4);
   width: 100%;
-
-  @keyframes bounce-back {
-    0% {
-      transform: scaleY(4);
-    }
-    69% {
-      transform: scaleY(1);
-    }
-    100% {
-      transform: scaleY(4);
-    }
-  }
-
-  animation: bounce-back 1s infinite;
 `;
 
 export const List = styled.div`

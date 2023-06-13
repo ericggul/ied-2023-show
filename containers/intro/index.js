@@ -25,13 +25,14 @@ export default function Intro() {
     setScrollPos(window.scrollY / windowHeight, 1);
   };
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(0);
 
   return (
     <S.Container>
-      <Background show={show} windowWidth={windowWidth} scrollPos={scrollPos} handleBackgroundLoad={() => setShow(true)} />
-      <MainVisual show={show} scrollPos={scrollPos} />
+      <Background show={show} windowWidth={windowWidth} scrollPos={scrollPos} handleImageLoaded={() => setShow((s) => s + 0.5)} />
+      <MainVisual show={show} scrollPos={scrollPos} handleImageLoaded={() => setShow((s) => s + 0.5)} />
       <Navigator show={show} scrollPos={scrollPos} />
+      <S.Loading show={show < 1}></S.Loading>
     </S.Container>
   );
 }
