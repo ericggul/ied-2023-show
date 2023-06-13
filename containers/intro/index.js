@@ -30,7 +30,7 @@ export default function Intro() {
   return (
     <S.Container>
       <Background show={show} windowWidth={windowWidth} scrollPos={scrollPos} handleBackgroundLoad={() => setShow(true)} />
-      {show && <MainVisual show={show} scrollPos={scrollPos} />}
+      <MainVisual show={show} scrollPos={scrollPos} />
       <Navigator show={show} scrollPos={scrollPos} />
     </S.Container>
   );
