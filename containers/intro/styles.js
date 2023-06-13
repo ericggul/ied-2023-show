@@ -5,7 +5,7 @@ export const Container = styled.div`
   ${WholeContainer}
   display: flex;
   flex-direction: column;
-  height: 200vh;
+  height: 300vh;
 
   display: flex;
   flex-direction: column;
@@ -20,14 +20,29 @@ export const Container = styled.div`
   }
 `;
 
+export const InitialText = styled.div`
+  ${FlexCenterStyle}
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 800)}px;
+  height: ${({ theme }) => theme.windowHeight}px;
+
+  opacity: 1;
+  z-index: 5;
+`;
+
 export const UpperText = styled.div`
   ${FlexCenterStyle}
   justify-content: space-between;
-  z-index: 5;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 800)}px;
+  width: 100%;
   margin: auto;
   margin-top: 3rem;
-  ${({ scrollPos }) => `opacity: ${Math.max(1 - scrollPos * 10, 0)}`};
 `;
 
 export const UpperLeft = styled.div`
@@ -48,35 +63,55 @@ export const UpperRight = styled.div`
   margin-left: calc(min(0.5vw, 0.2rem));
 `;
 
+export const BottomText = styled.div`
+  margin-bottom: 3rem;
+`;
+
 export const MainVisual = styled.div`
   ${FlexCenterStyle}
   ${WholeContainer}
   position: fixed !important;
   flex-direction: column;
+  justify-content: space-between;
   top: 0;
   bottom: 0;
   margin: auto;
-
-  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  z-inde: 3;
 `;
 
-// export const MainImage = styled.img`
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   mix-blend-mode: multiply;
+export const Image = styled.img`
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-//   object-fit: cover;
-//   ${({ scrollPos }) => `opacity: ${scrollPos}`};
-// `;
+  object-fit: contain;
+`;
 
-export const MainText = styled.div`
-  ${FlexCenterStyle}
-  ${WholeContainer}
-  mix-blend-mode: multiply;
-  color: white;
+export const Info = styled.div`
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 1300)}px;
+  display: flex;
+  color: #fff;
+  font-size: 1.1rem;
 
-  font-size: 10vw;
+  div {
+    margin: 4vh 2vw;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 
-  ${({ scrollPos, theme }) => `transform: scaleY(${(scrollPos * 2) ** 3 * (768 / theme.windowWidth)});`}
+    &:last-child {
+      align-items: flex-end;
+
+      p {
+        text-align: right;
+      }
+    }
+  }
 `;

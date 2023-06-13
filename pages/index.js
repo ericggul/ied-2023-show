@@ -1,6 +1,9 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
 
-import Intro from "containers/intro";
+const Intro = dynamic(() => import("containers/intro"), {
+  ssr: false,
+});
 import Main from "containers/main";
 
 import localFont from "next/font/local";
