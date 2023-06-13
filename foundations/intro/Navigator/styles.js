@@ -49,6 +49,7 @@ export const Button = styled.div`
   margin: 3.2vh 0;
   text-align: center;
   ${FlexCenterStyle}
+  cursor: pointer;
 `;
 
 export const ArrowRight = styled.img`
@@ -84,5 +85,12 @@ export const Lower = styled.div`
     font-size: 0.8rem;
     width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 900)}px;
     text-align: center;
+
+    a {
+      color: #cbc6e5;
+      text-decoration: none;
+      cursor: pointer;
+      //no-styling
+    }
   }
 `;

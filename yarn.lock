@@ -559,6 +559,11 @@ accessor-fn@1:
   resolved "https://registry.yarnpkg.com/accessor-fn/-/accessor-fn-1.4.1.tgz#ff6555ba91bbae1ba8e469bfdca6e7ee74dccc78"
   integrity sha512-P7yNKfmpuWLUwiRVk9RkRIPGjngemjZ7yANc0DL7otgDqEIWkEByMhShzfgQ5ZwCPEUmba4v1kOqCdGhpzY3ew==
 
+animejs@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.2.1.tgz#de9fe2e792f44a777a7fdf6ae160e26604b0cdda"
+  integrity sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==
+
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -1203,6 +1208,11 @@ negotiator@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
+
+next-seo@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-6.0.0.tgz#4568dc61a44dbdf5fe5ff44156cd0ff8804889a2"
+  integrity sha512-jKKt1p1z4otMA28AyeoAONixVjdYmgFCWwpEFtu+DwRHQDllVX3RjtyXbuCQiUZEfQ9rFPBpAI90vDeLZlMBdg==
 
 next@13.2.0:
   version "13.2.0"

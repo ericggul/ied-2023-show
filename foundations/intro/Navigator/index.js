@@ -11,6 +11,8 @@ export default function Navigator({ show, scrollPos }) {
     setNavigatorVisualIntensity(Math.max(1 - Math.abs(scrollPos - 1.5), 0));
   }, [scrollPos]);
 
+  function handleClick(type) {}
+
   return (
     <S.MainVisual
       style={{
@@ -27,6 +29,7 @@ export default function Navigator({ show, scrollPos }) {
             transform: `scaleY(${1 + 1.5 ** 2 - (navigatorVisualIntensity * 1.5) ** 2})`,
             filter: `blur(${1 - navigatorVisualIntensity}rem)`,
           }}
+          onClick={() => handleClick("works")}
         >
           WORKS
           <S.ArrowRight src={"/assets/arrow-right.svg"} />
@@ -36,6 +39,7 @@ export default function Navigator({ show, scrollPos }) {
             transform: `scaleY(${1 + 1.5 ** 2 - (navigatorVisualIntensity * 1.5) ** 2})`,
             filter: `blur(${1 - navigatorVisualIntensity}rem)`,
           }}
+          onClick={() => handleClick("events")}
         >
           EVENTS
           <S.ArrowLeft src={"/assets/arrow-left.svg"} />
@@ -48,8 +52,18 @@ export default function Navigator({ show, scrollPos }) {
         }}
       >
         <h1>Website Made by</h1>
-        <h3>UI Designer: Yue Song, Yiyao Liu</h3>
-        <h3>Frontend & Backend Developer: Jeanyoon Choi</h3>
+        <h3>
+          UI Designer:{" "}
+          <a href={"https://portfolio-jyc.org/"} target={"_blank"}>
+            Yue Song
+          </a>
+          , Yiyao Liu
+        </h3>
+        <h3>
+          <a href={"https://portfolio-jyc.org/"} target={"_blank"}>
+            Frontend & Backend Developer: Jeanyoon Choi
+          </a>
+        </h3>
         <h3>Website Team: Kelly Ho, Yuxin Peng. Wenyu Wu, Xinyi Li, Aijia sun, Runnan Fang, Xinran Pu, Yige wei, Ze Zhu, Yuwei Li, Ruoling Shen</h3>
       </S.Lower>
     </S.MainVisual>
