@@ -3,6 +3,8 @@ import Head from "next/head";
 import Intro from "containers/intro";
 import Main from "containers/main";
 
+import localFont from "next/font/local";
+
 export default function Home() {
   return (
     <>
@@ -12,7 +14,9 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Intro />
+
       {/* <Main /> */}
     </>
   );

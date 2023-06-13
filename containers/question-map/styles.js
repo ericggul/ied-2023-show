@@ -9,5 +9,4 @@ export const Container = styled.div`
   background: black;
   color: white;
   overflow-y: scroll;
-  font-family: Raleway;
 `;

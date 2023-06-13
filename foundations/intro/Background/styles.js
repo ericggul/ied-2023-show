@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 export const BackgroundImage = styled.div`
   position: fixed;
   top: 0;
-  z-index; 0;
+  z-index: 0 !important;
   height: 100vh;
   width: 100%;
   background: black;
@@ -14,6 +14,7 @@ export const Image = styled.img`
   object-fit: cover;
   position: absolute;
   top: 0;
+  opacity: 0.7;
 
   width: 1345.95px;
   height: 1481.64px;

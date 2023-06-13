@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
-    font-family: Helvetica;
+    font-family: Helvetica !important;
   }
 
   a {
@@ -35,26 +35,38 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  /* Avenir */
   @font-face {
-    font-family: "Din";
-    src: url("/fonts/D-DIN.otf") format("opentype");
+    font-family: 'Din';
+    src: url("/fonts/DIN.ttf") format("truetype");
+    font-display: swap;
   }
-  
+
   @font-face {
-    font-family: "Din";
+    font-family: 'Din';
+    font-weight: 900;
+    src: url("/fonts/DIN-Black.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Din';
+    font-weight: medium;
+    font-style: italic;
+    src: url("/fonts/DIN-Medium.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Din';
     font-weight: 700;
-    src: url("/fonts/D-DIN-Bold.otf") format("opentype");
+    src: url("/fonts/DIN-Bold.ttf") format("truetype");
+    font-display: swap;
   }
+
   
-  @font-face {
-    font-family: "Din";
-    font-weight: 300;
-    src: url("/fonts/D-DIN-Light.otf") format("opentype");
-  }
 
 
-
+  font-family: Helvetica !important;
 
 
   input {

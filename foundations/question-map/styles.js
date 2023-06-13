@@ -8,7 +8,6 @@ export const Container = styled.div`
   background: black;
   color: white;
 
-  font-family: Courier New;
   transition: all 0.5s;
 
   svg {

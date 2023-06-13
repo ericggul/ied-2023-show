@@ -13,7 +13,6 @@ export const Container = styled.div`
   color: white;
   font-size: 48px;
 
-  font-family: Courier New;
   transition: all 1s;
   z-index: 20;
 

@@ -10,7 +10,6 @@ export const Container = styled.div`
   background: white;
   color: black;
   overflow-y: scroll;
-  font-family: Raleway;
 
   ${({ show }) => (show ? `opacity: 1; pointer-events: all;` : `opacity: 0; pointer-events: none;`)}
 `;
