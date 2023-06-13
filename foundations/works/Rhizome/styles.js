@@ -8,19 +8,10 @@ export const Container = styled.div`
   position: fixed;
   flex-direction: column;
 
-  opacity: 0;
-
   color: white;
   font-size: 48px;
-
   transition: all 1s;
   z-index: 20;
-
-  pointer-events: ${(props) => (props.intensity > 0.8 ? "auto" : "none")};
-
-  background: ${(props) => (props.intensity > 0.8 ? "black" : "transparent")};
-
-  opacity: ${(props) => props.intensity * 1.2};
 
   svg {
     cursor: pointer;

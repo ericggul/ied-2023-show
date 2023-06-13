@@ -13,13 +13,13 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
 import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
-export const PRIMARY_COLOR = `hsl(240, 100%, 70%)`;
+export const PRIMARY_COLOR = "#8A75F6";
+export const SECONDARY_COLOR = "#CBC6E5";
 const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Graph({ showGraph, connectionData, intensity, handleTopClick }) {
-  const alphaTargetRef = useRef();
+export default function Graph({ connectionData }) {
   const svgRef = useRef();
 
   //size
@@ -31,25 +31,10 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
   const nodeRef = useRef(null);
   const [currentTarget, setCurrentTarget] = useState(null);
 
-  const forceRef = useRef(0);
-  useEffect(() => {
-    forceRef.current = -((intensity * 7) ** 2) * ((windowWidth + windowHeight * 1.5) / 1000) ** 2;
-  }, [intensity, windowWidth, windowHeight]);
-
-  ///simulation intensity
-  useEffect(() => {
-    if (!simulationRef.current) return;
-    const width = windowWidth;
-    const height = windowHeight;
-    simulationRef.current.force("charge", d3.forceManyBody().strength(forceRef.current));
-    alphaTargetRef.current = 1 - intensity;
-  }, [intensity, windowWidth, windowHeight]);
-
   useEffect(() => {
     if (windowWidth === 0 || windowHeight === 0) return;
     //variables
     const types = ["isCycle", "isNotCycle"];
-    const color = d3.scaleOrdinal(types, ["hsl(180, 100%, 70%)", "hsl(180, 100%, 70%)"]);
     const width = windowWidth;
     const height = windowHeight;
     const svg = d3.select(svgRef.current);
@@ -62,12 +47,12 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
     //cleanup
     initCleanUp({ svg });
     //marker default styling
-    initMarkerStyling({ svg, types, color, width, height });
+    initMarkerStyling({ svg, types, width, height });
 
     //create simulation
-    const simulation = initCreateSimulation({ nodes, links, width, height, force: forceRef.current });
+    const simulation = initCreateSimulation({ nodes, links, width, height });
     //link styling
-    const link = initLinkStyling({ svg, links, color, width, height });
+    const link = initLinkStyling({ svg, links, width, height });
     //node styling
     const node = initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarget });
 
@@ -116,18 +101,19 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
     link
       .transition()
       .duration(DURATION)
-      .attr("stroke", `hsl(${(180 + (currentTarget ? currentTarget.length : 0) * 40) % 360}, 100%, 70%)`)
-      .attr("opacity", "0.42");
+      .attr("stroke", PRIMARY_COLOR)
+      .attr("opacity", "0.42")
+      .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
     node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("fill", "rgba(255, 255, 255, 0.02)");
 
     if (node && simulation) {
-      simulation.alphaTarget(1 - alphaTargetRef.current || 0.1).restart();
+      simulation.alphaTarget(0.1).restart();
 
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
         /////TARGET AND SOURCE NODES //////////////////////////////////
-        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef });
+        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, width: windowWidth, height: windowHeight });
         ////// CURRENT NODE //////////////////////////////////
         updateCurrentNode({ d, node });
       });
@@ -135,27 +121,13 @@ export default function Graph({ showGraph, connectionData, intensity, handleTopC
   }, [connectionData, currentTarget, windowWidth, windowHeight]);
 
   return (
-    <S.Container show={showGraph} intensity={intensity}>
-      {intensity.toFixed(2)}
+    <S.Container>
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
-
-      {intensity > 0.8 && (
-        <S.TopButton onClick={handleTopClick}>
-          <img src="/assets/top.svg" alt="arrow-up" />
-        </S.TopButton>
-      )}
     </S.Container>
   );
 }
 
 ///helper functions
-
-function straightLine(d) {
-  return `
-       M${d.source.x},${d.source.y}
-       L${d.target.x},${d.target.y}
-     `;
-}
 
 function linkArc(d) {
   const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);

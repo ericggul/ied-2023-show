@@ -7,21 +7,21 @@ function initCleanUp({ svg }) {
   everything.remove();
 }
 
-function initCreateSimulation({ nodes, links, width, height, force }) {
+function initCreateSimulation({ nodes, links, width, height }) {
   const simulation = d3
     .forceSimulation(nodes)
     .force(
       "link",
       d3.forceLink(links).id((d) => d.text)
     )
-    .force("charge", d3.forceManyBody().strength(force))
+    .force("charge", d3.forceManyBody().strength(-60 * ((width + height) / 1200) ** 2))
     .force("center", d3.forceCenter())
     .force("boundary", forceBoundary(-width * 0.45, -height * 0.45, width * 0.45, height * 0.45));
 
   return simulation;
 }
 
-function initMarkerStyling({ svg, types, color, width, height }) {
+function initMarkerStyling({ svg, types, width, height }) {
   svg.attr("viewBox", [-width / 2, -height / 2, width, height]).style("font", "15px sans-serif");
 
   svg
@@ -37,11 +37,11 @@ function initMarkerStyling({ svg, types, color, width, height }) {
     .attr("markerHeight", 6)
     .attr("orient", "auto")
     .append("path")
-    .attr("fill", color)
+    .attr("fill", "#cbc6e5")
     .attr("d", "M0,-5L10,0L0,5");
 }
 
-function initLinkStyling({ svg, links, color, width, height }) {
+function initLinkStyling({ svg, links, width, height }) {
   const link = svg
     .append("g")
     .attr("fill", "none")
@@ -50,7 +50,7 @@ function initLinkStyling({ svg, links, color, width, height }) {
     .join("path")
     .attr("id", (d) => `link-${d.source.id}-${d.target.id}`)
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
-    .attr("stroke", (d) => color(d.isCycle ? "isCycle" : "isNotCycle"))
+    .attr("stroke", (d) => "#cbc6e5")
     .attr("stroke-width", (d) => (width + height) * 0.0005)
     .attr("opacity", "0.42");
 
@@ -58,27 +58,19 @@ function initLinkStyling({ svg, links, color, width, height }) {
 }
 
 function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarget }) {
-  const node = svg
-    .append("g")
-    .attr("fill", "currentColor")
-    .attr("stroke-linecap", "round")
-    .attr("stroke-linejoin", "round")
-    .selectAll("g")
-    .data(nodes)
-    .join("g")
-    .call(drag(simulation, setCurrentTarget));
+  const node = svg.append("g").attr("fill", "#cbc6e5").attr("stroke-linecap", "round").attr("stroke-linejoin", "round").selectAll("g").data(nodes).join("g").call(drag(simulation, setCurrentTarget));
 
   node
     .append("circle")
     .attr("id", (d) => `circle-${d.id}`)
-    .attr("r", (width + height) * 0.003)
+    .attr("r", (width + height) * 0.001)
     .attr("fill", "rgba(255, 255, 255, 0.05)");
 
   node
     .append("text")
     .attr("id", (d) => `text-${d.id}`)
-    .attr("x", ".5rem")
-    .attr("y", ".5rem")
+    .attr("x", ".3rem")
+    .attr("y", ".4rem")
     .attr("font-size", "1.4rem")
     .attr("font-family", "Bebas Neue")
     .attr("fill", "rgba(255, 255, 255, 0.02)")

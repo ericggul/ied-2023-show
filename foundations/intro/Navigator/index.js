@@ -1,7 +1,6 @@
 import * as S from "./styles";
 import { useState, useEffect } from "react";
-import { useSpring } from "react-spring";
-import * as easings from "d3-ease";
+import { useRouter } from "next/router";
 
 export default function Navigator({ show, scrollPos }) {
   ///main visual identity
@@ -11,7 +10,11 @@ export default function Navigator({ show, scrollPos }) {
     setNavigatorVisualIntensity(Math.max(1 - Math.abs(scrollPos - 1.5), 0));
   }, [scrollPos]);
 
-  function handleClick(type) {}
+  const router = useRouter();
+
+  function handleClick(ev, type) {
+    router.push("/works");
+  }
 
   return (
     <S.MainVisual
@@ -29,7 +32,7 @@ export default function Navigator({ show, scrollPos }) {
             transform: `scaleY(${1 + 1.5 ** 2 - (navigatorVisualIntensity * 1.5) ** 2})`,
             filter: `blur(${1 - navigatorVisualIntensity}rem)`,
           }}
-          onClick={() => handleClick("works")}
+          onClick={(ev) => handleClick(ev, "works")}
         >
           WORKS
           <S.ArrowRight src={"/assets/arrow-right.svg"} />
@@ -39,7 +42,7 @@ export default function Navigator({ show, scrollPos }) {
             transform: `scaleY(${1 + 1.5 ** 2 - (navigatorVisualIntensity * 1.5) ** 2})`,
             filter: `blur(${1 - navigatorVisualIntensity}rem)`,
           }}
-          onClick={() => handleClick("events")}
+          onClick={(ev) => handleClick(ev, "events")}
         >
           EVENTS
           <S.ArrowLeft src={"/assets/arrow-left.svg"} />
