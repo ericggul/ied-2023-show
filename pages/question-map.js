@@ -1,6 +1,5 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-const Main = dynamic(() => import("containers/main"));
 
 const QuestionMap = dynamic(() => import("containers/question-map"));
 

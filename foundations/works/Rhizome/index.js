@@ -4,12 +4,11 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 //resize
 import { useResizeDebounce } from "utils/hooks/useResize";
 
+//color-picker
+import { HexColorPicker } from "react-colorful";
+
 //d3
 import * as d3 from "d3";
-
-import { MdKeyboardArrowUp } from "react-icons/md";
-
-//helper
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
 import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
@@ -20,6 +19,9 @@ const DURATION = 150;
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
 export default function Graph({ connectionData }) {
+  const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
+  const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
+
   const svgRef = useRef();
 
   //size
@@ -101,7 +103,7 @@ export default function Graph({ connectionData }) {
     link
       .transition()
       .duration(DURATION)
-      .attr("stroke", PRIMARY_COLOR)
+      .attr("stroke", primaryColor)
       .attr("opacity", "0.42")
       .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
@@ -113,15 +115,22 @@ export default function Graph({ connectionData }) {
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
         /////TARGET AND SOURCE NODES //////////////////////////////////
-        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, width: windowWidth, height: windowHeight });
+        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, width: windowWidth, height: windowHeight, secondaryColor });
         ////// CURRENT NODE //////////////////////////////////
         updateCurrentNode({ d, node });
       });
     }
-  }, [connectionData, currentTarget, windowWidth, windowHeight]);
+  }, [connectionData, currentTarget, windowWidth, windowHeight, primaryColor, secondaryColor]);
 
   return (
     <S.Container>
+      <S.ColorPickers>
+        <HexColorPicker color={primaryColor} onChange={setPrimaryColor} />
+        <HexColorPicker color={secondaryColor} onChange={setSecondaryColor} />
+        {primaryColor}
+        {secondaryColor}
+      </S.ColorPickers>
+
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>
   );

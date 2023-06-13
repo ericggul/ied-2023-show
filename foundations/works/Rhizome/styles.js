@@ -20,25 +20,13 @@ export const Container = styled.div`
 
   transition: all 0.5s;
 `;
-
-export const TopButton = styled.div`
+export const ColorPickers = styled.div`
   position: absolute;
-  bottom: 1.3rem;
-  right: 1rem;
-  background: white;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 50%;
+  right: 0;
+  top: 0;
+  font-size: 2rem;
   color: white;
-  box-shadow: 0 0 2rem white;
-  font-size: 1.4rem;
-  font-weight: 700;
   ${FlexCenterStyle}
-  cursor: pointer;
-  transition: all 0.5s;
-
-  img {
-    width: 60%;
-    height: 60%;
-  }
+  flex-direction: column;
+  align-items: flex-end;
 `;

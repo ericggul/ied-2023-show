@@ -14,7 +14,7 @@ function updateCurrentNode({ d, node }) {
   text.transition().duration(DURATION_IN).attr("x", ".7rem").attr("y", "1rem").attr("font-size", "3.4rem").attr("fill", "white");
 }
 
-function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef, width, height }) {
+function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef, width, height, secondaryColor }) {
   let linksDataStartingFromTarget = data.links.filter((l) => l.source === d.text).map((d) => d.target);
   let linksDataEndingAtSource = data.links.filter((l) => l.target === d.text).map((d) => d.source);
 
@@ -39,13 +39,13 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
   targetLinks
     .transition()
     .duration(DURATION_IN)
-    .attr("stroke", SECONDARY_COLOR)
+    .attr("stroke", secondaryColor)
     .attr("opacity", 1)
     .attr("stroke-width", (d) => (width + height) * 0.0015);
   sourceLinks
     .transition()
     .duration(DURATION_IN)
-    .attr("stroke", SECONDARY_COLOR)
+    .attr("stroke", secondaryColor)
     .attr("opacity", 1)
     .attr("stroke-width", (d) => (width + height) * 0.0015);
 }
