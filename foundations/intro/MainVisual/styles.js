@@ -9,6 +9,7 @@ export const MainVisual = styled.div`
   justify-content: space-between;
   top: 0;
   bottom: 0;
+  opacity: 0;
   margin: auto;
   background-size: cover;
   background-position: center;
@@ -26,6 +27,7 @@ export const Image = styled.img`
   right: 0;
 
   object-fit: contain;
+  transform: scaleY(0);
 `;
 
 export const Info = styled.div`
