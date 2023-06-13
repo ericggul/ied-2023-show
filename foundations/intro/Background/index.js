@@ -1,11 +1,16 @@
 import * as S from "./styles";
-import { Fragment, useState, useEffect, useRef, useMemo } from "react";
-import useResize from "utils/hooks/useResize";
 
-export default function Intro({ scrollPos }) {
+export default function Background({ show, windowWidth, scrollPos, handleBackgroundLoad }) {
   return (
-    <S.BackgroundImage>
-      <S.Image scrollPos={scrollPos} src="/assets/Horses.png" alt="main-image" />
+    <S.BackgroundImage show={show}>
+      <S.Image
+        style={{
+          transform: `scale(${Math.max(windowWidth / 1200, 1) * (1 + scrollPos * 0.1)}) rotate(${scrollPos * 9}deg)`,
+        }}
+        src="/assets/Horses.png"
+        alt="main-image"
+        onLoad={handleBackgroundLoad}
+      />
     </S.BackgroundImage>
   );
 }
