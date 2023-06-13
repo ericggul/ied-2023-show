@@ -5,6 +5,7 @@ import { connectionToNodeLink, DUMMY_LIST, DATA_NODES_LINKS } from "./data";
 import axios from "axios";
 
 import useResize from "utils/hooks/useResize";
+import useSocket from "utils/hooks/socket/useSocketMobile";
 
 //foundations
 import ProjectMapEl from "foundations/project-map";
@@ -56,6 +57,7 @@ const getRandomFromInterruption = () => {
 };
 
 export default function MainEl({ show = true, filter }) {
+  const socket = useSocket();
   ///data store
   const [displayList, setDisplayList] = useState(DUMMY_LIST);
   const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);

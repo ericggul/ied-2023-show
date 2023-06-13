@@ -31,10 +31,18 @@ export function connectionToNodeLink(data) {
   return { nodes, links };
 }
 
+const NODES = [
+  {
+    text: "2 + 1 ≠ 3",
+    id: 0,
+  },
+];
+
 export const DATA_NODES_LINKS = {
   nodes: [
     {
       text: "2 + 1 ≠ 3",
+
       id: 0,
     },
     {
