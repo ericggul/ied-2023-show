@@ -5,9 +5,9 @@ export const Container = styled.div`
   ${WholeContainer}
   ${FlexCenterStyle}
   top: 0;
-  position: fixed;
   flex-direction: column;
 
+  background: black;
   color: white;
   font-size: 48px;
   transition: all 1s;

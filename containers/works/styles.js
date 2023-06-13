@@ -1,9 +1,8 @@
-import { FlexCenterStyle, WholeUIContainer } from "styles/common";
+import { FlexCenterStyle, WholeContianer } from "styles/common";
 import styled from "styled-components";
-const BUTTON_COLOR = `hsl(180, 100%, 70%)`;
 
 export const Container = styled.div`
-  ${WholeUIContainer}
+  ${WholeContianer}
   ${FlexCenterStyle}
 
   flex-direction: column;
