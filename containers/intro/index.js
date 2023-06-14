@@ -3,9 +3,11 @@ import dynamic from "next/dynamic";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
 //foundations
-import MainVisual from "foundations/intro/MainVisual";
-import Navigator from "foundations/intro/Navigator";
-import Background from "foundations/intro/Background";
+import dynamic from "next/dynamic";
+
+const MainVisual = dynamic(() => import("foundations/intro/MainVisual"), { ssr: false });
+const Navigator = dynamic(() => import("foundations/intro/Navigator"), { ssr: false });
+const Background = dynamic(() => import("foundations/intro/Background"), { ssr: false });
 
 //hooks
 import useResize from "utils/hooks/useResize";

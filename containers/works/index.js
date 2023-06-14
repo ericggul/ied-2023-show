@@ -1,19 +1,23 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
+//data
 import { connectionToNodeLink, DUMMY_LIST, DATA_NODES_LINKS } from "./data";
 import axios from "axios";
 
+//hooks
 import useResize from "utils/hooks/useResize";
 import useSocket from "utils/hooks/socket/useSocketMobile";
 
 //foundations
-import Rhizome from "foundations/works/Rhizome";
-import ListView from "foundations/works/ListView";
-import Modal from "foundations/works/Modal";
+import dynamic from "next/dynamic";
 
-import Header from "foundations/works/Header";
-import Footer from "foundations/works/Footer";
+const Rhizome = dynamic(() => import("foundations/works/Rhizome"), { ssr: false });
+const ListView = dynamic(() => import("foundations/works/ListView"), { ssr: false });
+const Modal = dynamic(() => import("foundations/works/Modal"), { ssr: false });
+
+const Header = dynamic(() => import("foundations/works/Header"), { ssr: false });
+const Footer = dynamic(() => import("foundations/works/Footer"), { ssr: false });
 
 const roundUpFloat = (float, roundUp) => {
   return Math.round(float * roundUp) / roundUp;
