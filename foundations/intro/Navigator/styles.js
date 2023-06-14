@@ -41,16 +41,25 @@ export const Upper = styled.div`
     letter-spacing: 0.2rem;
     font-weight: normal;
     margin-top: 0vh;
+    text-align: center;
+    ${FlexCenterStyle}
 
     &:first-child {
+      width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
+
       font-weight: bold;
-      letter-spacing: 0.95rem;
+      margin-left: 0.8rem;
+      letter-spacing: 0.85rem;
+
+      //last letter no spacing
 
       font-size: ${({ theme }) => theme.windowWidth > 768 && "2rem"};
+      text-align: center;
     }
 
     width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
     text-align: center;
+    // letter-spacing: 0.5rem;
   }
 `;
 
@@ -64,7 +73,7 @@ export const ButtonContainer = styled.div`
 
 export const Button = styled.div`
   position: relative;
-  font-size: 3.2rem;
+  font-size: 3rem;
   height: 3.2rem;
   width: 13rem;
   margin: 2vh 0;
@@ -95,7 +104,7 @@ export const Lower = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
   margin-bottom: 3vh;
-  opacity: 0.6;
+  opacity: 0.7;
 
   transition: all 0.1s;
 
