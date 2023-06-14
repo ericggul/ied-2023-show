@@ -52,7 +52,7 @@ export const ModalCancel = styled.div`
 
   ${FlexCenterStyle}
   border-radius: 50%;
-  box-shadow: inset 0 0 1.2rem hsla(0, 100%, 70%, 1);
+  box-shadow: inset 0 0 1.3rem hsla(0, 100%, 50%, 1);
   backdrop-filter: blur(3rem);
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;

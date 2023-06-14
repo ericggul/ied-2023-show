@@ -32,17 +32,17 @@ export const Upper = styled.div`
   width: 100%;
 `;
 
-export const UpperLeft = styled.div`
+export const UpperRight = styled.div`
   font-size: 1rem;
   font-weight: bold;
   position: absolute;
-  left: 1.5rem;
+  right: 1.5rem;
   opacity: 0.4;
   ${FlexCenterStyle}
   cursor: pointer;
 
   img {
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     width: 1rem;
   }
 `;

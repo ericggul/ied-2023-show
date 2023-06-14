@@ -7,7 +7,7 @@ export default function Navigator({ show, scrollPos }) {
   const [navigatorVisualIntensity, setNavigatorVisualIntensity] = useState(0);
 
   useEffect(() => {
-    setNavigatorVisualIntensity(Math.max(1 - Math.max(1.5 - scrollPos, 0), 0));
+    setNavigatorVisualIntensity(Math.max(1 - Math.max((4 - scrollPos) * 0.5, 0), 0));
   }, [scrollPos]);
 
   console.log(scrollPos, navigatorVisualIntensity);
@@ -54,9 +54,11 @@ export default function Navigator({ show, scrollPos }) {
       </S.ButtonContainer>
 
       <S.Lower
-        style={{
-          filter: `blur(${Math.max(0.9 - navigatorVisualIntensity, 0)}rem)`,
-        }}
+        style={
+          {
+            // filter: `blur(${Math.max(0.9 - navigatorVisualIntensity, 0)}rem)`,
+          }
+        }
       >
         <h1>Website Made by</h1>
         <h3>

@@ -29,7 +29,8 @@ export default function Intro() {
   }, [windowWidth, windowHeight]);
   const [scrollPos, setScrollPos] = useState(0);
   const handleScroll = (e) => {
-    setScrollPos(window.scrollY / windowHeight, 1);
+    if (windowHeight === 0) return;
+    setScrollPos(Math.round((window.scrollY / windowHeight) * 100) / 100);
   };
 
   const [show, setShow] = useState(0);

@@ -5,7 +5,7 @@ export const Container = styled.div`
   ${WholeContainer}
   display: flex;
   flex-direction: column;
-  height: 250vh;
+  height: ${({ theme }) => theme.windowHeight * 5}px;
 
   display: flex;
   flex-direction: column;

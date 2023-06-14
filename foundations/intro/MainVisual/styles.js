@@ -16,6 +16,8 @@ export const MainVisual = styled.div`
   background-size: cover;
   background-position: center;
   z-inde: 3;
+
+  transition: all 0.1s;
 `;
 
 export const Image = styled.img`
@@ -30,6 +32,8 @@ export const Image = styled.img`
 
   object-fit: contain;
   transform: scaleY(0);
+
+  transition: all 0.1s;
 `;
 
 export const Info = styled.div`
@@ -39,7 +43,7 @@ export const Info = styled.div`
   z-indes: 30;
   mix-blend-mode: difference;
 
-  transition: all 0.3s;
+  transition: all 0.1s;
 
   div {
     margin: 4vh 2vw;

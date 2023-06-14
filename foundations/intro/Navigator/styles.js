@@ -24,6 +24,8 @@ export const MainVisual = styled.div`
     font-weight: normal;
     font-size: 1.2rem;
   }
+
+  transition: all 0.1s;
 `;
 
 export const Upper = styled.div`
@@ -51,6 +53,8 @@ export const Button = styled.div`
   text-align: center;
   ${FlexCenterStyle}
   cursor: pointer;
+
+  transition: all 0.1s;
 `;
 
 export const ArrowRight = styled.img`
@@ -74,6 +78,8 @@ export const Lower = styled.div`
   flex-direction: column;
   margin-bottom: 5vh;
   opacity: 0.8;
+
+  transition: all 0.1s;
 
   h1 {
     margin-bottom: 0.8rem;

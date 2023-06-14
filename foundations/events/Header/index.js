@@ -1,16 +1,16 @@
 import * as S from "./styles";
 
-export default function HeaderEl({ isRhizome, setIsRhizome }) {
+export default function HeaderEl() {
   return (
     <S.Container>
       <S.Upper>
-        <S.UpperLeft>
-          <img src={"/assets/arrow-left.svg"} />
-          EVENTS
-        </S.UpperLeft>
-        <S.UpperCenter>WORKS</S.UpperCenter>
+        <S.UpperCenter>EVENTS</S.UpperCenter>
+        <S.UpperRight>
+          WORKS
+          <img src={"/assets/arrow-right.svg"} />
+        </S.UpperRight>
       </S.Upper>
-      <S.List>
+      {/* <S.List>
         <S.Item
           onClick={() => setIsRhizome(true)}
           style={{
@@ -28,7 +28,7 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
         >
           list view
         </S.Item>
-      </S.List>
+      </S.List> */}
     </S.Container>
   );
 }

@@ -18,7 +18,7 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
   });
 
   useEffect(() => {
-    setMainVisualIntensity(Math.max(1 - scrollPos, 0));
+    setMainVisualIntensity(Math.max(1 - scrollPos * 0.33, 0));
   }, [scrollPos]);
 
   return (
