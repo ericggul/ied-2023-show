@@ -25,9 +25,9 @@ export default function Navigator({ show, scrollPos }) {
       }}
     >
       <S.Upper>
-        <h2>
-          <b>COUNTERPOINT</b> is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the Information Experience Design MA1 cohort.
-        </h2>
+        <h2>COUNTERPOINT</h2>
+        <br />
+        <h2>is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the Information Experience Design MA1 cohort.</h2>
       </S.Upper>
 
       <S.ButtonContainer>
@@ -66,14 +66,13 @@ export default function Navigator({ show, scrollPos }) {
           <a href={"https://portfolio-jyc.org/"} target={"_blank"}>
             Yue Song
           </a>
-          , Yiyao Liu
         </h3>
         <h3>
           <a href={"https://portfolio-jyc.org/"} target={"_blank"}>
             Frontend & Backend Developer: Jeanyoon Choi
           </a>
         </h3>
-        <h3>Website Team: Kelly Ho, Yuxin Peng. Wenyu Wu, Xinyi Li, Aijia sun, Runnan Fang, Xinran Pu, Yige wei, Ze Zhu, Yuwei Li, Ruoling Shen</h3>
+        {/* <h3>Website Team: Kelly Ho, Yuxin Peng. Wenyu Wu, Xinyi Li, Aijia sun, Runnan Fang, Xinran Pu, Yige wei, Ze Zhu, Yuwei Li, Ruoling Shen</h3> */}
       </S.Lower>
     </S.MainVisual>
   );

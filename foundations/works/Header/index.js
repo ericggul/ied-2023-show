@@ -4,13 +4,11 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
   return (
     <S.Container>
       <S.Upper>
-        <S.UpperLeft>
+        {/* <S.UpperLeft>
           <img src={"/assets/arrow-left.svg"} />
           EVENTS
-        </S.UpperLeft>
-        <S.UpperCenter>WORKS</S.UpperCenter>
-      </S.Upper>
-      <S.List>
+        </S.UpperLeft> */}
+
         <S.Item
           onClick={() => setIsRhizome(true)}
           style={{
@@ -19,7 +17,11 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
         >
           rhizome
         </S.Item>
-        <S.Center></S.Center>
+        <S.UpperCenter>
+          <S.CenterText>EVENTS</S.CenterText>
+          WORKS
+        </S.UpperCenter>
+
         <S.Item
           onClick={() => setIsRhizome(false)}
           style={{
@@ -28,7 +30,25 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
         >
           list view
         </S.Item>
-      </S.List>
+      </S.Upper>
+      {/* <S.List>
+        <S.Item
+          onClick={() => setIsRhizome(true)}
+          style={{
+            opacity: isRhizome ? 1 : 0.4,
+          }}
+        >
+          rhizome
+        </S.Item>
+        <S.Item
+          onClick={() => setIsRhizome(false)}
+          style={{
+            opacity: isRhizome ? 0.4 : 1,
+          }}
+        >
+          list view
+        </S.Item>
+      </S.List> */}
     </S.Container>
   );
 }

@@ -31,6 +31,7 @@ export const Image = styled.div`
   position: relative;
 
   width: 10rem;
+  opacity: 0.5;
 
   img {
     position: absolute;
@@ -40,16 +41,44 @@ export const Image = styled.div`
   }
 `;
 
+export const CenterText = styled.div`
+  font-size: 1rem;
+  font-weight: bold;
+  ${FlexCenterStyle}
+  transform: scaleY(4);
+  margin-bottom: 0.7rem;
+
+  @keyframes bounce-back {
+    25% {
+      transform: scaleY(4);
+    }
+    95% {
+      transform: scaleY(1);
+    }
+    100% {
+      transform: scaleY(4);
+    }
+  }
+
+  animation: bounce-back 8s infinite;
+  opacity: 0.5;
+`;
+
 export const Texts = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   margin-right: 1.5rem;
+  width: 10rem;
 
   h1 {
     color: white;
     font-size: 1rem;
-    font-family: Times New Roman;
+    letter-spacing: 0.03rem;
     font-weight: normal;
+    b {
+      font-weight: bold;
+      opacity: 1;
+    }
   }
 `;

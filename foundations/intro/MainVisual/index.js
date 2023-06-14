@@ -58,13 +58,6 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
         }}
       >
         <div>
-          <h1>30th June</h1>
-          <h1>
-            <i>to</i> 3rd July
-          </h1>
-          <h1>12pm - 6pm</h1>
-        </div>
-        <div>
           <h1>RCA Kensington</h1>
           <h1>First Floor</h1>
           <h1>
@@ -73,6 +66,13 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
           <h1>
             <i>Royal Albert Hall</i>
           </h1>
+        </div>
+        <div>
+          <h1>30th June</h1>
+          <h1>
+            <i>to</i> 3rd July
+          </h1>
+          <h1>12pm - 6pm</h1>
         </div>
       </S.Info>
     </S.MainVisual>

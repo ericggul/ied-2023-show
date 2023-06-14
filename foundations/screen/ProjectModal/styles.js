@@ -23,7 +23,12 @@ export const Container = styled.div`
 export const ModalContainer = styled.div`
   display: flex;
   ${FlexCenterStyle}
-  ${WholeContainer}
+  ${WholeContainer} 
+
+
+
+  backdrop-filter: blur(0.6rem) brightness(1.5);
+  // box-shadow: inset 0 0 1.4rem 0.1rem rgba(255, 255, 255, 0.2);
 `;
 
 export const Left = styled.div`
@@ -43,6 +48,7 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0.8;
   }
 `;
 
@@ -69,7 +75,7 @@ export const InfoRight = styled.div`
   font-size: 1.2vw;
 
   p {
-    margin-bottom: 0.5vw;
+    margin-bottom: 1.5vw;
   }
 `;
 
@@ -105,6 +111,7 @@ export const RelatedImage = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0.8;
   }
 `;
 

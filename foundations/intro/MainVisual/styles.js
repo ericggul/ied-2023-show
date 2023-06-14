@@ -44,6 +44,8 @@ export const Info = styled.div`
   mix-blend-mode: difference;
 
   transition: all 0.1s;
+  letter-spacing: 0.25rem;
+  line-height: 1.2;
 
   div {
     margin: 4vh 2vw;

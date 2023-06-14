@@ -13,13 +13,22 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
       >
         <img src="/assets/RCALogo.png" />
       </S.Image>
+      {/* <S.CenterText>EVENTS</S.CenterText> */}
       <S.Texts
         onClick={() => {
           router.push("/");
         }}
       >
-        <h1>RCA IED</h1>
-        <h1>COUNTERPOINT</h1>
+        <h1
+          style={{
+            opacity: "0.5",
+          }}
+        >
+          go back to
+        </h1>
+        <h1>
+          <b>COUNTERPOINT</b>
+        </h1>
       </S.Texts>
     </S.Container>
   );

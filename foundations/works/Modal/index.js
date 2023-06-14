@@ -30,10 +30,10 @@ export default function Modal({ showModal, setShowModal }) {
             setShowModal(false);
           }}
         >
-          <RxCross1 />
+          X
         </S.ModalCancel>
         <S.Image>
-          <img src="/assets/sample/SampleProject.png" alt="sample project" />
+          <img src="/assets/sample/Sample3.png" alt="sample project" />
         </S.Image>
         <S.Lower>
           <S.Text>
@@ -42,9 +42,9 @@ export default function Modal({ showModal, setShowModal }) {
           </S.Text>
           <S.Bottom>
             <S.Description>
-              <S.Tag>#Overcontrol</S.Tag>
-              <S.Tag>#Speculative</S.Tag>
-              <S.Tag>#Interaction</S.Tag>
+              <S.Tag># Overcontrol</S.Tag>
+              <S.Tag># Speculative</S.Tag>
+              <S.Tag># Interaction</S.Tag>
             </S.Description>
             <S.Link onClick={handleClick}>
               Learn More at RCA 2023

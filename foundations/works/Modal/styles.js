@@ -28,10 +28,10 @@ export const ModalContainer = styled.div`
 
   // width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 500)}px;
   // height: ${({ theme }) => Math.min(theme.windowHeight * 0.6, 480)}px;
-  padding: 1.2rem 5vw;
+  padding: 1.8rem 5vw;
   background: transparent;
 
-  box-shadow: inset 0 0 1.4rem rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 1.4rem 0.1rem rgba(255, 255, 255, 0.2);
   background: rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   z-index: 500;
@@ -51,6 +51,7 @@ export const ModalCancel = styled.div`
   font-size: 0.9rem;
 
   ${FlexCenterStyle}
+
   border-radius: 50%;
   box-shadow: inset 0 0 1.3rem hsla(0, 100%, 50%, 1);
   backdrop-filter: blur(3rem);
@@ -62,7 +63,7 @@ export const Image = styled.div`
   width: ${({ theme }) => Math.min(Math.min(theme.windowWidth * 0.9, 500) * 0.9, Math.min(theme.windowHeight * 0.6, 480))}px;
   height: ${({ theme }) => (Math.min(Math.min(theme.windowWidth * 0.9, 500) * 0.9, Math.min(theme.windowHeight * 0.6, 480)) * 2) / 3}px;
   overflow: hidden;
-  margin-bottom: 2.2rem;
+  margin-bottom: 1rem;
 
   img {
     width: 100%;
@@ -82,12 +83,13 @@ export const Text = styled.div`
   width: 100%;
 
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: normal;
   }
 
   h2 {
-    font-size: 1.1rem;
+    margin-top: 0.3rem;
+    font-size: 1rem;
     font-family: Times New Roman;
     font-style: italic;
     font-weight: normal;
@@ -99,12 +101,15 @@ export const Bottom = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0rem;
 `;
 
 export const Description = styled.div`
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-style: italic;
+  font-family: Times New Roman;
   margin-top: 1rem;
+  line-height: 1.3;
 `;
 
 export const Tag = styled.div`

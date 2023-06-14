@@ -35,7 +35,7 @@ export const Container = styled.div`
 
 export const Description = styled.div`
   margin-top: 9.5rem;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 500)}px;
   font-size: 1rem;
   text-align: center;
 
@@ -75,7 +75,7 @@ export const P = styled.div`
 export const SearchInput = styled.input`
   font-family: Helvetica;
   margin-top: 0.6rem;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 700)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 500)}px;
   background: transparent;
   outline: 0;
   border: none;
@@ -97,7 +97,7 @@ export const ListContainer = styled.div`
   align-items: center;
   display: flex;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 10rem;
   padding-bottom: 10rem;
 `;
@@ -107,7 +107,7 @@ export const ListItem = styled.div`
   font-size: 1.1rem;
   width: 100%;
   cursor: pointer;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 700)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 500)}px;
   ${FlexCenterStyle}
   justify-content: space-between;
   ${({ theme }) => theme.windowWidth < 768 && "flex-direction: column;"}
@@ -139,7 +139,7 @@ export const ListItem = styled.div`
 export const ListItemTitle = styled.div`
   ${({ theme }) => theme.windowWidth < 768 && "width: 100%;"}
   text-align: left;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 `;
 
 export const ListItemContent = styled.div`

@@ -28,6 +28,7 @@ export const Upper = styled.div`
   font-weight: bold;
   margin-top: 0.8rem;
   ${FlexCenterStyle}
+  justify-content: space-between;
 
   width: 100%;
 `;
@@ -45,6 +46,18 @@ export const UpperLeft = styled.div`
     margin-right: 0.5rem;
     width: 1rem;
   }
+`;
+
+export const Center = styled.div`
+  ${FlexCenterStyle}
+  flex-direction: column;
+`;
+
+export const CenterText = styled.div`
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0.4;
+  margin-right: 0rem;
 `;
 
 export const UpperCenter = styled.div`
@@ -75,20 +88,20 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  width: 8rem;
   ${FlexCenterStyle}
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1.1rem;
+  margin: 0 1rem;
   transition: all 0.3s;
   cursor: pointer;
   font-style: italic;
   font-family: Times New Roman;
 `;
 
-export const Center = styled.div`
-  font-weight: bold;
-  font-size: 3rem;
-  ${FlexCenterStyle}
-  text-align: center;
-  transform: scaleX(0.7);
-`;
+// export const Center = styled.div`
+//   font-weight: bold;
+//   font-size: 3rem;
+//   ${FlexCenterStyle}
+//   text-align: center;
+//   transform: scaleX(0.7);
+// `;
