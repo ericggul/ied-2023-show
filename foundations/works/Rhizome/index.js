@@ -31,18 +31,26 @@ export default function Rhizome({ isVisible, connectionData, handleProjectClick 
   const simulationRef = useRef(null);
   const linkRef = useRef(null);
   const nodeRef = useRef(null);
+
   const [currentTarget, setCurrentTarget] = useState(null);
   const currentTargetRef = useRef(null);
+  const lastInteractionTimeRef = useRef(null);
+
   useEffect(() => {
     currentTargetRef.current = currentTarget;
   }, [currentTarget]);
 
-  function handleNewKeywordClick(target) {
-    console.log(target, currentTargetRef.current);
+  function handleNewKeywordClick(e, target) {
+    e.stopPropagation();
+    console.log(target, currentTargetRef.current, lastInteractionTimeRef.current, Date.now(), Date.now() - lastInteractionTimeRef.current);
     setCurrentTarget(target);
+
     if (target === currentTargetRef.current) {
-      handleProjectClick(target);
+      if (Date.now() - lastInteractionTimeRef.current > 200) {
+        handleProjectClick(target);
+      }
     }
+    lastInteractionTimeRef.current = Date.now();
   }
 
   useEffect(() => {
@@ -84,15 +92,18 @@ export default function Rhizome({ isVisible, connectionData, handleProjectClick 
       });
 
       //on click
-      node.on("click", (event, d) => {
+      node.on("click", (ev, d) => {
         const { id, text } = d;
-        handleNewKeywordClick(text);
+        handleNewKeywordClick(ev, text);
       });
 
-      ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup"].forEach((eventType) => {
+      ["mouseenter", "touch"].forEach((eventType) => {
         node.on(eventType, (ev, d) => {
+          ev.stopPropagation();
           const { id, text } = d;
+          console.log("104");
           setCurrentTarget(text);
+          lastInteractionTimeRef.current = Date.now();
         });
       });
     }
@@ -135,12 +146,12 @@ export default function Rhizome({ isVisible, connectionData, handleProjectClick 
 
   return (
     <S.Container isVisible={isVisible}>
-      <S.ColorPickers>
+      {/* <S.ColorPickers>
         <HexColorPicker color={primaryColor} onChange={setPrimaryColor} />
         <HexColorPicker color={secondaryColor} onChange={setSecondaryColor} />
         {primaryColor}
         {secondaryColor}
-      </S.ColorPickers>
+      </S.ColorPickers> */}
 
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>

@@ -34,6 +34,8 @@ export const Info = styled.div`
   width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 1300)}px;
   display: flex;
   color: #fff;
+  z-indes: 30;
+  mix-blend-mode: difference;
 
   div {
     margin: 4vh 2vw;

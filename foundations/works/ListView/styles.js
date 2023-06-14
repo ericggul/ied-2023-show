@@ -35,7 +35,7 @@ export const Container = styled.div`
 
 export const Description = styled.div`
   margin-top: 10rem;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.6, 700)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
   font-size: 1.1rem;
   text-align: center;
 
@@ -68,7 +68,7 @@ export const P = styled.div`
     margin-right: 0.5rem;
   }
 
-  ${({ goUp }) => (goUp ? "transform: translateY(0);" : "transform: translateY(1.4rem);")}
+  ${({ goUp }) => (goUp ? "transform: translateY(0);" : "transform: translateY(1.7rem);")}
   transition: all 0.3s ease-in-out;
 `;
 
