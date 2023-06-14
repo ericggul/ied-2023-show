@@ -3,8 +3,6 @@ import dynamic from "next/dynamic";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
 //foundations
-import dynamic from "next/dynamic";
-
 const MainVisual = dynamic(() => import("foundations/intro/MainVisual"), { ssr: false });
 const Navigator = dynamic(() => import("foundations/intro/Navigator"), { ssr: false });
 const Background = dynamic(() => import("foundations/intro/Background"), { ssr: false });
