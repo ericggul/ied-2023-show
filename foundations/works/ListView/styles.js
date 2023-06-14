@@ -34,13 +34,13 @@ export const Container = styled.div`
 `;
 
 export const Description = styled.div`
-  margin-top: 10rem;
+  margin-top: 9.5rem;
   width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: center;
 
   i {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: Times New Roman;
     line-height: 1;
     font-weight: bold;
@@ -115,6 +115,7 @@ export const ListItem = styled.div`
   animation: appear-from-left 0.5s ease-in-out both;
   animation-delay: ${({ idx }) => idx * 0.08 + 0.5}s;
   border-radius: 0.5rem;
+  border-bottom: 1px transparent solid;
 
   @keyframes appear-from-left {
     from {
@@ -128,9 +129,8 @@ export const ListItem = styled.div`
   }
 
   &:hover {
-    background: #cbc6e5;
-    color: black;
-    box-shadow: 0 0 0.5rem 0.1rem #cbc6e5;
+    // border-bottom: 1px #cbc6e5 solid;
+    box-shadow: inset 0 0 0.5rem 0.1rem #cbc6e5;
   }
 
   transition: all 0.2s ease-in-out;

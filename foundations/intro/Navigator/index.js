@@ -7,8 +7,10 @@ export default function Navigator({ show, scrollPos }) {
   const [navigatorVisualIntensity, setNavigatorVisualIntensity] = useState(0);
 
   useEffect(() => {
-    setNavigatorVisualIntensity(Math.max(1 - Math.abs(scrollPos - 1.5), 0));
+    setNavigatorVisualIntensity(Math.max(1 - Math.max(1.5 - scrollPos, 0), 0));
   }, [scrollPos]);
+
+  console.log(scrollPos, navigatorVisualIntensity);
 
   const router = useRouter();
 

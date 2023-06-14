@@ -5,7 +5,7 @@ export const MainVisual = styled.div`
   ${FlexCenterStyle}
   ${WholeContainer}
 
-  height: 100vh;
+  height: 90vh;
   position: fixed !important;
   flex-direction: column;
   justify-content: space-between;
@@ -21,7 +21,7 @@ export const MainVisual = styled.div`
 export const Image = styled.img`
   position: absolute;
   width: 90%;
-  height: 90%;
+  height: 90vh;
   margin: auto;
   top: 0;
   bottom: 0;
@@ -38,6 +38,8 @@ export const Info = styled.div`
   color: #fff;
   z-indes: 30;
   mix-blend-mode: difference;
+
+  transition: all 0.3s;
 
   div {
     margin: 4vh 2vw;

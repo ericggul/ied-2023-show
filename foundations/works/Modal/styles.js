@@ -28,7 +28,7 @@ export const ModalContainer = styled.div`
 
   // width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 500)}px;
   // height: ${({ theme }) => Math.min(theme.windowHeight * 0.6, 480)}px;
-  padding: 1.2rem;
+  padding: 1.2rem 5vw;
   background: transparent;
 
   box-shadow: inset 0 0 1.4rem rgba(255, 255, 255, 0.4);
@@ -37,7 +37,7 @@ export const ModalContainer = styled.div`
   z-index: 500;
 
   ${({ showModal }) => (showModal ? `opacity: 1;` : `opacity: 0;`)}
-  ${({ showModal }) => showModal && "backdrop-filter: blur(.8rem) brightness(0.9);"}
+  ${({ showModal }) => showModal && "backdrop-filter: blur(.8rem) brightness(0.6);"}
 
   transition: all 0.2s ease-in-out;
 `;
@@ -46,13 +46,13 @@ export const ModalCancel = styled.div`
   position: absolute;
   top: -0.65rem;
   right: -0.65rem;
-  width: 1.7rem;
-  height: 1.7rem;
-  font-size: 0.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 0.9rem;
 
   ${FlexCenterStyle}
   border-radius: 50%;
-  box-shadow: inset 0 0 0.8rem hsla(0, 100%, 70%, 1);
+  box-shadow: inset 0 0 1.2rem hsla(0, 100%, 70%, 1);
   backdrop-filter: blur(3rem);
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
@@ -79,7 +79,7 @@ export const Lower = styled.div`
 `;
 
 export const Text = styled.div`
-  width: 90%;
+  width: 100%;
 
   h1 {
     font-size: 1.3rem;
@@ -96,7 +96,7 @@ export const Text = styled.div`
 
 export const Bottom = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 1.5rem;

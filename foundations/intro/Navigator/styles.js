@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 export const MainVisual = styled.div`
   ${FlexCenterStyle}
   ${WholeContainer}
-  height: 100vh;
+  height: 90vh;
   position: fixed !important;
   flex-direction: column;
   justify-content: space-between;
