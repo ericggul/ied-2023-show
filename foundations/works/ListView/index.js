@@ -1,11 +1,9 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
-
 import { BsSearch } from "react-icons/bs";
-
 import { DUMMY_LIST } from "containers/works/data";
 
-export default function ListView({ isVisible }) {
+export default function ListView({ isVisible, handleProjectClick }) {
   const [filterWord, setFilterWord] = useState("");
   const [filteredList, setFilteredList] = useState(DUMMY_LIST);
   const [focused, setFocused] = useState(false);
@@ -41,7 +39,7 @@ export default function ListView({ isVisible }) {
       <S.ListContainer>
         {isVisible &&
           filteredList.map((item, idx) => (
-            <S.ListItem key={idx} idx={idx}>
+            <S.ListItem key={idx} idx={idx} onClick={() => handleProjectClick(item)}>
               <S.ListItemTitle>{item.projectName}</S.ListItemTitle>
               <S.ListItemContent>{item.artistName}</S.ListItemContent>
             </S.ListItem>

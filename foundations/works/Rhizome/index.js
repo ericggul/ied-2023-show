@@ -18,7 +18,7 @@ const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Rhizome({ isVisible, connectionData }) {
+export default function Rhizome({ isVisible, connectionData, handleProjectClick }) {
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -32,6 +32,18 @@ export default function Rhizome({ isVisible, connectionData }) {
   const linkRef = useRef(null);
   const nodeRef = useRef(null);
   const [currentTarget, setCurrentTarget] = useState(null);
+  const currentTargetRef = useRef(null);
+  useEffect(() => {
+    currentTargetRef.current = currentTarget;
+  }, [currentTarget]);
+
+  function handleNewKeywordClick(target) {
+    console.log(target, currentTargetRef.current);
+    setCurrentTarget(target);
+    if (target === currentTargetRef.current) {
+      handleProjectClick(target);
+    }
+  }
 
   useEffect(() => {
     if (windowWidth === 0 || windowHeight === 0) return;
@@ -77,10 +89,10 @@ export default function Rhizome({ isVisible, connectionData }) {
         handleNewKeywordClick(text);
       });
 
-      ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup", "click"].forEach((eventType) => {
+      ["touchstart", "touchmove", "touchend", "mouseenter", "touch", "mousedown", "mousemove", "mouseup"].forEach((eventType) => {
         node.on(eventType, (ev, d) => {
           const { id, text } = d;
-          handleNewKeywordClick(text);
+          setCurrentTarget(text);
         });
       });
     }
@@ -88,12 +100,7 @@ export default function Rhizome({ isVisible, connectionData }) {
 
   ////////////
   ///interaction///
-  ////////////
-
-  function handleNewKeywordClick(target) {
-    setCurrentTarget(target);
-  }
-
+  //////////
   const targetNodesRef = useRef(null);
   const sourceNodesRef = useRef(null);
 
