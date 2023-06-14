@@ -33,7 +33,7 @@ export default function Modal({ showModal, setShowModal }) {
           <RxCross1 />
         </S.ModalCancel>
         <S.Image>
-          <img src="/assets/SampleProject.png" alt="sample project" />
+          <img src="/assets/sample/SampleProject.png" alt="sample project" />
         </S.Image>
         <S.Lower>
           <S.Text>
