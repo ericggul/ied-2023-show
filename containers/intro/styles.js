@@ -5,7 +5,7 @@ export const Container = styled.div`
   ${WholeContainer}
   display: flex;
   flex-direction: column;
-  height: ${({ theme }) => theme.windowHeight * 2.5}px;
+  height: 250vh;
 
   display: flex;
   flex-direction: column;
@@ -20,23 +20,6 @@ export const Container = styled.div`
     z-index: 100;
     font-size: 5rem;
   }
-`;
-
-export const InitialText = styled.div`
-  ${FlexCenterStyle}
-  flex-direction: column;
-  justify-content: space-between;
-  top: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 800)}px;
-  height: ${({ theme }) => theme.windowHeight}px;
-
-  opacity: 1;
-  z-index: 5;
 `;
 
 export const Loading = styled.div`

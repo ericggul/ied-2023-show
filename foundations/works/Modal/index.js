@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
+import { RxCross1 } from "react-icons/rx";
+
 export default function Modal({ showModal, setShowModal }) {
   function handleClick(e) {
     e.stopPropagation();
@@ -22,6 +24,14 @@ export default function Modal({ showModal, setShowModal }) {
           setShowModal(false);
         }}
       >
+        <S.ModalCancel
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowModal(false);
+          }}
+        >
+          <RxCross1 />
+        </S.ModalCancel>
         <S.Image>
           <img src="/assets/SampleProject.png" alt="sample project" />
         </S.Image>

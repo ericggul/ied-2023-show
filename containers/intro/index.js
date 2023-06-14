@@ -15,9 +15,16 @@ export default function Intro() {
 
   ///scroller
   useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
+    let timeout;
+    document.addEventListener("scroll", () => {
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(handleScroll, 5);
+    });
     return () => {
-      document.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("scroll", () => {
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(handleScroll, 5);
+      });
     };
   }, [windowWidth, windowHeight]);
   const [scrollPos, setScrollPos] = useState(0);

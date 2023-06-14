@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 export const MainVisual = styled.div`
   ${FlexCenterStyle}
   ${WholeContainer}
+  height: 100vh;
   position: fixed !important;
   flex-direction: column;
   justify-content: space-between;
@@ -29,7 +30,7 @@ export const Upper = styled.div`
   ${FlexCenterStyle}
   margin-top: 8vh;
   h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 800)}px;
     text-align: center;
   }

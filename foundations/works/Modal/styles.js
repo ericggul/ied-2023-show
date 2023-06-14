@@ -26,26 +26,43 @@ export const ModalContainer = styled.div`
 
   position: relative;
 
-  width: ${({ theme }) => Math.min(theme.windowWidth, 500)}px;
-  height: ${({ theme }) => Math.max(theme.windowHeight * 0.6, 480)}px;
+  // width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 500)}px;
+  // height: ${({ theme }) => Math.min(theme.windowHeight * 0.6, 480)}px;
+  padding: 1.2rem;
   background: transparent;
 
-  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 1.4rem rgba(255, 255, 255, 0.4);
   background: rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   z-index: 500;
 
   ${({ showModal }) => (showModal ? `opacity: 1;` : `opacity: 0;`)}
-  ${({ showModal }) => showModal && "backdrop-filter: blur(1.3vw) brightness(0.7);"}
+  ${({ showModal }) => showModal && "backdrop-filter: blur(.8rem) brightness(0.9);"}
 
   transition: all 0.2s ease-in-out;
 `;
 
+export const ModalCancel = styled.div`
+  position: absolute;
+  top: -0.65rem;
+  right: -0.65rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  font-size: 0.8rem;
+
+  ${FlexCenterStyle}
+  border-radius: 50%;
+  box-shadow: inset 0 0 0.8rem hsla(0, 100%, 70%, 1);
+  backdrop-filter: blur(3rem);
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+`;
+
 export const Image = styled.div`
-  width: ${({ theme }) => Math.min(Math.min(theme.windowWidth, 500) * 0.9, Math.max(theme.windowHeight * 0.6, 480))}px;
-  height: ${({ theme }) => (Math.min(Math.min(theme.windowWidth, 500) * 0.9, Math.max(theme.windowHeight * 0.6, 480)) * 2) / 3}px;
+  width: ${({ theme }) => Math.min(Math.min(theme.windowWidth * 0.9, 500) * 0.9, Math.min(theme.windowHeight * 0.6, 480))}px;
+  height: ${({ theme }) => (Math.min(Math.min(theme.windowWidth * 0.9, 500) * 0.9, Math.min(theme.windowHeight * 0.6, 480)) * 2) / 3}px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.2rem;
 
   img {
     width: 100%;
@@ -82,6 +99,7 @@ export const Bottom = styled.div`
   width: 90%;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 1.5rem;
 `;
 
 export const Description = styled.div`

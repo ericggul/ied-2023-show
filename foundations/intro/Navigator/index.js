@@ -19,7 +19,7 @@ export default function Navigator({ show, scrollPos }) {
   return (
     <S.MainVisual
       style={{
-        opacity: navigatorVisualIntensity,
+        opacity: Math.min(navigatorVisualIntensity * 1.1, 1),
       }}
     >
       <S.Upper>
@@ -31,8 +31,8 @@ export default function Navigator({ show, scrollPos }) {
       <S.ButtonContainer>
         <S.Button
           style={{
-            transform: `scaleY(${1 + 1.5 ** 2 - (navigatorVisualIntensity * 1.5) ** 2})`,
-            filter: `blur(${1 - navigatorVisualIntensity}rem)`,
+            transform: `scaleY(${1 + 1.5 ** 2 - (Math.min(navigatorVisualIntensity * 1.1, 1) * 1.5) ** 2})`,
+            filter: `blur(${Math.max(0.9 - navigatorVisualIntensity, 0)}rem)`,
           }}
           onClick={(ev) => handleClick(ev, "works")}
         >
@@ -41,8 +41,8 @@ export default function Navigator({ show, scrollPos }) {
         </S.Button>
         <S.Button
           style={{
-            transform: `scaleY(${1 + 1.5 ** 2 - (navigatorVisualIntensity * 1.5) ** 2})`,
-            filter: `blur(${1 - navigatorVisualIntensity}rem)`,
+            transform: `scaleY(${1 + 1.5 ** 2 - (Math.min(navigatorVisualIntensity * 1.1, 1) * 1.5) ** 2})`,
+            filter: `blur(${Math.max(0.9 - navigatorVisualIntensity, 0)}rem)`,
           }}
           onClick={(ev) => handleClick(ev, "events")}
         >
@@ -53,7 +53,7 @@ export default function Navigator({ show, scrollPos }) {
 
       <S.Lower
         style={{
-          filter: `blur(${1 - navigatorVisualIntensity}rem)`,
+          filter: `blur(${Math.max(0.9 - navigatorVisualIntensity, 0)}rem)`,
         }}
       >
         <h1>Website Made by</h1>
