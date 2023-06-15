@@ -37,77 +37,11 @@ const NODES = [
   },
 ];
 
-// How to use photosynthetic materials to reduce carbon emissions?
-// photosynthetic materials
-// How to integrate nature as the primary client in a capitalistic society?
-// Capitalism and Nature
-// How to use misinterpretation arising from translation as a resource?
-// Misinterpretation and Translation
-
-// How can VR and world-building help visually impaired individuals?
-// Visually Impaired Individuals
-
-// How to explore the potential for new paradigms of post-gender identity?
-// Post-gender identity
-
-// Can the ocean be a composer?
-// Composer
-
-// What can fluid logic reveal about migration across the English Channel?
-// Migration
-
-// Are communities in London willing to let air pollution govern their daily lives?
-// Air Pollution
-
-// How will I remember this journey?
-// Personal Journey
-
-// What if we gave more to nature than we take from it?
-// Give to Nature
-
-// How can multi-sensory communication design to resonate personal emotion?
-// Multi-Sensory Communication
-
-// How can we find our original spiritual connection with trees?
-// Spiritual Connection
-
-// How to reflect on the e-waste pollution caused by electronic devices?
-// E-Waste Pollution
-
-// How to give them a new perspective for each step?
-// Steps
-
-// How to family bonds in a society of reproductive equality?
-// Reproductive Equality
-
-// Wrapped in time and distance, how do we express our love?
-// Love
-
-// How do we truly face the love that comes with breaking free?
-// Family
-
-// How can we recreate the feelings driven by dopamine dysfunction?
-// Dopamine Dysfunction
-
-// How to strengthen the human-plant connection and incite behavioural change?
-// Empathy and Love
-
-// How to rethink the value of life based on the idea of being-towards-death?
-// Being-towards-death
-
-// How can a more inclusive approach be taken to the design of urban public space?
-// Inclusive Urban Space
-
-// While echoes are typically a reflection of time in space, can space reflect its own echoes in time?
-// Time, Space, and Echoes
-// How to question the taboo surrounding conversations about Sex?
-// Conversations about Sex
-
 export const DATA_NODES_LINKS = {
   nodes: [
     {
       text: "2 + 1 ≠ 3",
-      longDescription: "2 + 1 ≠ 3?",
+      longDescription: `Σ= = ≠? = ≠ =? ≠ > =? 2 + 1 ≠ 3!`,
       shortDescription: "2 + 1 ≠ 3",
       id: 0,
     },
@@ -717,9 +651,8 @@ export const DATA_NODES_LINKS = {
     {
       text: "Pablo Picasso",
       id: 102,
-
-      longDescription: "2 + 1 ≠ 3?",
-      shortDescription: "2 + 1 ≠ 3",
+      longDescription: "Wich female consciousness is reflected in fandom culture?",
+      shortDescription: "Fandom Culture",
     },
     {
       text: "Modernism",

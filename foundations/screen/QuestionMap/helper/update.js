@@ -35,9 +35,9 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
 
   //new styling
   targetNodes.selectAll("circle").transition().duration(DURATION).attr("fill", "hsl(180, 100%, 70%)");
-  targetNodes.selectAll("text").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, .5)");
+  // targetNodes.selectAll("text").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, .5)");
   sourceNodes.selectAll("circle").transition().duration(DURATION).attr("fill", "hsl(0, 100%, 70%)");
-  sourceNodes.selectAll("text").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, .5)");
+  // sourceNodes.selectAll("text").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, .5)");
 
   //update ref
   targetNodesRef.current = targetNodes;
@@ -75,7 +75,7 @@ function updateKeywordChain({ d, keywordsChain, node, link, unitSize }) {
 
       //test contents shortdescription
       connectedNode.selectAll("text").text((d) => d.shortDescription || d.text);
-      connectedNode.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4vw").attr("fill", `rgba(255, 255, 255, 0.5)`);
+      connectedNode.selectAll("text").transition().duration(DURATION).attr("font-size", "2vw").attr("fill", `rgba(255, 255, 255, 0.7)`);
     });
 
     let connectedLink = link.filter((l) => l.source.text === keywordsChain[keywordsChain.length - 1] && l.target.text === d.text);
