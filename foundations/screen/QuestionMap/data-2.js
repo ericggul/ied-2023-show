@@ -37,6 +37,72 @@ const NODES = [
   },
 ];
 
+// How to use photosynthetic materials to reduce carbon emissions?
+// photosynthetic materials
+// How to integrate nature as the primary client in a capitalistic society?
+// Capitalism and Nature
+// How to use misinterpretation arising from translation as a resource?
+// Misinterpretation and Translation
+
+// How can VR and world-building help visually impaired individuals?
+// Visually Impaired Individuals
+
+// How to explore the potential for new paradigms of post-gender identity?
+// Post-gender identity
+
+// Can the ocean be a composer?
+// Composer
+
+// What can fluid logic reveal about migration across the English Channel?
+// Migration
+
+// Are communities in London willing to let air pollution govern their daily lives?
+// Air Pollution
+
+// How will I remember this journey?
+// Personal Journey
+
+// What if we gave more to nature than we take from it?
+// Give to Nature
+
+// How can multi-sensory communication design to resonate personal emotion?
+// Multi-Sensory Communication
+
+// How can we find our original spiritual connection with trees?
+// Spiritual Connection
+
+// How to reflect on the e-waste pollution caused by electronic devices?
+// E-Waste Pollution
+
+// How to give them a new perspective for each step?
+// Steps
+
+// How to family bonds in a society of reproductive equality?
+// Reproductive Equality
+
+// Wrapped in time and distance, how do we express our love?
+// Love
+
+// How do we truly face the love that comes with breaking free?
+// Family
+
+// How can we recreate the feelings driven by dopamine dysfunction?
+// Dopamine Dysfunction
+
+// How to strengthen the human-plant connection and incite behavioural change?
+// Empathy and Love
+
+// How to rethink the value of life based on the idea of being-towards-death?
+// Being-towards-death
+
+// How can a more inclusive approach be taken to the design of urban public space?
+// Inclusive Urban Space
+
+// While echoes are typically a reflection of time in space, can space reflect its own echoes in time?
+// Time, Space, and Echoes
+// How to question the taboo surrounding conversations about Sex?
+// Conversations about Sex
+
 export const DATA_NODES_LINKS = {
   nodes: [
     {
@@ -523,8 +589,8 @@ export const DATA_NODES_LINKS = {
     {
       text: "Totalitarianism",
       id: 81,
-      longDescription: "How to contribute to the continuous evolution of cultural ideology?",
-      shortDescription: "Culture Ideology",
+      longDescription: `Wrapped in time and distance, how do we express our love? `,
+      shortDescription: "Love",
     },
     {
       text: "Dostoyevsky",
@@ -541,32 +607,32 @@ export const DATA_NODES_LINKS = {
     {
       text: "Notes from Underground",
       id: 84,
-      longDescription: "How to design art therapy work for young people?",
-      shortDescription: "Art Therapy",
+      longDescription: "How do we truly face the love that comes with breaking free?",
+      shortDescription: "Family",
     },
     {
       text: "2 X 2 = 5",
       id: 85,
-      longDescription: "How to explore the impact of sea level rise in 2085?",
-      shortDescription: "Sea Level Rise",
+      longDescription: "How can we recreate the feelings driven by dopamine dysfunction?",
+      shortDescription: "Dopamine Dysfunction",
     },
     {
       text: "Tolstoy",
       id: 86,
-      longDescription: "How to think about the new relationship between humans and natural systems?",
-      shortDescription: "Ecological System",
+      longDescription: "How to strengthen the human-plant connection and incite behavioural change?",
+      shortDescription: "Empathy and Love",
     },
     {
       text: "Soviet Union",
       id: 87,
-      longDescription: "How will the future womb mimic the human womb?",
-      shortDescription: "Future Womb",
+      longDescription: "How to rethink the value of life based on the idea of being-towards-death?",
+      shortDescription: "Being-towards-death",
     },
     {
       text: "Peace Treaty",
       id: 88,
-      longDescription: "How to interrupt people's neglect of the scope hidden by obstacles?",
-      shortDescription: "Obstacles",
+      longDescription: "How can a more inclusive approach be taken to the design of urban public space?",
+      shortDescription: "Inclusive Urban Space",
     },
     {
       text: "Treaty of Versailles",
@@ -577,8 +643,8 @@ export const DATA_NODES_LINKS = {
     {
       text: "Compiegne Wagon",
       id: 90,
-      longDescription: "What should a post-genderless human utopia world be like?",
-      shortDescription: "Post-genederless",
+      longDescription: "How to question the taboo surrounding conversations about Sex?",
+      shortDescription: "Conversations about Sex",
     },
     {
       text: "Inequality",
@@ -682,8 +748,8 @@ export const DATA_NODES_LINKS = {
     {
       text: "Limitation of Logic",
       id: 107,
-      longDescription: "Which problems will we face in the recognition of plant rights?",
-      shortDescription: "Biophysical Egalitarianism",
+      longDescription: "How to use photosynthetic materials to reduce carbon emissions?",
+      shortDescription: "Photosynthetic Materials",
     },
     {
       text: "Cubism",
@@ -694,26 +760,26 @@ export const DATA_NODES_LINKS = {
     {
       text: "Berlin Blockade",
       id: 109,
-      longDescription: "How to evoke emotional resonance towards global warming?",
-      shortDescription: "Global Warming",
+      longDescription: "How to integrate nature as the primary client in a capitalistic society?",
+      shortDescription: "Capitalism and Nature",
     },
     {
       text: "Berlin Airlift",
       id: 110,
-      longDescription: "How to establish a connection between immersive scenes and the ecosystem?",
-      shortDescription: "Immersive sense",
+      longDescription: "What if your social status were attributed to your dedication towards the flourishing of nature?",
+      shortDescription: "Organic Social Capital",
     },
     {
       text: "Gravity",
       id: 111,
-      longDescription: "How can I Ching’s divination process assist filmmakers?",
-      shortDescription: "I Ching",
+      longDescription: "How to use misinterpretation arising from translation as a resource?",
+      shortDescription: "Misinterpretation and Translation",
     },
     {
       text: "Newtonian Physics",
       id: 112,
-      longDescription: "How to reconstruct aura in the age of mechanical reproduction?",
-      shortDescription: "Aura",
+      longDescription: "How can VR and world-building help visually impaired individuals?",
+      shortDescription: "Visually Impaired Individuals",
     },
     {
       text: "Invention of Airplane",
@@ -724,26 +790,27 @@ export const DATA_NODES_LINKS = {
     {
       text: "Industrial Revolution",
       id: 114,
-      longDescription: `How to counteract to universial logic?`,
-      shortDescription: "Beyond Logics",
+      longDescription: `How to explore the potential for new paradigms of post-gender identity?
+      `,
+      shortDescription: "Post-gender identity",
     },
     {
       text: "Going Against Gravity",
       id: 115,
-      longDescription: `How to counteract to blindly universial objectivity?`,
-      shortDescription: "Beyond Objectivity",
+      longDescription: `Can the ocean be a composer?`,
+      shortDescription: "Composer",
     },
     {
       text: "The Use of Gravity",
       id: 116,
-      longDescription: `How to object to eliticism?`,
-      shortDescription: "Eliticism",
+      longDescription: `Are communities in London willing to let air pollution govern their daily lives?`,
+      shortDescription: "Air Pollution",
     },
     {
       text: "Atomic Bomb",
       id: 117,
-      longDescription: `How to go -post without overusing the prefix -post?`,
-      shortDescription: "Post-post",
+      longDescription: `What can fluid logic reveal about migration across the English Channel?`,
+      shortDescription: "Migration",
     },
     {
       text: "Postmodernity",
@@ -754,20 +821,20 @@ export const DATA_NODES_LINKS = {
     {
       text: "Quantum Physics",
       id: 119,
-      longDescription: `How does the term 'Thinking out of the box' resides inside the box?`,
-      shortDescription: "Thinking out of the box",
+      longDescription: `How will I remember this journey?`,
+      shortDescription: "Personal Journey",
     },
     {
       text: "Modern Logics",
       id: 120,
-      longDescription: `How to challenge the established logic?`,
-      shortDescription: "Postmodernism",
+      longDescription: `What if we gave more to nature than we take from it?`,
+      shortDescription: "Give to Nature",
     },
     {
       text: "Going Beyond Gravity",
       id: 121,
-      longDescription: "Why is the notion of innovation dead in modern society?",
-      shortDescription: "Innovation",
+      longDescription: "How can we find our original spiritual connection with trees?",
+      shortDescription: "Spiritual Connection",
     },
     {
       text: "Theory of Relativity",
@@ -778,44 +845,44 @@ export const DATA_NODES_LINKS = {
     {
       text: "Runway",
       id: 123,
-      longDescription: `How do art address complex issues to the public?`,
-      shortDescription: "Complex Issues",
+      longDescription: `How can multi-sensory communication design to resonate personal emotion?`,
+      shortDescription: "Multi-Sensory Communication",
     },
     {
       text: "Useless is Useful",
       id: 124,
-      longDescription: `How to communicate illiterate narrative?`,
-      shortDescription: "Illiterate Narrative",
+      longDescription: `How to reflect on the e-waste pollution caused by electronic devices?`,
+      shortDescription: "E-Waste Pollution",
     },
     {
       text: "World War II",
       id: 125,
-      longDescription: "How to communicate the feeling, not the meaning?",
-      shortDescription: "Feeling",
+      longDescription: "How to give them a new perspective for each step?",
+      shortDescription: "Steps",
     },
     {
       text: "Nazi Germany",
       id: 126,
-      longDescription: "How to create spatial-temporal tension?",
+      longDescription: "How to create an interactive spatial-temporal tension?",
       shortDescription: "Spatial-Temporal Tension",
     },
     {
       text: "Holocaust",
       id: 127,
-      longDescription: "How to use spatial-temporality to reconstruct dadaistic experience?",
-      shortDescription: "Dadaism",
+      longDescription: "How to family bonds in a society of reproductive equality?",
+      shortDescription: "Reproductive Equality",
     },
     {
       text: "Tempelhof Airport",
       id: 128,
-      longDescription: `How to translate confusion into joyfulness?`,
-      shortDescription: "Joyfulness",
+      longDescription: `While echoes are typically a reflection of time in space, can space reflect its own echoes in time?`,
+      shortDescription: "Time, Space, and Echoes",
     },
     {
       text: "Building Third Runway",
       id: 129,
-      longDescription: `How to go beyond the notion of metaphysics?`,
-      shortDescription: "Metaphysics",
+      longDescription: "What if your social status were attributed to the flourishing of nature?",
+      shortDescription: "Organic Social Capital",
     },
     {
       text: "Berlin Nonequality",
@@ -832,14 +899,63 @@ export const DATA_NODES_LINKS = {
     {
       text: "Not Equal",
       id: 132,
-      longDescription: `How can art play a role within the society actively and directly?`,
-      shortDescription: "Art and Society",
+      longDescription: `While echoes are typically a reflection of time in space, can space reflect its own echoes in time?`,
+      shortDescription: "Time, Space, and Echoes",
     },
   ],
   links: [
     {
       source: "≠",
       target: "Peace",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "≠",
+      target: "NFT",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "≠",
+      target: "Bitcoin",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "≠",
+      target: "Paris",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "≠",
+      target: "London",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "≠",
+      target: "Seoul",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "≠",
+      target: "Landmark",
+      value: 5,
+      id: 702,
+      isCycle: false,
+    },
+    {
+      source: "Land Art",
+      target: "≠",
       value: 5,
       id: 702,
       isCycle: false,

@@ -86,12 +86,12 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
       setReset(false);
       setCurrentTarget(target);
       setKeywordsChain((keywordsChain) => [...keywordsChain, currentTarget]);
-    }, 1800);
+    }, 5000);
     return () => clearTimeout(timeout);
   }, [currentTarget]);
 
   useEffect(() => {
-    if (keywordsChain.length > 15) {
+    if (keywordsChain.length > 10) {
       //reset
       setKeywordsChain([]);
       setQuestion("");

@@ -66,7 +66,7 @@ function updateKeywordChain({ d, keywordsChain, node, link, unitSize }) {
           .transition()
           .duration(DURATION)
           .attr("fill", "hsl(180, 100%, 88%)")
-          .attr("stroke-width", 6 * unitSize);
+          .attr("stroke-width", 4 * unitSize);
       }
 
       //texts
@@ -85,7 +85,7 @@ function updateKeywordChain({ d, keywordsChain, node, link, unitSize }) {
       .duration(DURATION)
       .attr("opacity", 1)
       .attr("stroke", "hsl(180, 100%, 88%)")
-      .attr("stroke-width", 6 * unitSize);
+      .attr("stroke-width", 4 * unitSize);
   }
 }
 
