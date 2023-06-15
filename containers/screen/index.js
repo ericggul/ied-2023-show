@@ -2,7 +2,7 @@ import * as S from "./styles";
 import dynamic from "next/dynamic";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
-import { connectionToNodeLink, DUMMY_LIST, DATA_NODES_LINKS } from "./data";
+import { connectionToNodeLink, DUMMY_LIST, DATA_NODES_LINKS } from "../../foundations/screen/QuestionMap/data";
 
 //foundations
 const QuestionMap = dynamic(() => import("foundations/screen/QuestionMap"), { ssr: false });

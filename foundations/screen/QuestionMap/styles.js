@@ -14,3 +14,17 @@ export const Container = styled.div`
     z-index: 0;
   }
 `;
+
+export const Question = styled.div`
+  position: absolute;
+  padding: 1vw 0;
+  bottom: 0;
+  height: 3vw;
+  backdrop-filter: blur(1vw) brightness(1);
+  width: 100%;
+  text-align: center;
+  ${FlexCenterStyle}
+  font-size: 2.6vw;
+  font-family: Bebas Neue;
+  ${FlexCenterStyle}
+`;

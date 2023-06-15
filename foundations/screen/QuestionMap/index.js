@@ -8,15 +8,19 @@ import { useResizeDebounce } from "utils/hooks/useResize";
 import * as d3 from "d3";
 
 //helper
+import { DATA_NODES_LINKS } from "./data-2";
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
 import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode } from "./helper/update";
 
-export default function ProjectorTop({ connectionData }) {
+const getRandom = (a, b) => Math.random() * (b - a) + a;
+const getRandomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
   ////////////
   ///d3///
   ////////////
 
-  const [currentTarget, setCurrentTarget] = useState("");
+  const [currentTarget, setCurrentTarget] = useState("Double Thinking");
   const svgRef = useRef();
 
   //size
@@ -26,9 +30,15 @@ export default function ProjectorTop({ connectionData }) {
   const simulationRef = useRef(null);
   const linkRef = useRef(null);
   const nodeRef = useRef(null);
+  const [reset, setReset] = useState(true);
 
   useEffect(() => {
+    if (!reset) return;
     //variables
+    init();
+  }, [connectionData, windowWidth, windowHeight, reset]);
+
+  function init() {
     const types = ["isCycle", "isNotCycle"];
     const color = d3.scaleOrdinal(types, ["hsl(180, 100%, 70%)", "hsl(180, 100%, 70%)"]);
     const width = windowWidth;
@@ -58,27 +68,49 @@ export default function ProjectorTop({ connectionData }) {
       link.attr("d", linkArc);
       node.attr("transform", (d) => `translate(${d.x},${d.y})`);
     });
-  }, [connectionData, windowWidth, windowHeight]);
-
+  }
   ////////////
   ///interaction///
   ////////////
-
-  // const socket = useSocketProjector({
-  //   projectorMode: true,
-  //   handleNewMobileJoin,
-  //   handleNewMobileInteraction,
-  // });
-
   const [keywordsChain, setKeywordsChain] = useState([]);
+  const [question, setQuestion] = useState("");
 
-  function handleNewMobileInteraction(data) {
+  useEffect(() => {
+    //current target
+    setQuestion(connectionData.nodes.filter((n) => n.text === currentTarget)[0].longDescription || "");
+    let connected = connectionData.links.filter((l) => l.source === currentTarget);
+    let connectedNodes = [...new Set(connected.map((l) => l.target))];
+    let target = getRandomFromArray(connectedNodes);
+
+    const timeout = setTimeout(() => {
+      setReset(false);
+      setCurrentTarget(target);
+      setKeywordsChain((keywordsChain) => [...keywordsChain, currentTarget]);
+    }, 1800);
+    return () => clearTimeout(timeout);
+  }, [currentTarget]);
+
+  useEffect(() => {
+    if (keywordsChain.length > 15) {
+      //reset
+      setKeywordsChain([]);
+      setQuestion("");
+      setCurrentTarget(getRandomFromArray(connectionData.nodes.map((n) => n.text)));
+      setReset(true);
+    }
+  }, [keywordsChain]);
+
+  function handleNewInteraction(data) {
     setCurrentTarget(data.target);
     setKeywordsChain((keywordsChain) => (data.keyword in keywordsChain ? keywordsChain : [...keywordsChain, data.keyword]));
   }
 
   const targetNodesRef = useRef(null);
   const sourceNodesRef = useRef(null);
+  const targetLinksRef = useRef(null);
+  const sourceLinksRef = useRef(null);
+
+  console.log(keywordsChain);
 
   useEffect(() => {
     let node = nodeRef.current;
@@ -91,12 +123,10 @@ export default function ProjectorTop({ connectionData }) {
 
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
-        //position
         d.x = 0;
         d.y = 0;
-
         /////TARGET AND SOURCE NODES //////////////////////////////////
-        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef });
+        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, targetLinksRef, sourceLinksRef });
 
         ///KEYWORD CHAIN MANAGEMENT////////////////////////////////
         updateKeywordChain({ d, keywordsChain, node, link, unitSize });
@@ -110,6 +140,7 @@ export default function ProjectorTop({ connectionData }) {
   return (
     <S.Container>
       <svg ref={svgRef} />
+      <S.Question>{question}</S.Question>
     </S.Container>
   );
 }

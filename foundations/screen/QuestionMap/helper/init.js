@@ -51,8 +51,8 @@ function initLinkStyling({ svg, links, color, width, height }) {
     .attr("id", (d) => `link-${d.source.id}-${d.target.id}`)
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
     .attr("stroke", (d) => color(d.isCycle ? "isCycle" : "isNotCycle"))
-    .attr("stroke-width", (d) => (d.value * 0.05 + 0.4) * width * 0.002)
-    .attr("opacity", "0.37");
+    .attr("stroke-width", (d) => 0.6 * width * 0.002)
+    .attr("opacity", "0.20");
 
   return link;
 }
@@ -64,7 +64,7 @@ function initNodeStyling({ svg, nodes, simulation, width, height }) {
     .append("circle")
     .attr("id", (d) => `circle-${d.id}`)
     .attr("r", width * 0.002)
-    .attr("fill", "rgba(255, 255, 255, 0.3)");
+    .attr("fill", "rgba(255, 255, 255, 0.1)");
 
   node
     .append("text")
@@ -73,8 +73,8 @@ function initNodeStyling({ svg, nodes, simulation, width, height }) {
     .attr("y", ".3vw")
     .attr("font-size", "1.1vw")
     .attr("font-family", "Bebas Neue")
-    .attr("fill", "rgba(255, 255, 255, 0.17)")
-    .text((d) => d.text)
+    .attr("fill", "rgba(255, 255, 255, 0.05)")
+    .text((d) => d.shortDescription || d.text)
     .clone(true)
     .lower();
 
