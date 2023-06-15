@@ -91,7 +91,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
   }, [currentTarget]);
 
   useEffect(() => {
-    if (keywordsChain.length > 10) {
+    if (keywordsChain.length > 8) {
       //reset
       setKeywordsChain([]);
       setQuestion("");
@@ -119,7 +119,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     let unitSize = windowWidth * 0.001;
 
     if (node && simulation) {
-      simulation.alphaTarget(0.1).restart();
+      simulation.alphaTarget(0.3).restart();
 
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
