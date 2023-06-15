@@ -107,7 +107,7 @@ function updateCurrentNode({ d, node }) {
   ///max width adjust: if text lengths get too long, next line
 
   // Set the maximum width for the text
-  var maxWidth = 100; // Adjust this value as needed
+  var maxWidth = 80; // Adjust this value as needed
 
   // Calculate the number of lines based on the maximum width
   var words = text.text().split(/\s+/);

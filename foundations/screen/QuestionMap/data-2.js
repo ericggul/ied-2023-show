@@ -1028,6 +1028,20 @@ export const DATA_NODES_LINKS = {
       isCycle: true,
     },
     {
+      source: "Berlin Nonequality",
+      target: "World War II",
+      value: 50,
+      id: 400,
+      isCycle: true,
+    },
+    {
+      source: "Berlin Nonequality",
+      target: "London",
+      value: 50,
+      id: 400,
+      isCycle: true,
+    },
+    {
       source: "Not Equal",
       target: "Nonequlibrium",
       value: 16,

@@ -4,6 +4,8 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 //resize
 import { useResizeDebounce } from "utils/hooks/useResize";
 
+// import * as Tone from "tone";
+
 //d3
 import * as d3 from "d3";
 
@@ -81,6 +83,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     let connected = connectionData.links.filter((l) => l.source === currentTarget);
     let connectedNodes = [...new Set(connected.map((l) => l.target))];
     let target = getRandomFromArray(connectedNodes);
+    triggerTone();
 
     const timeout = setTimeout(() => {
       setReset(false);
@@ -89,6 +92,15 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     }, 5000);
     return () => clearTimeout(timeout);
   }, [currentTarget]);
+
+  function triggerTone() {
+    // try {
+    //   const synth = new Tone.Synth().toDestination();
+    //   synth.triggerAttackRelease("C4", "8n");
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  }
 
   useEffect(() => {
     if (keywordsChain.length > 8) {
