@@ -75,7 +75,7 @@ function updateKeywordChain({ d, keywordsChain, node, link, unitSize }) {
 
       //test contents shortdescription
       connectedNode.selectAll("text").text((d) => d.shortDescription || d.text);
-      connectedNode.selectAll("text").transition().duration(DURATION).attr("font-size", "2vw").attr("fill", `rgba(255, 255, 255, 0.7)`);
+      connectedNode.selectAll("text").transition().duration(DURATION).attr("font-size", "2vw").attr("fill", `rgba(255, 255, 255, 0.5)`);
     });
 
     let connectedLink = link.filter((l) => l.source.text === keywordsChain[keywordsChain.length - 1] && l.target.text === d.text);
