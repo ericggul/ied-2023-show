@@ -20,7 +20,7 @@ export const Question = styled.div`
   padding: 1vw 0;
   bottom: 0;
   height: 3vw;
-  backdrop-filter: blur(1vw) brightness(1);
+  backdrop-filter: blur(1vw) brightness(1.4);
   width: 100%;
   text-align: center;
   ${FlexCenterStyle}

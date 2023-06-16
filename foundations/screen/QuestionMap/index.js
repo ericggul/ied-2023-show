@@ -83,9 +83,9 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     let connected = connectionData.links.filter((l) => l.source === currentTarget);
     let connectedNodes = [...new Set(connected.map((l) => l.target))];
     let target = getRandomFromArray(connectedNodes);
-    triggerTone();
 
     const timeout = setTimeout(() => {
+      triggerTone();
       setReset(false);
       setCurrentTarget(target);
       setKeywordsChain((keywordsChain) => [...keywordsChain, currentTarget]);
@@ -94,7 +94,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
   }, [currentTarget]);
 
   useEffect(() => {
-    if (keywordsChain.length > 8) {
+    if (keywordsChain.length > 7) {
       //reset
       setKeywordsChain([]);
       setQuestion("");
@@ -112,8 +112,6 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
   const sourceNodesRef = useRef(null);
   const targetLinksRef = useRef(null);
   const sourceLinksRef = useRef(null);
-
-  console.log(keywordsChain);
 
   useEffect(() => {
     let node = nodeRef.current;
@@ -141,59 +139,44 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
   }, [connectionData, currentTarget, keywordsChain, windowWidth, windowHeight]);
 
   function triggerTone() {
-    function numberToCode(number) {
-      //for instance, 28 -> C4, 35 -> c5,
-      const octave = Math.floor(number / 7);
-      const note = number % 7;
-      const noteMap = {
-        0: "C",
-        1: "D",
-        2: "E",
-        3: "F",
-        4: "G",
-        5: "A",
-        6: "B",
-      };
-      return noteMap[note] + octave;
-    }
+    const NOTES = [
+      ["E4", "C5", "E5", "G5"],
+      ["G5", "E5", "C5", "A4"],
+      ["A4", "C5", "A4", "F5"],
+      ["F5", "D5", "B4", "G4"],
+      ["G4", "B4", "G4", "E5"],
+      ["E5", "C5", "A4", "F4"],
+      ["F4", "A4", "F4", "D5"],
+      ["D5", "B4", "G4", "E4"],
+    ];
 
-    function numberToCode2(number) {
-      //for instance, 28 -> C4, 35 -> c5,
-      const octave = Math.floor(number / 12);
-      const note = number % 12;
-      const noteMap = {
-        0: "C",
-        1: "C#",
-        2: "D",
-        3: "D#",
-        4: "E",
-        5: "F",
-        6: "F#",
-        7: "G",
-        8: "G#",
-        9: "A",
-        10: "A#",
-        11: "B",
-      };
-      return noteMap[note] + octave;
-    }
-
+    const OTHER_NOTES = [
+      ["G3", "C4", "E4", "G4"],
+      ["F3", "A3", "C4", "F4"],
+      ["F3", "A3", "C4", "F4"],
+      ["E3", "G3", "B3", "E4"],
+      ["E3", "G3", "B3", "E4"],
+      ["D3", "F3", "A3", "D4"],
+      ["D3", "F3", "A3", "D4"],
+      ["C3", "E3", "G3", "C4"],
+    ];
     try {
-      const synth = new Tone.PolySynth().toDestination();
+      const synth = new Tone.MonoSynth().toDestination();
+
       const now = Tone.now();
-
-      synth.triggerAttackRelease(numberToCode(28 + keywordsChain.length), `16n`, now);
-      synth.triggerAttackRelease(numberToCode(31 + keywordsChain.length), `8n`, now + 0.15);
-      // synth.triggerAttackRelease(`D#4`, `8n`, now + 0.53);
-      // synth.triggerAttackRelease(`G#4`, `8n`, now + 0.8);
-      // synth.triggerAttackRelease(`D#4`, `8n`, now + 1.03);
-
-      //from c4 to c5 every note, with 0.1s
-      // for (let i = 0; i < 8; i++) {
-      //   synth.triggerAttackRelease(numberToCode(28 + i), "8n", now + i * 0.2);
-      // }
-    } catch (err) {
-      console.log(err);
+      let iteration = keywordsChain.length;
+      let targetNotes = NOTES[iteration % NOTES.length];
+      targetNotes.forEach((note, i) => {
+        if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
+        else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
+      });
+      let replyNotes = OTHER_NOTES[iteration % NOTES.length];
+      replyNotes.forEach((note, i) => {
+        if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
+        else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
+      });
+    } catch (e) {
+      console.log(e);
     }
   }
 
