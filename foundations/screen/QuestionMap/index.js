@@ -4,7 +4,7 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 //resize
 import { useResizeDebounce } from "utils/hooks/useResize";
 
-// import * as Tone from "tone";
+import * as Tone from "tone";
 
 //d3
 import * as d3 from "d3";
@@ -93,15 +93,6 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     return () => clearTimeout(timeout);
   }, [currentTarget]);
 
-  function triggerTone() {
-    // try {
-    //   const synth = new Tone.Synth().toDestination();
-    //   synth.triggerAttackRelease("C4", "8n");
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  }
-
   useEffect(() => {
     if (keywordsChain.length > 8) {
       //reset
@@ -131,7 +122,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     let unitSize = windowWidth * 0.001;
 
     if (node && simulation) {
-      simulation.alphaTarget(0.3).restart();
+      simulation.alphaTarget(0.15).restart();
 
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
@@ -148,6 +139,63 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
       });
     }
   }, [connectionData, currentTarget, keywordsChain, windowWidth, windowHeight]);
+
+  function triggerTone() {
+    function numberToCode(number) {
+      //for instance, 28 -> C4, 35 -> c5,
+      const octave = Math.floor(number / 7);
+      const note = number % 7;
+      const noteMap = {
+        0: "C",
+        1: "D",
+        2: "E",
+        3: "F",
+        4: "G",
+        5: "A",
+        6: "B",
+      };
+      return noteMap[note] + octave;
+    }
+
+    function numberToCode2(number) {
+      //for instance, 28 -> C4, 35 -> c5,
+      const octave = Math.floor(number / 12);
+      const note = number % 12;
+      const noteMap = {
+        0: "C",
+        1: "C#",
+        2: "D",
+        3: "D#",
+        4: "E",
+        5: "F",
+        6: "F#",
+        7: "G",
+        8: "G#",
+        9: "A",
+        10: "A#",
+        11: "B",
+      };
+      return noteMap[note] + octave;
+    }
+
+    try {
+      const synth = new Tone.PolySynth().toDestination();
+      const now = Tone.now();
+
+      synth.triggerAttackRelease(numberToCode(28 + keywordsChain.length), `16n`, now);
+      synth.triggerAttackRelease(numberToCode(31 + keywordsChain.length), `8n`, now + 0.15);
+      // synth.triggerAttackRelease(`D#4`, `8n`, now + 0.53);
+      // synth.triggerAttackRelease(`G#4`, `8n`, now + 0.8);
+      // synth.triggerAttackRelease(`D#4`, `8n`, now + 1.03);
+
+      //from c4 to c5 every note, with 0.1s
+      // for (let i = 0; i < 8; i++) {
+      //   synth.triggerAttackRelease(numberToCode(28 + i), "8n", now + i * 0.2);
+      // }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <S.Container>
