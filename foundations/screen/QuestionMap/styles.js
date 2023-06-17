@@ -28,3 +28,22 @@ export const Question = styled.div`
   font-family: Bebas Neue;
   ${FlexCenterStyle}
 `;
+
+export const Overlap = styled.div`
+  font-size: 6vw;
+  width: 35vw;
+  height: 13vw;
+  border-radius: 1vw;
+  backdrop-filter: blur(1vw) brightness(1);
+  font-family: Bebas Neue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  ${FlexCenterStyle}
+
+  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0;")}
+  transition: all 0.5s;
+`;

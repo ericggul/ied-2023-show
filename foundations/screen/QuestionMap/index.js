@@ -4,10 +4,12 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 //resize
 import { useResizeDebounce } from "utils/hooks/useResize";
 
+//libraries
 import * as Tone from "tone";
-
-//d3
 import * as d3 from "d3";
+
+//foundation
+import QRSection from "./QRSection";
 
 //helper
 import { DATA_NODES_LINKS } from "./data-2";
@@ -16,6 +18,8 @@ import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode } fro
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 const getRandomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+const INTERVAL = 1400;
 
 export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
   ////////////
@@ -79,29 +83,43 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
 
   useEffect(() => {
     //current target
+    if (currentTarget == "") return;
     setQuestion(connectionData.nodes.filter((n) => n.text === currentTarget)[0].longDescription || "");
     let connected = connectionData.links.filter((l) => l.source === currentTarget);
     let connectedNodes = [...new Set(connected.map((l) => l.target))];
     let target = getRandomFromArray(connectedNodes);
+    triggerTone();
 
     const timeout = setTimeout(() => {
-      triggerTone();
       setReset(false);
       setCurrentTarget(target);
       setKeywordsChain((keywordsChain) => [...keywordsChain, currentTarget]);
-    }, 5000);
+    }, INTERVAL);
     return () => clearTimeout(timeout);
   }, [currentTarget]);
 
   useEffect(() => {
-    if (keywordsChain.length > 7) {
-      //reset
-      setKeywordsChain([]);
-      setQuestion("");
-      setCurrentTarget(getRandomFromArray(connectionData.nodes.map((n) => n.text)));
-      setReset(true);
+    if (keywordsChain.length >= 8) {
+      handleReset();
     }
   }, [keywordsChain]);
+
+  const [loopIteration, setLoopIteration] = useState(0);
+
+  function handleReset() {
+    if (loopIteration >= 8) {
+      window.location.reload();
+    }
+
+    setLoopIteration((i) => i + 1);
+    setKeywordsChain([]);
+    setQuestion("");
+    setReset(true);
+    setCurrentTarget("");
+    const timeout = setTimeout(() => {
+      setCurrentTarget(getRandomFromArray(connectionData.nodes.map((n) => n.text)));
+    }, INTERVAL);
+  }
 
   function handleNewInteraction(data) {
     setCurrentTarget(data.target);
@@ -120,18 +138,17 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     let unitSize = windowWidth * 0.001;
 
     if (node && simulation) {
-      simulation.alphaTarget(0.15).restart();
+      simulation.alphaTarget(0.2).restart();
 
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
         d.x = 0;
         d.y = 0;
+
         /////TARGET AND SOURCE NODES //////////////////////////////////
         updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, targetLinksRef, sourceLinksRef });
-
         ///KEYWORD CHAIN MANAGEMENT////////////////////////////////
         updateKeywordChain({ d, keywordsChain, node, link, unitSize });
-
         //get current r
         updateCurrentNode({ d, node });
       });
@@ -165,16 +182,17 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
 
       const now = Tone.now();
       let iteration = keywordsChain.length;
+      if (iteration >= 8) return;
       let targetNotes = NOTES[iteration % NOTES.length];
       targetNotes.forEach((note, i) => {
         if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
         else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
       });
-      let replyNotes = OTHER_NOTES[iteration % NOTES.length];
-      replyNotes.forEach((note, i) => {
-        if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
-        else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
-      });
+      // let replyNotes = OTHER_NOTES[iteration % NOTES.length];
+      // replyNotes.forEach((note, i) => {
+      //   if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
+      //   else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
+      // });
     } catch (e) {
       console.log(e);
     }
@@ -184,12 +202,14 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     <S.Container>
       <svg ref={svgRef} />
       <S.Question>{question}</S.Question>
+
+      <S.Overlap show={currentTarget === ""}>What is IED?</S.Overlap>
+      {/* <QRSection /> */}
     </S.Container>
   );
 }
 
 ///helper functions
-
 function linkArc(d) {
   const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
   return `
