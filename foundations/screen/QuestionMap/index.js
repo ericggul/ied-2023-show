@@ -12,7 +12,7 @@ import * as d3 from "d3";
 import QRSection from "./QRSection";
 
 //helper
-import { DATA_NODES_LINKS } from "./data-2";
+import { DATA_NODES_LINKS } from "./data";
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
 import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode } from "./helper/update";
 
@@ -21,7 +21,7 @@ const getRandomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const INTERVAL = 1400;
 
-export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
+export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn = true }) {
   ////////////
   ///d3///
   ////////////
@@ -88,7 +88,8 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS }) {
     let connected = connectionData.links.filter((l) => l.source === currentTarget);
     let connectedNodes = [...new Set(connected.map((l) => l.target))];
     let target = getRandomFromArray(connectedNodes);
-    triggerTone();
+
+    if (toneOn) triggerTone();
 
     const timeout = setTimeout(() => {
       setReset(false);

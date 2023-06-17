@@ -15,7 +15,7 @@ export default function Screen({ projects }) {
       <S.Container>
         <QuestionMap />
         {/* <EventModal showModal={showModal} setShowModal={setShowModal} /> */}
-        <ProjectModal showModal={showModal} setShowModal={setShowModal} />
+        <ProjectModal projects={projects} showModal={showModal} setShowModal={setShowModal} />
       </S.Container>
     </>
   );

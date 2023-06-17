@@ -27,11 +27,43 @@ export default function ScreenPage({ projects }) {
 }
 
 export const getStaticProps = async (context) => {
-  const projects = await prisma.projects.findMany();
+  try {
+    const projectsData = await prisma.projects.findMany({
+      include: {
+        keywords: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+    const metaData = await handleRelatedProjects(projectsData);
 
-  return {
-    props: {
-      projects,
-    },
-  };
+    return {
+      props: {
+        projects: metaData,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+  }
 };
+
+async function handleRelatedProjects(data) {
+  return data.map((datum, i) => {
+    let keywords = datum.keywords.map((keyword) => keyword.name);
+    let relatedProjects = [];
+    for (const keyword of keywords) {
+      let commonKeywords = data.filter((project) => project.keywords.map((keyword) => keyword.name).includes(keyword)).map((project) => project.name);
+      relatedProjects.push(...commonKeywords);
+    }
+
+    //delete redundant
+    relatedProjects = [...new Set(relatedProjects)];
+
+    return {
+      ...datum,
+      relatedProjects,
+    };
+  });
+}
