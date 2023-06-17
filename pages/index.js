@@ -27,8 +27,6 @@ export default function Home() {
       <Suspense fallback={<div>Loading...</div>}>
         <Intro />
       </Suspense>
-
-      {/* <Main /> */}
     </>
   );
 }

@@ -23,10 +23,11 @@ const roundUpFloat = (float, roundUp) => {
   return Math.round(float * roundUp) / roundUp;
 };
 
-export default function Works() {
+export default function Works({ projectsData, connectionData }) {
   const socket = useSocket();
 
-  const [connectionData, setConnectionData] = useState(DATA_NODES_LINKS);
+  console.log(connectionData);
+
   const [isRhizome, setIsRhizome] = useState(true);
   const [showModal, setShowModal] = useState(false);
 

@@ -2,9 +2,10 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 import dynamic from "next/dynamic";
+
 const Works = dynamic(() => import("containers/works"), { ssr: false });
 
-export default function Home() {
+export default function WorksPage({ projectsData, connectionData }) {
   return (
     <>
       <Head>
@@ -20,7 +21,58 @@ export default function Home() {
       </Head>
       <NextSeo title="RCA IED 2023" description="RCA IED 2023: Royal College of Art Information Expereience Design Public Event MA1 2023" />
 
-      <Works />
+      <Works projectsData={projectsData} connectionData={connectionData} />
     </>
   );
+}
+
+export const getStaticProps = async (context) => {
+  try {
+    const projectsData = await prisma.projects.findMany({
+      include: {
+        keywords: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+    const connectionData = await connectionToNodeLink(projectsData);
+
+    return {
+      props: {
+        // projectsData,
+        connectionData,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+async function connectionToNodeLink(data) {
+  let nodes = data.map((item) => ({
+    text: item.name,
+  }));
+  let links = [];
+
+  for (let i = 0; i < data.length; i++) {
+    let keywords = data[i].keywords.map((keyword) => keyword.name);
+    let relatedProjects = [];
+    for (const keyword of keywords) {
+      let commonKeywords = data.filter((project) => project.keywords.map((keyword) => keyword.name).includes(keyword)).map((project) => project.name);
+      relatedProjects.push(...commonKeywords);
+    }
+
+    //delete redundant
+    relatedProjects = [...new Set(relatedProjects)];
+    relatedProjects.forEach((project) => {
+      links.push({
+        source: data[i].name,
+        target: project,
+        value: 1,
+      });
+    });
+  }
+  return { nodes, links };
 }

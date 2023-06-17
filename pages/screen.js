@@ -2,9 +2,10 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 import dynamic from "next/dynamic";
+
 const Screen = dynamic(() => import("containers/screen"), { ssr: false });
 
-export default function Home() {
+export default function ScreenPage({ projects }) {
   return (
     <>
       <Head>
@@ -20,7 +21,17 @@ export default function Home() {
       </Head>
       <NextSeo title="RCA IED 2023" description="RCA IED 2023: Royal College of Art Information Expereience Design Public Event MA1 2023" />
 
-      <Screen />
+      <Screen projects={projects} />
     </>
   );
 }
+
+export const getStaticProps = async (context) => {
+  const projects = await prisma.projects.findMany();
+
+  return {
+    props: {
+      projects,
+    },
+  };
+};

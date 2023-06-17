@@ -7,7 +7,7 @@ const QuestionMap = dynamic(() => import("foundations/screen/QuestionMap"), { ss
 const ProjectModal = dynamic(() => import("foundations/screen/ProjectModal"), { ssr: false });
 const EventModal = dynamic(() => import("foundations/screen/EventModal"), { ssr: false });
 
-export default function Screen() {
+export default function Screen({ projects }) {
   const [showModal, setShowModal] = useState(true);
 
   return (
