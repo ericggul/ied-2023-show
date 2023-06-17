@@ -26,23 +26,29 @@ const roundUpFloat = (float, roundUp) => {
 export default function Works({ projectsData, connectionData }) {
   const socket = useSocket();
 
-  console.log(connectionData);
-
   const [isRhizome, setIsRhizome] = useState(true);
+
+  const [modalProject, setModalProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  function handleProjectClickFromRhizome(projectName) {
+    //select project with project from projectsdata
+    const project = projectsData.find((project) => project.name === projectName);
+    setModalProject(project || null);
+    if (project) setShowModal(true);
+  }
+
   function handleProjectClick(project) {
+    setModalProject(project);
     setShowModal(true);
-    console.log(project);
   }
 
   return (
     <>
       <S.Container>
-        <Rhizome isVisible={isRhizome} connectionData={connectionData} handleProjectClick={handleProjectClick} />
-        <ListView isVisible={!isRhizome} handleProjectClick={handleProjectClick} />
-        <Modal showModal={showModal} setShowModal={setShowModal} />
-
+        <Rhizome isVisible={isRhizome} connectionData={connectionData} handleProjectClick={handleProjectClickFromRhizome} />
+        <ListView isVisible={!isRhizome} projectsData={projectsData} handleProjectClick={handleProjectClick} />
+        <Modal showModal={showModal && modalProject} project={modalProject} setShowModal={setShowModal} />
         <Header isRhizome={isRhizome} setIsRhizome={setIsRhizome} />
         <Footer />
       </S.Container>

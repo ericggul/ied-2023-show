@@ -10,7 +10,7 @@ const PROJECTS = [
     studentName: "Jeanyoon Choi",
     abstract: "Rhizomatic Multi-Device Web Artwork radically challenging the notion of equality ('=').",
     slug: "jeanyoon-choi",
-    imgURL: "≠.png",
+    imgURL: "%3D%CC%B8.png",
     keywordsArray: ["Postmodern", "Chaos", "Non-linear"],
   },
   {
@@ -19,7 +19,7 @@ const PROJECTS = [
     abstract: "Multi-Device Web Artwork exploring the theme of accelerationism within the keyboard key 'W'.",
     slug: "jeanyoon-choi",
     imgURL: "w.png",
-    keywordsArray: ["Web Art", "Hyper-real", "Non-linear"],
+    keywordsArray: ["Postmodern", "Hyper-real", "Non-linear"],
   },
 
   {
@@ -28,7 +28,7 @@ const PROJECTS = [
     abstract: "Medium-Based Approach of Multi-Device Web Artwork, objecting and playing around user's mental model.",
     slug: "jeanyoon-choi",
     imgURL: "mba.png",
-    keywordsArray: ["Web Art", "Chaos", "Connectivity"],
+    keywordsArray: ["Web Art", "Chaos", "Poetic"],
   },
   {
     name: "105",
@@ -44,7 +44,7 @@ const PROJECTS = [
     abstract: "AI-led orchestration of a Multi-Device Web interaction recreating the experience of training an AI.",
     slug: "jeanyoon-choi",
     imgURL: "by_ai.png",
-    keywordsArray: ["Web Art", "Artificial Intelligence", "Information Technology"],
+    keywordsArray: ["Data and Society", "Artificial Intelligence", "Information Technology"],
   },
   {
     name: "Ode to Decentralisation",
@@ -52,7 +52,7 @@ const PROJECTS = [
     abstract: "Decentralisation Multi-Device Web Orchestra where participants co-create the melody of 'Ode to Joy'.",
     slug: "jeanyoon-choi",
     imgURL: "otd.png",
-    keywordsArray: ["Web Art", "Decentralisation", "Connectivity"],
+    keywordsArray: ["Interaction", "Decentralisation", "Poststructural"],
   },
   {
     name: "Labour-Data Trading Floor",
@@ -60,7 +60,7 @@ const PROJECTS = [
     abstract: "Highlighting unpaid labour behind the Image Classification job of the AI model training system.",
     slug: "jeanyoon-choi",
     imgURL: "ldtf.png",
-    keywordsArray: ["Web Art", "Connectivity", "Capitalism"],
+    keywordsArray: ["Data and Society", "Artificial Intelligence", "Capitalism"],
   },
   {
     name: "Collective Opinion",
@@ -68,7 +68,7 @@ const PROJECTS = [
     abstract: "Creating a harmonic melody based on diverse opinions, opposing to news recommendation algorithm.",
     slug: "jeanyoon-choi",
     imgURL: "collective_opinion.png",
-    keywordsArray: ["Web Art", "Sociopolitical", "Deomcracy"],
+    keywordsArray: ["Diversity", "Sociopolitical", "Democracy"],
   },
   {
     name: "Concept Visualisation",
@@ -76,7 +76,7 @@ const PROJECTS = [
     abstract: "Multi-Device Web Artwork (MDWA) guiding spectators to learn more about key concepts of MDWA.",
     slug: "jeanyoon-choi",
     imgURL: "concept_visualisation.png",
-    keywordsArray: ["Web Art", "Connectivity", "Non-linear"],
+    keywordsArray: ["Non-linear", "Connectivity", "Rhizomatic"],
   },
   {
     name: "Altering Headline",
@@ -84,7 +84,7 @@ const PROJECTS = [
     abstract: "Multi-Device Web Artwork where users alter NYT headline, and AI generates corresponding headline image.",
     slug: "jeanyoon-choi",
     imgURL: "altering_headline.png",
-    keywordsArray: ["Web Art", "Artificial Intelligence", "Democracy"],
+    keywordsArray: ["Interaction", "Artificial Intelligence", "Democracy"],
   },
   {
     name: "Woogie-Booging",
@@ -92,7 +92,7 @@ const PROJECTS = [
     abstract: "Reconstructing Mondrian's Broadway Boogie-Woogie through Multi-Device Web Artwork.",
     slug: "jeanyoon-choi",
     imgURL: "woogie_booging.png",
-    keywordsArray: ["Web Art", "Connectivity", "Spatial-Temporal"],
+    keywordsArray: ["Web Art", "Interaction", "Spatial-Temporal"],
   },
   {
     name: "Ainting",
@@ -100,15 +100,15 @@ const PROJECTS = [
     abstract: "Reconstructing Pollock's Action Painting through Multi-Device Web Artwork.",
     slug: "jeanyoon-choi",
     imgURL: "ainting.png",
-    keywordsArray: ["Web Art", "Connectivity", "Spatial-Temporal"],
+    keywordsArray: ["Web Art", "Interaction", "Spatial-Temporal"],
   },
   {
     name: "Death of Blue Screen",
     studentName: "Jeanyoon Choi",
     abstract: "Multi-Device Web Artwork playing around the notion of Blue Screen of Death and Yves Klein Blue.",
     slug: "jeanyoon-choi",
-    imgURL: "death_of_blue_screen.png",
-    keywordsArray: ["Web Art", "Spatial-Temporal", "Information Technology"],
+    imgURL: "death_of_blue_screen.jpg",
+    keywordsArray: ["Human-Computer Interaction", "Spatial-Temporal", "Information Technology"],
   },
   {
     name: "Explicit Narrative: A Primitive Approach",
@@ -131,8 +131,8 @@ const PROJECTS = [
     studentName: "Jeanyoon Choi",
     abstract: "4'33''=273s=13*21s=(17-4)*(17+4)s=17^2s-4^2s=4'49''-16s=(Whole Length)-(Intermission)",
     slug: "jeanyoon-choi",
-    imgURL: "17square.png",
-    keywordsArray: ["Web Art", "Non-linear", "Information Technology"],
+    imgURL: "17Square.png",
+    keywordsArray: ["Contemporary Art", "Non-linear", "Information Technology"],
   },
 ];
 

@@ -26,8 +26,7 @@ export const ModalContainer = styled.div`
 
   position: relative;
 
-  // width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 500)}px;
-  // height: ${({ theme }) => Math.min(theme.windowHeight * 0.6, 480)}px;
+  width: ${({ theme }) => Math.min(Math.min(theme.windowWidth * 0.9, 600) * 0.9, Math.min(theme.windowHeight * 0.8, 580))}px;
   padding: 1.8rem 5vw;
   background: transparent;
 
@@ -60,28 +59,60 @@ export const ModalCancel = styled.div`
 `;
 
 export const Image = styled.div`
-  width: ${({ theme }) => Math.min(Math.min(theme.windowWidth * 0.9, 500) * 0.9, Math.min(theme.windowHeight * 0.6, 480))}px;
-  height: ${({ theme }) => (Math.min(Math.min(theme.windowWidth * 0.9, 500) * 0.9, Math.min(theme.windowHeight * 0.6, 480)) * 2) / 3}px;
+  width: ${({ theme }) => Math.min(Math.min(theme.windowWidth * 0.9, 600) * 0.9, Math.min(theme.windowHeight * 0.8, 580))}px;
+  height: ${({ theme }) => (Math.min(Math.min(theme.windowWidth * 0.9, 600) * 0.9, Math.min(theme.windowHeight * 0.8, 580)) * 2) / 3}px;
   overflow: hidden;
   margin-bottom: 1rem;
+  position: relative;
+
+  ${FlexCenterStyle}
+
+  p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    ${FlexCenterStyle}
+  }
 
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s;
   }
 `;
 
 export const Lower = styled.div`
   display: flex;
-  width: 100%;
-  flex-direction: column;
+  width: ${({ theme }) => Math.min(Math.min(theme.windowWidth * 0.9, 600) * 0.9, Math.min(theme.windowHeight * 0.8, 580))}px;
+  // flex-direction: column;
   ${FlexCenterStyle}
 `;
 
-export const Text = styled.div`
-  width: 100%;
+export const LeftArray = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
 
+export const RightArray = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+`;
+
+export const Text = styled.div`
   h1 {
     font-size: 1.2rem;
     font-weight: normal;
@@ -96,15 +127,20 @@ export const Text = styled.div`
   }
 `;
 
-export const Bottom = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 0rem;
+export const Abstract = styled.div`
+  font-size: 1rem;
+  font-family: Times New Roman;
+  font-style: italic;
+  font-weight: normal;
+  text-align: right;
 `;
 
-export const Description = styled.div`
+export const LowerUpper = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const Tags = styled.div`
   font-size: 1rem;
   font-style: italic;
   font-family: Times New Roman;
@@ -123,6 +159,9 @@ export const Link = styled.div`
   font-family: Times New Roman;
   font-style: italic;
   border-bottom: 1px solid white;
+
+  //no line break
+  white-space: nowrap;
 
   img {
     width: 1rem;

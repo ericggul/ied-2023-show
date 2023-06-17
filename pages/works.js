@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import prisma from "lib/prisma";
 
 import dynamic from "next/dynamic";
 
@@ -41,7 +42,7 @@ export const getStaticProps = async (context) => {
 
     return {
       props: {
-        // projectsData,
+        projectsData,
         connectionData,
       },
     };

@@ -3,19 +3,19 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 import { BsSearch } from "react-icons/bs";
 import { DUMMY_LIST } from "containers/works/data";
 
-export default function ListView({ isVisible, handleProjectClick }) {
+export default function ListView({ projectsData, isVisible, handleProjectClick }) {
   const [filterWord, setFilterWord] = useState("");
-  const [filteredList, setFilteredList] = useState(DUMMY_LIST);
+  const [filteredList, setFilteredList] = useState(projectsData);
   const [focused, setFocused] = useState(false);
 
   useEffect(() => {
     if (filterWord === "") {
-      setFilteredList(DUMMY_LIST);
+      setFilteredList(projectsData);
     } else {
-      const filtered = DUMMY_LIST.filter((item) => item.projectName.toLowerCase().includes(filterWord.toLowerCase()) || item.artistName.toLowerCase().includes(filterWord.toLowerCase()));
+      const filtered = projectsData.filter((item) => item.projectName.toLowerCase().includes(filterWord.toLowerCase()) || item.artistName.toLowerCase().includes(filterWord.toLowerCase()));
       setFilteredList(filtered);
     }
-  }, [filterWord]);
+  }, [filterWord, projectsData]);
 
   return (
     <S.Container isVisible={isVisible} length={DUMMY_LIST.length}>
@@ -40,8 +40,8 @@ export default function ListView({ isVisible, handleProjectClick }) {
         {isVisible &&
           filteredList.map((item, idx) => (
             <S.ListItem key={idx} idx={idx} onClick={() => handleProjectClick(item)}>
-              <S.ListItemTitle>{item.projectName}</S.ListItemTitle>
-              <S.ListItemContent>{item.artistName}</S.ListItemContent>
+              <S.ListItemTitle>{item.name}</S.ListItemTitle>
+              <S.ListItemContent>{item.studentName}</S.ListItemContent>
             </S.ListItem>
           ))}
         {isVisible && filteredList.length === 0 && <S.ListItem>No results found</S.ListItem>}

@@ -1,14 +1,35 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
+import useResize from "utils/hooks/useResize";
 
-import { RxCross1 } from "react-icons/rx";
+const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 
-export default function Modal({ showModal, setShowModal }) {
+export default function Modal({ project, showModal, setShowModal }) {
   function handleClick(e) {
     e.stopPropagation();
     //send to google.com
-    window.open("https://www.rca.ac.uk/students/jeanyoon-choi/", "_blank");
+    window.open(`https://www.rca.ac.uk/students/${project.slug}`, "_blank");
   }
+
+  const [imgLoading, setImgLoading] = useState(false);
+
+  useEffect(() => {
+    if (!showModal) {
+      setImgLoading(true);
+    }
+  }, [showModal]);
+  const [windowWidth, windowHeight] = useResize();
+
+  useEffect(() => {
+    if (imgLoading) {
+      const timeout = setTimeout(() => {
+        setImgLoading(false);
+      }, 2500);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [imgLoading]);
+
   return (
     <S.Container
       showModal={showModal}
@@ -17,42 +38,67 @@ export default function Modal({ showModal, setShowModal }) {
         setShowModal(false);
       }}
     >
-      <S.ModalContainer
-        showModal={showModal}
-        onClick={(e) => {
-          e.stopPropagation();
-          setShowModal(false);
-        }}
-      >
-        <S.ModalCancel
+      {project && (
+        <S.ModalContainer
+          showModal={showModal}
           onClick={(e) => {
             e.stopPropagation();
             setShowModal(false);
           }}
         >
-          X
-        </S.ModalCancel>
-        <S.Image>
-          <img src="/assets/sample/Sample3.png" alt="sample project" />
-        </S.Image>
-        <S.Lower>
-          <S.Text>
-            <h1>MBA (Medium-Based Approach)</h1>
-            <h2>Jeanyoon Choi</h2>
-          </S.Text>
-          <S.Bottom>
-            <S.Description>
-              <S.Tag># Overcontrol</S.Tag>
-              <S.Tag># Speculative</S.Tag>
-              <S.Tag># Interaction</S.Tag>
-            </S.Description>
-            <S.Link onClick={handleClick}>
-              Learn More at RCA 2023
-              <img src={"/assets/arrow-white.svg"} />
-            </S.Link>
-          </S.Bottom>
-        </S.Lower>
-      </S.ModalContainer>
+          <S.ModalCancel
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowModal(false);
+            }}
+          >
+            X
+          </S.ModalCancel>
+          <S.Image>
+            <img
+              style={{
+                opacity: imgLoading ? 0 : 1,
+              }}
+              onLoad={() => setImgLoading(false)}
+              src={IMG_DB_URL + project.imgURL}
+              alt="sample project"
+            />
+            {imgLoading && <p>Loading...</p>}
+          </S.Image>
+          <S.Lower>
+            <S.LeftArray
+              style={{
+                width: windowWidth > 768 ? "50%" : "100%",
+              }}
+            >
+              <S.Text>
+                <h1>{project.name}</h1>
+                <h2>{project.studentName}</h2>
+              </S.Text>
+              <S.Tags>
+                {project.keywords.map((keyword, i) => (
+                  <S.Tag key={i}>#{keyword.name}</S.Tag>
+                ))}
+              </S.Tags>
+              {windowWidth < 768 && (
+                <S.Link onClick={handleClick}>
+                  Learn More at RCA 2023
+                  <img src={"/assets/arrow-white.svg"} />
+                </S.Link>
+              )}
+            </S.LeftArray>
+            {windowWidth > 768 && (
+              <S.RightArray>
+                <S.Abstract>{project.abstract}</S.Abstract>
+                <S.Link onClick={handleClick}>
+                  Learn More at RCA 2023
+                  <img src={"/assets/arrow-white.svg"} />
+                </S.Link>
+              </S.RightArray>
+            )}
+          </S.Lower>
+        </S.ModalContainer>
+      )}
     </S.Container>
   );
 }
