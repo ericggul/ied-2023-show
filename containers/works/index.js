@@ -1,12 +1,7 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
-//data
-import { connectionToNodeLink, DUMMY_LIST, DATA_NODES_LINKS } from "./data";
-import axios from "axios";
-
 //hooks
-import useResize from "utils/hooks/useResize";
 import useSocket from "utils/hooks/socket/useSocketMobile";
 
 //foundations
@@ -46,9 +41,9 @@ export default function Works({ projectsData, connectionData }) {
   return (
     <>
       <S.Container>
-        <Rhizome isVisible={isRhizome} connectionData={connectionData} handleProjectClick={handleProjectClickFromRhizome} />
-        <ListView isVisible={!isRhizome} projectsData={projectsData} handleProjectClick={handleProjectClick} />
-        <Modal showModal={showModal && modalProject} project={modalProject} setShowModal={setShowModal} />
+        <Rhizome socket={socket} isVisible={isRhizome} connectionData={connectionData} handleProjectClick={handleProjectClickFromRhizome} />
+        <ListView socket={socket} isVisible={!isRhizome} projectsData={projectsData} handleProjectClick={handleProjectClick} />
+        <Modal showModal={showModal && modalProject != null} project={modalProject} setShowModal={setShowModal} />
         <Header isRhizome={isRhizome} setIsRhizome={setIsRhizome} />
         <Footer />
       </S.Container>

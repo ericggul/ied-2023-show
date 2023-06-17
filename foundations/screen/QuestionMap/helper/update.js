@@ -79,7 +79,6 @@ function updateKeywordChain({ d, keywordsChain, node, link, unitSize }) {
     });
 
     let connectedLink = link.filter((l) => l.source.text === keywordsChain[keywordsChain.length - 1] && l.target.text === d.text);
-    console.log(connectedLink);
     connectedLink
       .transition()
       .duration(DURATION)

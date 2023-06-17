@@ -15,10 +15,8 @@ export default function handler(req, res) {
     res.socket.server.io = io;
 
     io.on("connection", (socket) => {
-      console.log(socket);
-      socket.on("handle-heart", (data) => {
-        console.log(data);
-        socket.emit("new-handle-heart", data);
+      socket.on("project-click", (data) => {
+        socket.broadcast.emit("new-project-click", data);
       });
     });
   }

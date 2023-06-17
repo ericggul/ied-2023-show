@@ -40,7 +40,6 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
 
   useEffect(() => {
     if (!reset) return;
-    //variables
     init();
   }, [connectionData, windowWidth, windowHeight, reset]);
 
@@ -100,10 +99,10 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
   }, [currentTarget]);
 
   useEffect(() => {
-    if (keywordsChain.length >= 8) {
+    if (keywordsChain.length >= 8 && toneOn) {
       handleReset();
     }
-  }, [keywordsChain]);
+  }, [keywordsChain, toneOn]);
 
   const [loopIteration, setLoopIteration] = useState(0);
 

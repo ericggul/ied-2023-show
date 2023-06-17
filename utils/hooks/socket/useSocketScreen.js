@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { useEffect, useRef } from "react";
 
-export default function useSocketInit() {
+export default function useSocketInit({ handleNewProjectClick }) {
   const socket = useRef(null);
   useEffect(() => {
     socketInitializer();
@@ -26,6 +26,8 @@ export default function useSocketInit() {
     socket.current.on("connect_error", (err) => {
       console.log(`connect_error due to ${err.message}`);
     });
+
+    socket.current.on("new-project-click", handleNewProjectClick);
   }
 
   return socket;

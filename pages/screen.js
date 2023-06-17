@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import prisma from "lib/prisma";
 
 import dynamic from "next/dynamic";
 
@@ -54,7 +55,7 @@ async function handleRelatedProjects(data) {
     let keywords = datum.keywords.map((keyword) => keyword.name);
     let relatedProjects = [];
     for (const keyword of keywords) {
-      let commonKeywords = data.filter((project) => project.keywords.map((keyword) => keyword.name).includes(keyword)).map((project) => project.name);
+      let commonKeywords = data.filter((project) => project.keywords.map((keyword) => keyword.name).includes(keyword));
       relatedProjects.push(...commonKeywords);
     }
 

@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
+const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
+
 const RELATED_PROJECTS = [
   {
     projectName: "MBA (Medium-Based Approach)",
@@ -61,8 +63,8 @@ const RELATED_PROJECTS = [
   },
 ];
 
-export default function Modal({ showModal, setShowModal }) {
-  const [currentProject, setCurrentProject] = useState(RELATED_PROJECTS[0]);
+export default function Modal({ currentProject, showModal, setShowModal }) {
+  console.log(currentProject, showModal);
 
   return (
     <S.Container
@@ -79,61 +81,65 @@ export default function Modal({ showModal, setShowModal }) {
           setShowModal(false);
         }}
       >
-        <S.Left>
-          <S.ImageContainer>
-            <img src={currentProject.imageURL} alt="sample project" />
-          </S.ImageContainer>
-          <S.InformationContainer>
-            <S.InfoLeft>
-              <h1>{currentProject.projectName}</h1>
-              <h2>{currentProject.artistName}</h2>
-            </S.InfoLeft>
-            <S.InfoRight>
-              <p> {currentProject.description}</p>
-              <p>
-                {currentProject.keywords.map((keyword, i) => (
-                  <S.SingleKeyword key={i}>{"#" + keyword}</S.SingleKeyword>
-                ))}
-              </p>
-            </S.InfoRight>
-          </S.InformationContainer>
-        </S.Left>
+        {currentProject && (
+          <S.Left>
+            <S.ImageContainer>
+              <img src={IMG_DB_URL + currentProject.imgURL} alt="sample project" />
+            </S.ImageContainer>
+            <S.InformationContainer>
+              <S.InfoLeft>
+                <h1>{currentProject.name}</h1>
+                <h2>{currentProject.studentName}</h2>
+              </S.InfoLeft>
+              <S.InfoRight>
+                <p> {currentProject.abstract}</p>
+                <p>
+                  {currentProject.keywords.map((keyword, i) => (
+                    <S.SingleKeyword key={i}>{"#" + keyword.name}</S.SingleKeyword>
+                  ))}
+                </p>
+              </S.InfoRight>
+            </S.InformationContainer>
+          </S.Left>
+        )}
 
-        <RightCarousel />
+        {currentProject && <RightCarousel relatedProjects={currentProject.relatedProjects} />}
       </S.ModalContainer>
     </S.Container>
   );
 }
 
-function RightCarousel() {
+function RightCarousel({ relatedProjects }) {
   const [currentLoc, setCurrentLoc] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentLoc((loc) => (loc + 1) % RELATED_PROJECTS.length);
+      setCurrentLoc((loc) => (loc + 1) % relatedProjects.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [relatedProjects]);
+
+  console.log(relatedProjects);
 
   return (
     <S.Right>
-      {RELATED_PROJECTS.map((prj, i) => {
+      {relatedProjects.map((prj, i) => {
         const yIdx =
-          currentLoc - i > RELATED_PROJECTS.length / 2
-            ? currentLoc - i - RELATED_PROJECTS.length
-            : currentLoc - i < -RELATED_PROJECTS.length / 2
-            ? currentLoc - i + RELATED_PROJECTS.length
+          currentLoc - i > relatedProjects.length / 2
+            ? currentLoc - i - relatedProjects.length
+            : currentLoc - i < -relatedProjects.length / 2
+            ? currentLoc - i + relatedProjects.length
             : currentLoc - i;
         const opacity = Math.abs(yIdx) >= 3 ? 0 : 1;
 
         return (
           <S.SingleRelatedProject key={i} yIdx={yIdx} opacity={opacity}>
             <S.RelatedImage>
-              <img src={prj.imageURL} alt="sample project" />
+              <img src={IMG_DB_URL + prj.imgURL} alt="sample project" />
             </S.RelatedImage>
             <S.RelatedExplanation>
-              <h1>{prj.projectName}</h1>
-              <h2>{prj.artistName}</h2>
+              <h1>{prj.name}</h1>
+              <h2>{prj.studentName}</h2>
             </S.RelatedExplanation>
           </S.SingleRelatedProject>
         );

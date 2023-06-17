@@ -18,7 +18,7 @@ const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Rhizome({ isVisible, connectionData, handleProjectClick }) {
+export default function Rhizome({ socket, isVisible, connectionData, handleProjectClick }) {
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -38,6 +38,9 @@ export default function Rhizome({ isVisible, connectionData, handleProjectClick 
 
   useEffect(() => {
     currentTargetRef.current = currentTarget;
+    if (socket && socket.current) {
+      socket.current.emit("project-click", currentTarget);
+    }
   }, [currentTarget]);
 
   function handleNewKeywordClick(e, target) {

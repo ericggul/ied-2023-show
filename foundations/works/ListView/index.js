@@ -3,7 +3,7 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 import { BsSearch } from "react-icons/bs";
 import { DUMMY_LIST } from "containers/works/data";
 
-export default function ListView({ projectsData, isVisible, handleProjectClick }) {
+export default function ListView({ socket, projectsData, isVisible, handleProjectClick }) {
   const [filterWord, setFilterWord] = useState("");
   const [filteredList, setFilteredList] = useState(projectsData);
   const [focused, setFocused] = useState(false);
