@@ -27,7 +27,7 @@ export const ModalContainer = styled.div`
 
   transition: all 0.5s ease-in-out;
 
-  backdrop-filter: blur(0.6vw) brightness(1);
+  backdrop-filter: blur(0.6vw) brightness(0.8);
   // box-shadow: inset 0 0 1.4rem 0.1rem rgba(255, 255, 255, 0.2);
 `;
 
@@ -47,13 +47,22 @@ export const ImageContainer = styled.div`
   height: ${({ theme }) => (Math.min(theme.windowWidth * 0.69, theme.windowHeight * 1.05) * 2) / 3}px;
 
   transition: all 0.5s ease-in-out;
+`;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 1;
-  }
+export const PrevImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+`;
+
+export const CurrImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+
+  transition: all 0.25s ease-in-out;
 `;
 
 export const InformationContainer = styled.div`
@@ -105,7 +114,7 @@ export const SingleRelatedProject = styled.div`
   margin: 1vw 0;
   position: absolute;
 
-  ${({ yIdx }) => `transform: translateY(${-yIdx * 20}vw);`}
+  ${({ yIdx }) => `transform: translateY(${-yIdx * 19}vw);`}
   ${({ opacity }) => `opacity: ${opacity};`}
   transition: all 1s ease-in-out;
 `;

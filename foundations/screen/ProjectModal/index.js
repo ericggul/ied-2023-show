@@ -3,68 +3,23 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
 const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 
-const RELATED_PROJECTS = [
-  {
-    projectName: "MBA (Medium-Based Approach)",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/SampleProject.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-
-  {
-    projectName: "Test 1",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample1.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-  {
-    projectName: "Test 2",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample2.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-  {
-    projectName: "Test 3",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample3.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-  {
-    projectName: "Test 1",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample1.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-  {
-    projectName: "Test 2",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample2.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-  {
-    projectName: "Test 3",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample3.png",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-  {
-    projectName: "Test 4",
-    artistName: "Jeanyoon Choi",
-    imageURL: "/assets/sample/Sample4.jpeg",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
-    keywords: ["interactive", "installation", "sound"],
-  },
-];
-
 export default function Modal({ currentProject, showModal, setShowModal }) {
-  console.log(currentProject, showModal);
+  const [transition, setTransition] = useState(false);
+  const [imgURL, setImgURL] = useState(false);
+  useEffect(() => {
+    if (!currentProject) return;
+    setTransition(true);
+    const timeoutA = setTimeout(() => {
+      setImgURL(currentProject.imgURL);
+    }, 200);
+    const timeout = setTimeout(() => {
+      setTransition(false);
+    }, 300);
+    return () => {
+      clearTimeout(timeoutA);
+      clearTimeout(timeout);
+    };
+  }, [currentProject]);
 
   return (
     <S.Container
@@ -84,7 +39,13 @@ export default function Modal({ currentProject, showModal, setShowModal }) {
         {currentProject && (
           <S.Left>
             <S.ImageContainer>
-              <img src={IMG_DB_URL + currentProject.imgURL} alt="sample project" />
+              <S.CurrImg
+                style={{
+                  opacity: transition ? 0 : 1,
+                }}
+                src={IMG_DB_URL + imgURL}
+                alt="Student project"
+              />
             </S.ImageContainer>
             <S.InformationContainer>
               <S.InfoLeft>
@@ -118,8 +79,6 @@ function RightCarousel({ relatedProjects }) {
     }, 5000);
     return () => clearInterval(interval);
   }, [relatedProjects]);
-
-  console.log(relatedProjects);
 
   return (
     <S.Right>

@@ -23,7 +23,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["static01.nyt.com", "operating-as-usual.vercel.app"],
+    domains: ["static01.nyt.com", "operating-as-usual.vercel.app", "https://ied-2023-show.s3.eu-west-1.amazonaws.com"],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
@@ -33,6 +33,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "replicate.delivery",
+      },
+      {
+        protocol: "https",
+        hostname: "https://ied-2023-show.s3.eu-west-1.amazonaws.com",
       },
     ],
   },

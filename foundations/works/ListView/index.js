@@ -39,7 +39,14 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
       <S.ListContainer>
         {isVisible &&
           filteredList.map((item, idx) => (
-            <S.ListItem key={idx} idx={idx} onClick={() => handleProjectClick(item)}>
+            <S.ListItem
+              key={idx}
+              idx={idx}
+              onClick={() => {
+                if (socket && socket.current) socket.current.emit("project-click", item.name);
+                handleProjectClick(item);
+              }}
+            >
               <S.ListItemTitle>{item.name}</S.ListItemTitle>
               <S.ListItemContent>{item.studentName}</S.ListItemContent>
             </S.ListItem>

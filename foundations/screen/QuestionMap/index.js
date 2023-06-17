@@ -19,8 +19,6 @@ import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode } fro
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 const getRandomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-const INTERVAL = 1400;
-
 export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn = true }) {
   ////////////
   ///d3///
@@ -28,6 +26,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
 
   const [currentTarget, setCurrentTarget] = useState("Double Thinking");
   const svgRef = useRef();
+  const [intervalTime, setIntervalTime] = useState(1500);
 
   //size
   const [windowWidth, windowHeight] = useResizeDebounce();
@@ -42,6 +41,11 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
     if (!reset) return;
     init();
   }, [connectionData, windowWidth, windowHeight, reset]);
+
+  useEffect(() => {
+    if (toneOn) setIntervalTime(1500);
+    if (!toneOn) setIntervalTime(5000);
+  }, [toneOn]);
 
   function init() {
     const types = ["isCycle", "isNotCycle"];
@@ -94,7 +98,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
       setReset(false);
       setCurrentTarget(target);
       setKeywordsChain((keywordsChain) => [...keywordsChain, currentTarget]);
-    }, INTERVAL);
+    }, intervalTime);
     return () => clearTimeout(timeout);
   }, [currentTarget]);
 
@@ -118,7 +122,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
     setCurrentTarget("");
     const timeout = setTimeout(() => {
       setCurrentTarget(getRandomFromArray(connectionData.nodes.map((n) => n.text)));
-    }, INTERVAL);
+    }, intervalTime);
   }
 
   function handleNewInteraction(data) {

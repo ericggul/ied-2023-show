@@ -18,9 +18,13 @@ export default function Screen({ projects }) {
   });
 
   function handleNewProjectClick(data) {
-    const project = projects.find((project) => project.name === data);
-    setModalProject(project || null);
-    if (project) setShowModal(true);
+    try {
+      const project = projects.find((project) => project.name === data);
+      setModalProject(project || null);
+      if (project) setShowModal(true);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (

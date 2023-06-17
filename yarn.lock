@@ -1735,6 +1735,11 @@ scheduler@^0.23.0:
   dependencies:
     loose-envify "^1.1.0"
 
+shadertoy-react@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/shadertoy-react/-/shadertoy-react-1.1.2.tgz#109d411df53792f4a38079ea1bf73ca9a27b7203"
+  integrity sha512-xlZA+GipOKR6B1SDHBrVLBK8zpfWFMOKddXvdU9B3yVhWlw4mX4Buex2ZxD3DJJeD8tw0kOU3jVeF2KgAeFUHA==
+
 shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
