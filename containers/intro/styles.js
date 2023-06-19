@@ -20,6 +20,18 @@ export const Container = styled.div`
     z-index: 100;
     font-size: 5rem;
   }
+
+  p {
+    ${FlexCenterStyle}
+    ${WholeContainer}
+    position: fixed;
+    top: 0;
+    font-size: 2rem;
+    color: white;
+    z-index: 1000;
+    font-family: Times New Roman;
+    font-style: italic;
+  }
 `;
 
 export const Loading = styled.div`

@@ -12,12 +12,22 @@ export default function Modal({ project, showModal, setShowModal }) {
   }
 
   const [imgLoading, setImgLoading] = useState(false);
+  const [imgSrc, setImgSrc] = useState(null);
 
   useEffect(() => {
-    if (!showModal) {
+    if (showModal) {
       setImgLoading(true);
+    } else {
+      setImgSrc(null);
     }
-  }, [showModal]);
+  }, [showModal, project]);
+
+  useEffect(() => {
+    if (project) {
+      setImgSrc(IMG_DB_URL + project.imgURL);
+    }
+  }, [project]);
+
   const [windowWidth, windowHeight] = useResize();
 
   useEffect(() => {
@@ -55,14 +65,16 @@ export default function Modal({ project, showModal, setShowModal }) {
             X
           </S.ModalCancel>
           <S.Image>
-            <img
-              style={{
-                opacity: imgLoading ? 0 : 1,
-              }}
-              onLoad={() => setImgLoading(false)}
-              src={IMG_DB_URL + project.imgURL}
-              alt="sample project"
-            />
+            {imgSrc && (
+              <img
+                style={{
+                  opacity: imgLoading ? 0 : 1,
+                }}
+                onLoad={() => setImgLoading(false)}
+                src={imgSrc}
+                alt="sample project"
+              />
+            )}
             {imgLoading && <p>Loading...</p>}
           </S.Image>
           <S.Lower>

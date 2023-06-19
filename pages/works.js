@@ -68,6 +68,8 @@ async function connectionToNodeLink(data) {
     //delete redundant
     relatedProjects = [...new Set(relatedProjects)];
     relatedProjects.forEach((project) => {
+      if (links.find((link) => link.target === data[i].name && link.source === project)) return;
+
       links.push({
         source: data[i].name,
         target: project,

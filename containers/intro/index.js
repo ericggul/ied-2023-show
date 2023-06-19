@@ -37,6 +37,7 @@ export default function Intro() {
 
   return (
     <S.Container>
+      {show < 1 && <p>Loading...</p>}
       <Background show={show} windowWidth={windowWidth} scrollPos={scrollPos} handleImageLoaded={() => setShow((s) => s + 0.5)} />
       <MainVisual show={show} scrollPos={scrollPos} handleImageLoaded={() => setShow((s) => s + 0.5)} />
       <Navigator show={show} scrollPos={scrollPos} />

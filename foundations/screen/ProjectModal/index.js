@@ -6,6 +6,7 @@ const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 export default function Modal({ currentProject, showModal, setShowModal }) {
   const [transition, setTransition] = useState(false);
   const [imgURL, setImgURL] = useState(false);
+
   useEffect(() => {
     if (!currentProject) return;
     setTransition(true);
