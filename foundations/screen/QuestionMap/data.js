@@ -571,8 +571,9 @@ export const DATA_NODES_LINKS = {
     {
       text: "Treaty of Versailles",
       id: 89,
-      longDescription: "How should human beings interact with nature?",
-      shortDescription: "Human-Nature Interaction",
+
+      longDescription: `How to create a decentralised form of art through interactivity?`,
+      shortDescription: "Decentralised Art",
     },
     {
       text: "Compiegne Wagon",
@@ -820,8 +821,8 @@ export const DATA_NODES_LINKS = {
     {
       text: "Berlin Nonequality",
       id: 130,
-      longDescription: `How to create a decentralised form of art through interactivity?`,
-      shortDescription: "Decentralised Art",
+      longDescription: "How should human beings interact with nature?",
+      shortDescription: "Human-Nature Interaction",
     },
     {
       text: "≠",

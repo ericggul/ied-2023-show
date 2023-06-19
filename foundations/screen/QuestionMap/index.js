@@ -208,7 +208,7 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
       <S.Question>{question}</S.Question>
 
       <S.Overlap show={currentTarget === ""}>What is IED?</S.Overlap>
-      {/* <QRSection /> */}
+      <QRSection />
     </S.Container>
   );
 }

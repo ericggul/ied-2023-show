@@ -4,12 +4,12 @@ import styled from "styled-components";
 export const RightWrapper = styled.div`
   background: rgba(200, 200, 200, 0.1);
   box-shadow: 0 0 0.5vw 0.5vw rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(0.8vw);
+  backdrop-filter: blur(1vw) brightness(1);
   position: absolute;
   right: 0;
   height: 100%;
   color: white;
-  width: 28vw;
+  width: 20vw;
 
   display: flex;
   flex-direction: column;
@@ -48,23 +48,22 @@ export const RightWrapper = styled.div`
 
 export const RightInner = styled.div`
   padding-top: 3vw;
-  padding-left: 3vw;
-  padding-right: calc(max(2vw, 10%));
+  padding-left: 1vw;
 
   h1 {
-    font-size: 2.5vw;
+    font-size: 1.5vw;
   }
 `;
 
 export const Expl = styled.div`
-  font-size: 2vw;
+  font-size: 1.5vw;
   margin-top: 0.2vw;
   margin-bottom: 3.6vw;
   font-style: italic;
 `;
 
 export const ImageWrapper = styled.div`
-  max-width: calc(min(100%, 30vh));
+  max-width: 10vw;
   margin-top: 3.5vw;
 
   img {
@@ -84,17 +83,17 @@ export const Footer = styled.div`
   }
 
   h2 {
-    font-size: 2.3vw;
+    font-size: 1.5vw;
   }
 `;
 
 export const TextWrapper = styled.div`
-  font-size: 3vw;
+  font-size: 1.5vw;
   width: 100%;
   line-height: 1.1;
 
   span {
-    font-size: 3.2vw;
+    font-size: 1.5vw;
     font-weight: bold;
   }
 `;

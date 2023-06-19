@@ -10,7 +10,7 @@ const ProjectModal = dynamic(() => import("foundations/screen/ProjectModal"), { 
 const EventModal = dynamic(() => import("foundations/screen/EventModal"), { ssr: false });
 
 export default function Screen({ projects }) {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [modalProject, setModalProject] = useState(null);
 
   const socket = useSocket({
