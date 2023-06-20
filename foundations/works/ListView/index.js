@@ -13,8 +13,12 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
       setFilteredList(projectsData);
     } else {
       console.log(projectsData);
-      console.log(projectsData.map((el) => el.name));
-      const filtered = projectsData.filter((item) => item.name.toLowerCase().includes(filterWord.toLowerCase()) || item.studentName.toLowerCase().includes(filterWord.toLowerCase()));
+      const filtered = projectsData.filter(
+        (item) =>
+          item.name.toLowerCase().includes(filterWord.toLowerCase()) ||
+          item.studentName.toLowerCase().includes(filterWord.toLowerCase()) ||
+          item.keywords.some((keyword) => keyword.name.toLowerCase().includes(filterWord.toLowerCase()))
+      );
       setFilteredList(filtered);
     }
   }, [filterWord, projectsData]);

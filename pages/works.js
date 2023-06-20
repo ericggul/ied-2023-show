@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { NextSeo } from "next-seo";
 import prisma from "lib/prisma";
 
 import dynamic from "next/dynamic";
@@ -20,7 +19,6 @@ export default function WorksPage({ projectsData, connectionData }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
-      <NextSeo title="RCA IED 2023" description="RCA IED 2023: Royal College of Art Information Expereience Design Public Event MA1 2023" />
 
       <Works projectsData={projectsData} connectionData={connectionData} />
     </>

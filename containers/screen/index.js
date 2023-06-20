@@ -27,6 +27,16 @@ export default function Screen({ projects }) {
     }
   }
 
+  useEffect(() => {
+    if (modalProject) {
+      const timeout = setTimeout(() => {
+        setShowModal(false);
+        setModalProject(null);
+      }, 30 * 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [modalProject]);
+
   return (
     <>
       <S.Container>

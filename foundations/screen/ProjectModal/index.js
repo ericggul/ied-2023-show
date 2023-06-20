@@ -5,9 +5,11 @@ const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 
 export default function Modal({ currentProject, showModal, setShowModal }) {
   const [transition, setTransition] = useState(false);
+  const [imgLoading, setImgLoading] = useState(true);
   const [imgURL, setImgURL] = useState(false);
 
   useEffect(() => {
+    setImgLoading(true);
     if (!currentProject) return;
     setTransition(true);
     const timeoutA = setTimeout(() => {
@@ -21,6 +23,17 @@ export default function Modal({ currentProject, showModal, setShowModal }) {
       clearTimeout(timeout);
     };
   }, [currentProject]);
+
+  useEffect(() => {
+    if (imgLoading) {
+      const timeoutA = setTimeout(() => {
+        setImgLoading(false);
+      }, 300);
+      return () => {
+        clearTimeout(timeoutA);
+      };
+    }
+  }, [imgLoading]);
 
   return (
     <S.Container
@@ -41,8 +54,9 @@ export default function Modal({ currentProject, showModal, setShowModal }) {
           <S.Left>
             <S.ImageContainer>
               <S.CurrImg
+                onLoad={() => setImgLoading(false)}
                 style={{
-                  opacity: transition ? 0 : 1,
+                  opacity: transition || imgLoading ? 0 : 1,
                 }}
                 src={IMG_DB_URL + imgURL}
                 alt="Student project"
@@ -75,21 +89,25 @@ function RightCarousel({ relatedProjects }) {
   const [currentLoc, setCurrentLoc] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentLoc((loc) => (loc + 1) % relatedProjects.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    if (relatedProjects.length >= 3) {
+      const interval = setInterval(() => {
+        setCurrentLoc((loc) => (loc + 1) % relatedProjects.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
   }, [relatedProjects]);
 
   return (
     <S.Right>
       {relatedProjects.map((prj, i) => {
         const yIdx =
-          currentLoc - i > relatedProjects.length / 2
-            ? currentLoc - i - relatedProjects.length
-            : currentLoc - i < -relatedProjects.length / 2
-            ? currentLoc - i + relatedProjects.length
-            : currentLoc - i;
+          relatedProjects.length >= 3
+            ? currentLoc - i > relatedProjects.length / 2
+              ? currentLoc - i - relatedProjects.length
+              : currentLoc - i < -relatedProjects.length / 2
+              ? currentLoc - i + relatedProjects.length
+              : currentLoc - i
+            : -i;
         const opacity = Math.abs(yIdx) >= 3 ? 0 : 1;
 
         return (
