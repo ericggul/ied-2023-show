@@ -1,11 +1,13 @@
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { useSpring } from "react-spring";
+import useResize from "utils/hooks/useResize";
 import * as easings from "d3-ease";
 
 export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
   ///main visual identity
   const [mainVisualIntensity, setMainVisualIntensity] = useState(0);
+  const [windowWidth, windowHeight] = useResize();
 
   useSpring({
     from: { progress: 0 },
@@ -42,15 +44,14 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
       >
         <div>
           <h1>RCA IED MA1</h1>
-          <h1>
-            <i>Public Event</i>
-          </h1>
+          {windowWidth > 768 && <h2>Information Experience Design</h2>}
         </div>
         <div>
-          <h1>Information Experience</h1>
-          <h1>Design</h1>
+          {windowWidth > 768 && <img src="/assets/RCALogo.png" />}
+          {windowWidth < 768 && <h2>Information Experience Design</h2>}
         </div>
       </S.Info>
+
       <S.Info
         style={{
           opacity: Math.max(0.9 - (1 - Math.min(mainVisualIntensity + 0.1, 1)) * 2, 0),
@@ -58,21 +59,14 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
         }}
       >
         <div>
-          <h1>RCA Kensington</h1>
-          <h1>First Floor</h1>
-          <h1>
-            <i>Enter from</i>
-          </h1>
-          <h1>
-            <i>Royal Albert Hall</i>
-          </h1>
+          <h3>RCA Kensington</h3>
+          <h3>First Floor</h3>
+          <h2>Enter from Royal Albert Hall</h2>
         </div>
         <div>
-          <h1>30th June</h1>
-          <h1>
-            <i>to</i> 3rd July
-          </h1>
-          <h1>12pm - 6pm</h1>
+          <h3>30th June</h3>
+          <h3>to 3rd July</h3>
+          <h2>12pm - 6pm</h2>
         </div>
       </S.Info>
     </S.MainVisual>

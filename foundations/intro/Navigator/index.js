@@ -17,8 +17,7 @@ export default function Navigator({ show, scrollPos }) {
   const router = useRouter();
 
   function handleClick(ev, type) {
-    // router.push("/works");
-    toast.danger("Work in progress");
+    router.push("/works");
   }
 
   return (
@@ -29,10 +28,11 @@ export default function Navigator({ show, scrollPos }) {
         }}
       >
         <S.Upper>
-          <h2>COUNTERPOINT</h2>
+          <h1>COUNTERPOINT</h1>
           <br />
-          <h2>is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the Information Experience Design MA1 cohort.</h2>
+          <h2>is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the INFORMATION EXPERIENCE DESIGN MA1 cohort.</h2>
         </S.Upper>
+        <S.Overlay>{/* <img src="/assets/Overlay.png" /> */}</S.Overlay>
 
         <S.ButtonContainer>
           <S.Button
@@ -42,7 +42,7 @@ export default function Navigator({ show, scrollPos }) {
             }}
             onClick={(ev) => handleClick(ev, "works")}
           >
-            (WIP)
+            WORKS
             <S.ArrowRight src={"/assets/arrow-right.svg"} />
           </S.Button>
           <S.Button
@@ -52,7 +52,7 @@ export default function Navigator({ show, scrollPos }) {
             }}
             onClick={(ev) => handleClick(ev, "events")}
           >
-            (WIP)
+            EVENTS
             <S.ArrowLeft src={"/assets/arrow-left.svg"} />
           </S.Button>
         </S.ButtonContainer>

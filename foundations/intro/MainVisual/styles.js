@@ -15,7 +15,7 @@ export const MainVisual = styled.div`
   margin: auto;
   background-size: cover;
   background-position: center;
-  z-inde: 3;
+  z-index: 3;
 
   transition: all 0.1s;
 `;
@@ -41,11 +41,9 @@ export const Info = styled.div`
   display: flex;
   color: #fff;
   z-indes: 30;
-  mix-blend-mode: difference;
 
   transition: all 0.1s;
-  letter-spacing: 0.25rem;
-  line-height: 1.2;
+  mix-blend-mode: difference;
 
   div {
     margin: 4vh 2vw;
@@ -55,23 +53,40 @@ export const Info = styled.div`
 
     &:last-child {
       align-items: flex-end;
+      text-align: right;
 
-      h1,
-      h2 {
+      h3 {
         text-align: right;
       }
     }
-    h1,
+
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      opacity: 0.8;
+    }
+
     h2 {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
+      font-family: Roboto Serif;
+      font-weight: 200;
+      letter-spacing: 0.1rem;
+      opacity: 0.7;
+      font-style: italic;
+
+      margin-top: 0.8rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      letter-spacing: 0.12rem;
       font-weight: normal;
-      margin: 0;
-      padding: 0;
-      i {
-        font-size: 1rem;
-        font-family: Times New Roman;
-        line-height: 1;
-      }
+    }
+
+    img {
+      width: 9rem;
+      margin-top: -2rem;
     }
   }
 `;

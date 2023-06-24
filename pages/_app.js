@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
-    font-family: Helvetica !important;
+    font-family: Barlow;
   }
 
   a {
@@ -36,38 +36,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  @font-face {
-    font-family: 'Din';
-    src: url("/fonts/DIN.ttf") format("truetype");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Din';
-    font-weight: 900;
-    src: url("/fonts/DIN-Black.ttf") format("truetype");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Din';
-    font-weight: medium;
-    font-style: italic;
-    src: url("/fonts/DIN-Medium.ttf") format("truetype");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Din';
-    font-weight: 700;
-    src: url("/fonts/DIN-Bold.ttf") format("truetype");
-    font-display: swap;
-  }
 
   
 
-
-  font-family: Helvetica !important;
 
 
   input {

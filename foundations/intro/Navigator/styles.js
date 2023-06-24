@@ -13,8 +13,8 @@ export const MainVisual = styled.div`
   background-size: cover;
   background-position: center;
   z-index: 3;
-  font-family: Helvetica !important;
-  color: #cbc6e5;
+  font-family: Barlow;
+  color: white;
 
   h1,
   h2,
@@ -28,38 +28,40 @@ export const MainVisual = styled.div`
   transition: all 0.1s;
 `;
 
+export const Overlay = styled.div`
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+`;
+
 export const Upper = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
   margin-top: 0vh;
-  letter-spacing: 0.05rem;
+
+  h1 {
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.6rem;
+  }
 
   h2 {
-    color: #cbc6e5;
+    color: #fff;
     font-size: 1rem;
-    line-height: 1.37;
-    letter-spacing: 0.2rem;
+    line-height: 140%;
+    font-style: italic;
+    letter-spacing: 0.1rem;
     font-weight: normal;
-    margin-top: 0vh;
     text-align: center;
     ${FlexCenterStyle}
 
-    &:first-child {
-      width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
-
-      font-weight: bold;
-      margin-left: 0.8rem;
-      letter-spacing: 0.85rem;
-
-      //last letter no spacing
-
-      font-size: ${({ theme }) => theme.windowWidth > 768 && "2rem"};
-      text-align: center;
-    }
-
-    width: ${({ theme }) => Math.min(theme.windowWidth * 0.7, 700)}px;
-    text-align: center;
-    // letter-spacing: 0.5rem;
+    width: ${({ theme }) => Math.min(theme.windowWidth * 0.88, 800)}px;
   }
 `;
 
@@ -76,10 +78,12 @@ export const Button = styled.div`
   font-size: 3rem;
   height: 3.2rem;
   width: 13rem;
+  font-style: italic;
   margin: 2vh 0;
   text-align: center;
   ${FlexCenterStyle}
   cursor: pointer;
+  letter-spacing: 0.3rem;
 
   transition: all 0.1s;
 `;
@@ -104,28 +108,27 @@ export const Lower = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
   margin-bottom: 3vh;
-  opacity: 0.7;
 
   transition: all 0.1s;
 
   h1 {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
     text-align: center;
-    font-size: 1.2rem;
-    font-family: Times New Roman;
-    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.5;
   }
 
   h3 {
     font-size: 0.77rem;
     line-height: 1.3;
+    opacity: 0.8;
     letter-spacing: 0.05rem;
     font-weight: normal;
     width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 900)}px;
     text-align: center;
 
     a {
-      color: #cbc6e5;
       text-decoration: none;
       cursor: pointer;
     }

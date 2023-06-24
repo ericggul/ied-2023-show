@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   background: black;
   color: white;
-  font-family: Helvetica !important;
+  font-family: Barlow;
   overflow-y: scroll;
 
   z-index: 5 !important;
@@ -29,7 +29,7 @@ export const Container = styled.div`
     font-size: 2rem;
     color: white;
     z-index: 1000;
-    font-family: Times New Roman;
+    font-family: Roboto Serif;
     font-style: italic;
   }
 `;
