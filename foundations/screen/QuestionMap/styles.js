@@ -20,6 +20,7 @@ export const Question = styled.div`
   padding: 1vw 0;
   bottom: 0;
   height: 3vw;
+  z-index: 1000;
   backdrop-filter: blur(1vw) brightness(1.4);
   width: 100%;
   text-align: center;
@@ -31,10 +32,10 @@ export const Question = styled.div`
 
 export const Overlap = styled.div`
   font-size: 6vw;
-  width: 35vw;
-  height: 13vw;
-  border-radius: 1vw;
-  backdrop-filter: blur(1vw) brightness(1);
+  // width: 35vw;
+  // height: 13vw;
+  // border-radius: 1vw;
+  // backdrop-filter: blur(1vw) brightness(1);
   font-family: Bebas Neue;
   position: absolute;
   top: 0;

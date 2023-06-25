@@ -1,34 +1,33 @@
 import * as S from "./styles";
+import { useRouter } from "next/router";
 
-export default function HeaderEl() {
+export default function HeaderEl({ isRhizome, setIsRhizome }) {
+  const router = useRouter();
+
   return (
     <S.Container>
       <S.Upper>
-        <S.UpperCenter>EVENTS</S.UpperCenter>
-        <S.UpperRight>
-          WORKS
-          <img src={"/assets/arrow-right.svg"} />
-        </S.UpperRight>
+        <S.UpperCenter>
+          <S.CenterText
+            style={{
+              textAlign: "right",
+            }}
+          >
+            EVENTS
+          </S.CenterText>
+          <S.CenterText
+            style={{
+              opacity: 0.35,
+              textAlign: "left",
+            }}
+            onClick={() => {
+              router.push("/works");
+            }}
+          >
+            WORKS
+          </S.CenterText>
+        </S.UpperCenter>
       </S.Upper>
-      {/* <S.List>
-        <S.Item
-          onClick={() => setIsRhizome(true)}
-          style={{
-            opacity: isRhizome ? 1 : 0.4,
-          }}
-        >
-          rhizome
-        </S.Item>
-        <S.Center></S.Center>
-        <S.Item
-          onClick={() => setIsRhizome(false)}
-          style={{
-            opacity: isRhizome ? 0.4 : 1,
-          }}
-        >
-          list view
-        </S.Item>
-      </S.List> */}
     </S.Container>
   );
 }

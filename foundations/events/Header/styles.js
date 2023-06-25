@@ -7,7 +7,7 @@ export const Container = styled.div`
   z-index: 100;
   width: 100%;
   position: fixed;
-  height: 7rem;
+  height: ${({ theme }) => (theme.windowWidth < 768 ? "4rem" : "7rem")};
   padding-top: 0.5rem;
   top: 0;
   left: 0;
@@ -16,6 +16,7 @@ export const Container = styled.div`
   pointer-events: all;
 
   ${FlexCenterStyle}
+
   flex-direction: column;
   backdrop-filter: blur(1rem) brightness(2);
 
@@ -28,44 +29,30 @@ export const Upper = styled.div`
   font-weight: bold;
   margin-top: 0.8rem;
   ${FlexCenterStyle}
+  width: 100%;
+  justify-content: space-between;
 
   width: 100%;
 `;
 
-export const UpperRight = styled.div`
-  font-size: 1rem;
-  font-weight: bold;
-  position: absolute;
-  right: 1.5rem;
-  opacity: 0.4;
+export const Center = styled.div`
   ${FlexCenterStyle}
-  cursor: pointer;
-
-  img {
-    margin-left: 0.5rem;
-    width: 1rem;
-  }
+  flex-direction: column;
 `;
 
 export const UpperCenter = styled.div`
-  font-size: 1rem;
+  cursor: pointer;
+  font-size: ${({ theme }) => (theme.windowWidth < 768 ? "1.2rem" : "1.7rem")};
+  margin-left: ${({ theme }) => (theme.windowWidth < 768 ? ".4rem" : ".6rem")};
   font-weight: bold;
+
+  font-style: italic;
   ${FlexCenterStyle}
-  transform: scaleY(4);
+  letter-spacing: 0.1rem;
+`;
 
-  @keyframes bounce-back {
-    25% {
-      transform: scaleY(4);
-    }
-    95% {
-      transform: scaleY(1);
-    }
-    100% {
-      transform: scaleY(4);
-    }
-  }
-
-  animation: bounce-back 8s infinite;
+export const CenterText = styled.div`
+  width: 50vw;
 `;
 
 export const List = styled.div`
@@ -75,20 +62,11 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  width: 8rem;
-  ${FlexCenterStyle}
-  text-align: center;
-  font-size: 1.7rem;
+  font-size: ${({ theme }) => (theme.windowWidth < 768 ? ".8rem" : "1.1rem")};
+  margin: 0 4vw;
   transition: all 0.3s;
   cursor: pointer;
   font-style: italic;
-  font-family: Times New Roman;
-`;
-
-export const Center = styled.div`
-  font-weight: bold;
-  font-size: 3rem;
-  ${FlexCenterStyle}
-  text-align: center;
-  transform: scaleX(0.7);
+  font-weight: lighter;
+  width: 10vw;
 `;

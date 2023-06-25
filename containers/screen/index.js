@@ -11,7 +11,7 @@ const ProjectModal = dynamic(() => import("foundations/screen/ProjectModal"), { 
 const EventModal = dynamic(() => import("foundations/screen/EventModal"), { ssr: false });
 
 export default function Screen({ projects }) {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [modalProject, setModalProject] = useState(null);
   const [clickedIteration, setClickedIteration] = useState(-1);
 
@@ -30,8 +30,6 @@ export default function Screen({ projects }) {
     }
   }
 
-  console.log(clickedIteration);
-
   const synth = useMemo(() => new Tone.MonoSynth().toDestination(), []);
   useEffect(() => {
     clickedIteration > 0 && handleMelody(synth, clickedIteration);
@@ -43,7 +41,9 @@ export default function Screen({ projects }) {
         setClickedIteration(0);
         setShowModal(false);
         setModalProject(null);
-      }, 3000 * 1000);
+
+        window.location.reload();
+      }, 30 * 1000);
       return () => clearTimeout(timeout);
     }
   }, [modalProject]);

@@ -39,6 +39,7 @@ export const Center = styled.div`
 `;
 
 export const UpperCenter = styled.div`
+  cursor: pointer;
   font-size: ${({ theme }) => (theme.windowWidth < 768 ? "1.2rem" : "1.7rem")};
   margin-left: ${({ theme }) => (theme.windowWidth < 768 ? ".4rem" : ".6rem")};
   font-weight: bold;

@@ -27,29 +27,35 @@ export const Container = styled.div`
 export const Image = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 1.5rem;
+  margin: 0 3vw;
   position: relative;
-
-  width: 10rem;
+  width: 30vw;
 
   img {
     position: absolute;
     width: 100%;
-    bottom: -2.1rem;
-    left: -1.3rem;
+    // bottom: -2.1rem;
+    // left: -1.3rem;
   }
 `;
 
 export const Texts = styled.div`
-  display: flex;
+  position: absolute;
+  padding-bottom: 0.5rem;
+  right: 0;
   flex-direction: column;
   align-items: flex-end;
-  margin-right: 1.5rem;
+  margin: 0 4vw;
+  text-align: right;
 
   h1 {
     color: white;
     font-size: 1rem;
-    font-family: Times New Roman;
+    letter-spacing: 0.03rem;
     font-weight: normal;
+    b {
+      font-weight: bold;
+      opacity: 1;
+    }
   }
 `;

@@ -19,7 +19,7 @@ import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode } fro
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 const getRandomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn = true }) {
+export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn = true }) {
   ////////////
   ///d3///
   ////////////
@@ -204,7 +204,12 @@ export default function ProjectorTop({ connectionData = DATA_NODES_LINKS, toneOn
 
   return (
     <S.Container>
-      <svg ref={svgRef} />
+      <svg
+        ref={svgRef}
+        style={{
+          marginLeft: "-12vw",
+        }}
+      />
       <S.Question>{question}</S.Question>
 
       <S.Overlap show={currentTarget === ""}>What is IED?</S.Overlap>
