@@ -45,7 +45,7 @@ export default function Rhizome({ socket, isVisible, connectionData, handleProje
 
   function handleNewKeywordClick(e, target) {
     e.stopPropagation();
-    console.log(target, currentTargetRef.current, lastInteractionTimeRef.current, Date.now(), Date.now() - lastInteractionTimeRef.current);
+
     setCurrentTarget(target);
 
     if (target === currentTargetRef.current) {
@@ -104,7 +104,6 @@ export default function Rhizome({ socket, isVisible, connectionData, handleProje
         node.on(eventType, (ev, d) => {
           ev.stopPropagation();
           const { id, text } = d;
-          console.log("104");
           setCurrentTarget(text);
           lastInteractionTimeRef.current = Date.now();
         });
@@ -129,7 +128,7 @@ export default function Rhizome({ socket, isVisible, connectionData, handleProje
       .transition()
       .duration(DURATION)
       .attr("stroke", primaryColor)
-      .attr("opacity", "0.42")
+      .attr("opacity", "0.8")
       .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
     node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("fill", "rgba(255, 255, 255, 0.02)");

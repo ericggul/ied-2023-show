@@ -66,7 +66,13 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
         <div>
           <h3>30th June</h3>
           <h3>to 3rd July</h3>
-          <h2>12pm - 6pm</h2>
+          <h2
+          // style={{
+          //   marginTop: ".6rem",
+          // }}
+          >
+            12pm - 6pm
+          </h2>
         </div>
       </S.Info>
     </S.MainVisual>

@@ -33,24 +33,10 @@ export const Container = styled.div`
   transition: all 1s ease-in-out;
 `;
 
-export const Description = styled.div`
-  margin-top: 9.5rem;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 500)}px;
-  font-size: 1rem;
-  text-align: center;
-
-  i {
-    font-size: 1rem;
-    font-family: Times New Roman;
-    line-height: 1;
-    font-weight: bold;
-  }
-`;
-
 export const SearchContainer = styled.div`
+  margin-top: 8.5rem;
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
 
   animation: ${Appear} 0.5s ease-in-out both;
   animation-delay: 0.5s;
@@ -59,7 +45,6 @@ export const SearchContainer = styled.div`
 export const P = styled.div`
   font-size: 1rem;
   margin-left: 0.1rem;
-  font-family: Times New Roman;
   font-style: italic;
   pointer-events: none;
 
@@ -73,7 +58,7 @@ export const P = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  font-family: Helvetica;
+  font-family: Barlow;
   margin-top: 0.6rem;
   width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 500)}px;
   background: transparent;
@@ -83,13 +68,22 @@ export const SearchInput = styled.input`
   font-size: 1.1rem;
   font-weight: 400;
   color: white;
-  font-family: Helvetica, sans-serif;
 
   transition: all 0.5s;
 
   &:focus {
     border-bottom: 2px solid #e3e3e3;
   }
+`;
+
+export const Description = styled.div`
+  margin-top: 3rem;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 630)}px;
+  font-size: 1rem;
+  text-align: center;
+  font-style: italic;
+  line-height: 168.75%;
+  letter-spacing: 0.56px;
 `;
 
 export const ListContainer = styled.div`
@@ -107,7 +101,7 @@ export const ListItem = styled.div`
   font-size: 1.1rem;
   width: 100%;
   cursor: pointer;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 500)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 630)}px;
   ${FlexCenterStyle}
   justify-content: space-between;
   ${({ theme }) => theme.windowWidth < 768 && "flex-direction: column;"}
@@ -139,13 +133,14 @@ export const ListItem = styled.div`
 export const ListItemTitle = styled.div`
   ${({ theme }) => theme.windowWidth < 768 && "width: 100%;"}
   text-align: left;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 600;
 `;
 
 export const ListItemContent = styled.div`
-  font-family: Times New Roman;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-style: italic;
+  font-weight: 300;
   ${({ theme }) => theme.windowWidth < 768 && "width: 100%;"}
   ${({ theme }) => theme.windowWidth < 768 && "margin-top: .2rem;"}
 `;

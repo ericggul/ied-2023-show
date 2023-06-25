@@ -68,27 +68,37 @@ export const CurrImg = styled.img`
 export const InformationContainer = styled.div`
   margin-top: 2vw;
   display: flex;
+  justify-content: space-between;
   height: 9vw;
 
   transition: all 0.5s ease-in-out;
 `;
+
 export const InfoLeft = styled.div`
-  width: 40%;
+  width: 45%;
   h1 {
-    font-size: 1.8vw;
+    font-size: 2.2vw;
     margin-bottom: 0.5vw;
+    font-wieght: 600;
+    letter-spacing: 0.1vw;
   }
   h2 {
     font-size: 1.8vw;
     font-weight: normal;
     font-style: italic;
-    font-family: Times New Roman;
+    font-weight: 300;
   }
 `;
+
 export const InfoRight = styled.div`
   margin-left: 2vw;
-  width: 55%;
+  margin-top: 0.5vw;
+  width: 45%;
   font-size: 1.2vw;
+  font-family: Roboto Serif;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 132.1%;
 
   p {
     margin-bottom: 1.5vw;
@@ -96,7 +106,12 @@ export const InfoRight = styled.div`
 `;
 
 export const SingleKeyword = styled.span`
-  margin-right: 0.5vw;
+  margin-right: 1vw;
+
+  font-style: italic;
+  font-weight: 300;
+  line-height: 138.6%;
+  letter-spacing: 0.1vw;
 `;
 
 export const Right = styled.div`
@@ -134,13 +149,12 @@ export const RelatedImage = styled.div`
 export const RelatedExplanation = styled.div`
   h1 {
     font-weight: normal;
-    font-size: 1.3vw;
-    margin-top: 1vw;
+    font-size: 1.5vw;
+    margin-top: 0.55vw;
+    font-weight: 600;
   }
   h2 {
-    font-weight: normal;
-    font-size: 1.3vw;
-    font-style: italic;
-    font-family: Times New Roman;
+    font-weight: 300;
+    font-size: 1.5vw;
   }
 `;

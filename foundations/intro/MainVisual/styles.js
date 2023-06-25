@@ -85,8 +85,8 @@ export const Info = styled.div`
     }
 
     img {
-      width: 9rem;
-      margin-top: -2rem;
+      width: 11rem;
+      margin-top: -1.3rem;
     }
   }
 `;

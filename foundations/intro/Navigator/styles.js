@@ -68,7 +68,7 @@ export const Upper = styled.div`
 export const ButtonContainer = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
-  font-family: Times New Roman;
+  font-family: Roboto Serif;
   margin-top: 0vh;
   margin-bottom: 5vh;
 `;
@@ -79,7 +79,7 @@ export const Button = styled.div`
   height: 3.2rem;
   width: 13rem;
   font-style: italic;
-  margin: 2vh 0;
+  margin: 3vh 0;
   text-align: center;
   ${FlexCenterStyle}
   cursor: pointer;
@@ -90,7 +90,7 @@ export const Button = styled.div`
 
 export const ArrowRight = styled.img`
   position: absolute;
-  left: 13.5rem;
+  left: 15.5rem;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -98,7 +98,7 @@ export const ArrowRight = styled.img`
 
 export const ArrowLeft = styled.img`
   position: absolute;
-  right: 14rem;
+  right: 16rem;
   top: 0;
   bottom: 0;
   margin: auto;

@@ -27,49 +27,26 @@ export const Container = styled.div`
 export const Image = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 1.5rem;
+  margin: 0 3vw;
   position: relative;
-
-  width: 10rem;
-  opacity: 0.5;
+  width: 30vw;
 
   img {
     position: absolute;
     width: 100%;
-    bottom: -2.1rem;
-    left: -1.3rem;
+    // bottom: -2.1rem;
+    // left: -1.3rem;
   }
-`;
-
-export const CenterText = styled.div`
-  font-size: 1rem;
-  font-weight: bold;
-  ${FlexCenterStyle}
-  transform: scaleY(4);
-  margin-bottom: 0.7rem;
-
-  @keyframes bounce-back {
-    25% {
-      transform: scaleY(4);
-    }
-    95% {
-      transform: scaleY(1);
-    }
-    100% {
-      transform: scaleY(4);
-    }
-  }
-
-  animation: bounce-back 8s infinite;
-  opacity: 0.5;
 `;
 
 export const Texts = styled.div`
-  display: flex;
+  position: absolute;
+  padding-bottom: 0.5rem;
+  right: 0;
   flex-direction: column;
   align-items: flex-end;
-  margin-right: 1.5rem;
-  width: 10rem;
+  margin: 0 4vw;
+  text-align: right;
 
   h1 {
     color: white;

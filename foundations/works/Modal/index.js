@@ -87,11 +87,15 @@ export default function Modal({ project, showModal, setShowModal }) {
                 <h1>{project.name}</h1>
                 <h2>{project.studentName}</h2>
               </S.Text>
-              <S.Tags>
-                {project.keywords.map((keyword, i) => (
-                  <S.Tag key={i}>#{keyword.name}</S.Tag>
-                ))}
-              </S.Tags>
+              {windowWidth > 768 && <S.Abstract>{project.abstract}</S.Abstract>}
+              {windowWidth < 768 && (
+                <S.Tags>
+                  {project.keywords.map((keyword, i) => (
+                    <S.Tag key={i}>#{keyword.name}</S.Tag>
+                  ))}
+                </S.Tags>
+              )}
+
               {windowWidth < 768 && (
                 <S.Link onClick={handleClick}>
                   Learn More at RCA 2023
@@ -101,7 +105,11 @@ export default function Modal({ project, showModal, setShowModal }) {
             </S.LeftArray>
             {windowWidth > 768 && (
               <S.RightArray>
-                <S.Abstract>{project.abstract}</S.Abstract>
+                <S.Tags>
+                  {project.keywords.map((keyword, i) => (
+                    <S.Tag key={i}>#{keyword.name}</S.Tag>
+                  ))}
+                </S.Tags>
                 <S.Link onClick={handleClick}>
                   Learn More at RCA 2023
                   <img src={"/assets/arrow-white.svg"} />

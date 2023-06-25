@@ -7,7 +7,7 @@ export const Container = styled.div`
   z-index: 100;
   width: 100%;
   position: fixed;
-  height: 7rem;
+  height: ${({ theme }) => (theme.windowWidth < 768 ? "4rem" : "7rem")};
   padding-top: 0.5rem;
   top: 0;
   left: 0;
@@ -33,52 +33,23 @@ export const Upper = styled.div`
   width: 100%;
 `;
 
-export const UpperLeft = styled.div`
-  font-size: 1rem;
-  font-weight: bold;
-  position: absolute;
-  left: 1.5rem;
-  opacity: 0.4;
-  ${FlexCenterStyle}
-  cursor: pointer;
-
-  img {
-    margin-right: 0.5rem;
-    width: 1rem;
-  }
-`;
-
 export const Center = styled.div`
   ${FlexCenterStyle}
   flex-direction: column;
 `;
 
-export const CenterText = styled.div`
-  font-size: 1rem;
+export const UpperCenter = styled.div`
+  font-size: ${({ theme }) => (theme.windowWidth < 768 ? "1.2rem" : "1.7rem")};
+  margin-left: ${({ theme }) => (theme.windowWidth < 768 ? ".4rem" : ".6rem")};
   font-weight: bold;
-  opacity: 0.4;
-  margin-right: 0rem;
+
+  font-style: italic;
+  ${FlexCenterStyle}
+  letter-spacing: 0.1rem;
 `;
 
-export const UpperCenter = styled.div`
-  font-size: 1rem;
-  font-weight: bold;
-  ${FlexCenterStyle}
-  transform: scaleY(4);
-
-  @keyframes bounce-back {
-    25% {
-      transform: scaleY(4);
-    }
-    95% {
-      transform: scaleY(1);
-    }
-    100% {
-      transform: scaleY(4);
-    }
-  }
-
-  animation: bounce-back 8s infinite;
+export const CenterText = styled.div`
+  width: 30vw;
 `;
 
 export const List = styled.div`
@@ -88,20 +59,11 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  ${FlexCenterStyle}
-  text-align: center;
-  font-size: 1.1rem;
-  margin: 0 1rem;
+  font-size: ${({ theme }) => (theme.windowWidth < 768 ? ".8rem" : "1.1rem")};
+  margin: 0 4vw;
   transition: all 0.3s;
   cursor: pointer;
   font-style: italic;
-  font-family: Times New Roman;
+  font-weight: lighter;
+  width: 10vw;
 `;
-
-// export const Center = styled.div`
-//   font-weight: bold;
-//   font-size: 3rem;
-//   ${FlexCenterStyle}
-//   text-align: center;
-//   transform: scaleX(0.7);
-// `;

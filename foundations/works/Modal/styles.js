@@ -114,25 +114,28 @@ export const RightArray = styled.div`
 
 export const Text = styled.div`
   h1 {
-    font-size: 1.2rem;
-    font-weight: normal;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 
   h2 {
-    margin-top: 0.3rem;
-    font-size: 1rem;
-    font-family: Times New Roman;
-    font-style: italic;
-    font-weight: normal;
+    margin-top: 0.2rem;
+    font-size: 1.1rem;
+
+    font-weight: 300;
   }
 `;
 
 export const Abstract = styled.div`
-  font-size: 1rem;
-  font-family: Times New Roman;
   font-style: italic;
-  font-weight: normal;
-  text-align: right;
+  text-align: left;
+
+  font-family: Roboto Serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  line-height: 132.1%;
+  margin-top: 1rem;
+  letter-spacing: 0.1rem;
 `;
 
 export const LowerUpper = styled.div`
@@ -141,11 +144,15 @@ export const LowerUpper = styled.div`
 `;
 
 export const Tags = styled.div`
-  font-size: 1rem;
+  font-family: Roboto Serif;
+  font-weight: 300;
+  font-size: 0.7rem;
+  line-height: 138.1%;
+  letter-spacing: 0.1rem;
   font-style: italic;
-  font-family: Times New Roman;
+
   margin-top: 1rem;
-  line-height: 1.3;
+  width: ${({ theme }) => (theme.windowWidth > 768 ? "12.5rem" : "100%")};
 `;
 
 export const Tag = styled.div`
@@ -153,10 +160,11 @@ export const Tag = styled.div`
 `;
 
 export const Link = styled.div`
-  text-align: right;
+  text-align: left;
   margin-top: 1rem;
   cursor: pointer;
-  font-family: Times New Roman;
+  width: 12.5rem;
+
   font-style: italic;
   border-bottom: 1px solid white;
 

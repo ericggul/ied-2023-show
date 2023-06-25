@@ -38,6 +38,15 @@ export const Header = styled.div`
   }
 `;
 
+export const ImageContainer = styled.div`
+  width: 45vw;
+  height: 30vw;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 export const TimeContainer = styled.div`
   ${FlexCenterStyle}
 `;

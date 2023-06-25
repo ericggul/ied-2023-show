@@ -2,12 +2,16 @@ import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
 const EVENT_INFO = {
-  title: "Dummy Event",
-  name: "Jeanyoon Choi",
-  date: "June 14",
-  time: "18:35",
-  location: "Kensington",
+  id: 1,
+  name: "Building Third Runways: Challenging Equality (‘=’)",
+  studentName: "Jeanyoon Choi",
+  date: "2023-06-30T15:30:00.000Z",
+  endDate: "2023-06-30T15:50:00.000Z",
+  description: "Co-Creating an Imaginary Land Installation of building runways around the world’s airports.",
+  imgURL: "events/Hypertext_Jump.png",
+  slug: "jeanyoon-choi",
 };
+const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 
 const formatNumber = (n, digit = 2) => ("0".repeat(digit) + Math.floor(n)).slice(-digit);
 
@@ -22,7 +26,7 @@ export default function Modal({ showModal, setShowModal }) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const countDownDate = new Date(`${targetEvent.date} ${targetEvent.time} 2023`).getTime();
+      const countDownDate = new Date(targetEvent.date).getTime();
       const now = new Date().getTime();
       const distance = countDownDate - now;
 
@@ -55,17 +59,13 @@ export default function Modal({ showModal, setShowModal }) {
         }}
       >
         <S.Header>
-          <h1>{targetEvent.title}</h1>
+          <h1>{targetEvent.name}</h1>
         </S.Header>
+        <S.ImageContainer>
+          <img src={IMG_DB_URL + targetEvent.imgURL} alt="event image" />
+        </S.ImageContainer>
         <S.TimeContainer>
           <S.Box>
-            {/* <span
-              style={{
-                marginRight: "3vw",
-              }}
-            >
-              Starting in
-            </span> */}
             {timeLeft.days}
             <span>days</span>
           </S.Box>
@@ -81,9 +81,9 @@ export default function Modal({ showModal, setShowModal }) {
         </S.TimeContainer>
 
         <S.InfoContainer>
-          <p>Student Name: {targetEvent.name}</p>
-          <p>Date: {targetEvent.date}</p>
-          <p>Time: {targetEvent.time}</p>
+          <p>Student Name: {targetEvent.studentName}</p>
+          <p>Date: {new Date(targetEvent.date).toLocaleString()}</p>
+          <p>Duration: {new Date(targetEvent.endDate).getMinutes() - new Date(targetEvent.date).getMinutes()} Mins</p>
         </S.InfoContainer>
       </S.ModalContainer>
     </S.Container>

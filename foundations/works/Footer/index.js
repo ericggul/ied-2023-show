@@ -5,15 +5,6 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
   const router = useRouter();
   return (
     <S.Container>
-      <S.Image
-        onClick={() => {
-          //rca website, blank
-          window.open("https://www.rca.ac.uk/", "_blank");
-        }}
-      >
-        <img src="/assets/RCALogo.png" />
-      </S.Image>
-      {/* <S.CenterText>EVENTS</S.CenterText> */}
       <S.Texts
         onClick={() => {
           router.push("/");
@@ -26,7 +17,11 @@ export default function HeaderEl({ isRhizome, setIsRhizome }) {
         >
           go back to
         </h1>
-        <h1>
+        <h1
+          style={{
+            marginTop: "0.2rem",
+          }}
+        >
           <b>COUNTERPOINT</b>
         </h1>
       </S.Texts>

@@ -25,11 +25,6 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
 
   return (
     <S.Container isVisible={isVisible} length={DUMMY_LIST.length}>
-      <S.Description>
-        The range of works present an opportunity to <i>immerse</i> yourself in questions about the current <i>status quo</i> of our society, cultural context, and the very notion of{" "}
-        <i>creativity and interdisciplinary.</i>
-      </S.Description>
-
       {isVisible && (
         <S.SearchContainer>
           <S.P goUp={filterWord !== "" || focused}>
@@ -41,6 +36,11 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
           <S.SearchInput onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} type="text" placeholder="" value={filterWord} onChange={(e) => setFilterWord(e.target.value)} />
         </S.SearchContainer>
       )}
+
+      <S.Description>
+        The range of works present an opportunity to <i>immerse</i> yourself in questions about the current <i>status quo</i> of our society, cultural context, and the very notion of{" "}
+        <i>creativity and interdisciplinary.</i>
+      </S.Description>
 
       <S.ListContainer>
         {isVisible &&
