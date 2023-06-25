@@ -10,13 +10,15 @@ const QuestionMap = dynamic(() => import("foundations/screen/QuestionMap"), { ss
 const ProjectModal = dynamic(() => import("foundations/screen/ProjectModal"), { ssr: false });
 const EventModal = dynamic(() => import("foundations/screen/EventModal"), { ssr: false });
 
-export default function Screen({ projects }) {
+export default function Screen({ projects, events }) {
   const [showModal, setShowModal] = useState(false);
   const [modalProject, setModalProject] = useState(null);
+  const [modalEvent, setModalEvent] = useState(null);
   const [clickedIteration, setClickedIteration] = useState(-1);
 
   const socket = useSocket({
     handleNewProjectClick,
+    handleNewEventClick,
   });
 
   function handleNewProjectClick(data) {
@@ -30,29 +32,41 @@ export default function Screen({ projects }) {
     }
   }
 
+  function handleNewEventClick(data) {
+    try {
+      setClickedIteration((c) => c + 1);
+      const event = events.find((ev) => ev.name === data);
+      setModalEvent(event || null);
+      if (event) setShowModal(true);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const synth = useMemo(() => new Tone.MonoSynth().toDestination(), []);
   useEffect(() => {
     clickedIteration > 0 && handleMelody(synth, clickedIteration);
   }, [synth, clickedIteration]);
 
   useEffect(() => {
-    if (modalProject) {
+    if (modalProject || modalEvent) {
       const timeout = setTimeout(() => {
         setClickedIteration(0);
         setShowModal(false);
         setModalProject(null);
+        setModalEvent(null);
 
         window.location.reload();
       }, 30 * 1000);
       return () => clearTimeout(timeout);
     }
-  }, [modalProject]);
+  }, [modalProject, modalEvent]);
 
   return (
     <>
       <S.Container>
         <QuestionMap toneOn={!showModal} />
-        {/* <EventModal showModal={showModal} setShowModal={setShowModal} /> */}
+        {showModal && modalEvent && <EventModal currentEvent={modalEvent} showModal={showModal && modalEvent !== null} setShowModal={setShowModal} />}
         <ProjectModal currentProject={modalProject} showModal={showModal && modalProject != null} setShowModal={setShowModal} />
       </S.Container>
     </>

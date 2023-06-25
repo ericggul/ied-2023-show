@@ -15,8 +15,7 @@ const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 
 const formatNumber = (n, digit = 2) => ("0".repeat(digit) + Math.floor(n)).slice(-digit);
 
-export default function Modal({ showModal, setShowModal }) {
-  const [targetEvent, setTargetEvent] = useState(EVENT_INFO);
+export default function Modal({ currentEvent, showModal, setShowModal }) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -26,7 +25,7 @@ export default function Modal({ showModal, setShowModal }) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const countDownDate = new Date(targetEvent.date).getTime();
+      const countDownDate = new Date(currentEvent.date).getTime();
       const now = new Date().getTime();
       const distance = countDownDate - now;
 
@@ -59,10 +58,10 @@ export default function Modal({ showModal, setShowModal }) {
         }}
       >
         <S.Header>
-          <h1>{targetEvent.name}</h1>
+          <h1>{currentEvent.name}</h1>
         </S.Header>
         <S.ImageContainer>
-          <img src={IMG_DB_URL + targetEvent.imgURL} alt="event image" />
+          <img src={IMG_DB_URL + currentEvent.imgURL} alt="event image" />
         </S.ImageContainer>
         <S.TimeContainer>
           <S.Box>
@@ -81,9 +80,9 @@ export default function Modal({ showModal, setShowModal }) {
         </S.TimeContainer>
 
         <S.InfoContainer>
-          <p>Student Name: {targetEvent.studentName}</p>
-          <p>Date: {new Date(targetEvent.date).toLocaleString()}</p>
-          <p>Duration: {new Date(targetEvent.endDate).getMinutes() - new Date(targetEvent.date).getMinutes()} Mins</p>
+          <p>Student Name: {currentEvent.studentName}</p>
+          <p>Date: {new Date(currentEvent.date).toLocaleString()}</p>
+          <p>Duration: {new Date(currentEvent.endDate).getMinutes() - new Date(currentEvent.date).getMinutes()} Mins</p>
         </S.InfoContainer>
       </S.ModalContainer>
     </S.Container>

@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { useEffect, useRef } from "react";
 
-export default function useSocketInit({ handleNewProjectClick }) {
+export default function useSocketInit({ handleNewProjectClick, handleNewEventClick }) {
   const socket = useRef(null);
   useEffect(() => {
     socketInitializer();
@@ -28,6 +28,7 @@ export default function useSocketInit({ handleNewProjectClick }) {
     });
 
     socket.current.on("new-project-click", handleNewProjectClick);
+    socket.current.on("new-event-click", handleNewEventClick);
   }
 
   return socket;

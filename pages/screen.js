@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 const Screen = dynamic(() => import("containers/screen"), { ssr: false });
 
-export default function ScreenPage({ projects }) {
+export default function ScreenPage({ projects, events }) {
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ export default function ScreenPage({ projects }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
 
-      <Screen projects={projects} />
+      <Screen projects={projects} events={events} />
     </>
   );
 }
@@ -38,9 +38,12 @@ export const getStaticProps = async (context) => {
     });
     const metaData = await handleRelatedProjects(projectsData);
 
+    const eventsData = await prisma.events.findMany();
+
     return {
       props: {
         projects: metaData,
+        events: eventsData,
       },
     };
   } catch (e) {

@@ -16,6 +16,11 @@ export const Container = styled.div`
   z-index: 20;
   overflow-y: scroll !important;
 
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
+
   ${({ isVisible }) =>
     isVisible
       ? `

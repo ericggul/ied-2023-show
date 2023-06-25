@@ -87,7 +87,7 @@ export default function Modal({ event, showModal, setShowModal }) {
                 <h1>{event.name}</h1>
                 <h2>{event.studentName}</h2>
               </S.Text>
-              {windoWidth < 768 && <S.Tags>{new Date(event.date).toLocaleString()}</S.Tags>}
+              {windowWidth < 768 && <S.Tags>{new Date(event.date).toLocaleString()}</S.Tags>}
 
               {windowWidth < 768 && (
                 <S.Link onClick={handleClick}>

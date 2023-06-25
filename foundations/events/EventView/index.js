@@ -3,16 +3,58 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 import { BsSearch } from "react-icons/bs";
 import { DUMMY_LIST } from "containers/works/data";
 
+const LIST = [
+  {
+    filter: "30 June",
+    display: "30th June, Fri",
+  },
+  {
+    filter: "1 July",
+    display: "1st July, Sat",
+  },
+  {
+    filter: "2 July",
+    display: "2nd July, Sun",
+  },
+  {
+    filter: "3 July",
+    display: "3rd July, Mon",
+  },
+];
+
 export default function ListView({ socket, eventsData, handleEventClick }) {
   return (
     <S.Container length={DUMMY_LIST.length}>
       <S.Description>
-        The range of works present an opportunity to <i>immerse</i> yourself in questions about the current <i>status quo</i> of our society, cultural context, and the very notion of{" "}
-        <i>creativity and interdisciplinary.</i>
+        Among other things, COUNTERPOINT has a packed programme of live performances including generative composition, artificial intelligence, multi-device web art, and film screenings.
       </S.Description>
 
       <S.ListContainer>
-        {eventsData.map((item, idx) => (
+        {LIST.map((listItem, idx) => (
+          <SingleDay listItem={listItem} key={idx} eventsData={eventsData} />
+        ))}
+      </S.ListContainer>
+    </S.Container>
+  );
+}
+
+function SingleDay({ listItem, eventsData }) {
+  return (
+    <S.SingleDay>
+      <S.Date>{listItem.display}</S.Date>
+      {eventsData
+        .filter((item) => {
+          let el = new Date(item.date).toLocaleDateString("en-UK", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+
+          console.log(el);
+
+          return el.includes(listItem.filter);
+        })
+        .map((item, idx) => (
           <S.ListItem
             key={idx}
             idx={idx}
@@ -23,9 +65,11 @@ export default function ListView({ socket, eventsData, handleEventClick }) {
           >
             <S.ListItemTitle>{item.name}</S.ListItemTitle>
             <S.ListItemContent>{item.studentName}</S.ListItemContent>
+            <S.Time>
+              {new Date(item.date).toLocaleTimeString()}-{new Date(item.endDate).toLocaleTimeString()}
+            </S.Time>
           </S.ListItem>
         ))}
-      </S.ListContainer>
-    </S.Container>
+    </S.SingleDay>
   );
 }

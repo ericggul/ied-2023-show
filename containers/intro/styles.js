@@ -14,6 +14,11 @@ export const Container = styled.div`
   font-family: Barlow;
   overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
+
   z-index: 5 !important;
 
   h1 {

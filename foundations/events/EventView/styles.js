@@ -17,6 +17,11 @@ export const Container = styled.div`
   overflow-y: scroll !important;
 
   transition: all 1s ease-in-out;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
 `;
 
 export const Description = styled.div`
@@ -39,12 +44,31 @@ export const ListContainer = styled.div`
   padding-bottom: 10rem;
 `;
 
+export const SingleDay = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+  &:first-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+  }
+`;
+
+export const Date = styled.div`
+  padding: 0.7rem;
+  padding-bottom: 1.6rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 700)}px;
+`;
+
 export const ListItem = styled.div`
   padding: 0.5rem 1.5rem;
   font-size: 1.1rem;
-  width: 100%;
   cursor: pointer;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 630)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 700)}px;
   ${FlexCenterStyle}
   justify-content: space-between;
   ${({ theme }) => theme.windowWidth < 768 && "flex-direction: column;"}
@@ -66,7 +90,6 @@ export const ListItem = styled.div`
   }
 
   &:hover {
-    // border-bottom: 1px #cbc6e5 solid;
     box-shadow: inset 0 0 0.5rem 0.1rem #cbc6e5;
   }
 
@@ -74,16 +97,28 @@ export const ListItem = styled.div`
 `;
 
 export const ListItemTitle = styled.div`
-  ${({ theme }) => theme.windowWidth < 768 && "width: 100%;"}
+  ${({ theme }) => (theme.windowWidth < 768 ? "width: 100%;" : "width: 48%;")}
   text-align: left;
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Roboto Serif;
+  font-style: italic;
 `;
 
 export const ListItemContent = styled.div`
-  font-size: 1.15rem;
+  font-size: 1rem;
+  font-family: Roboto Serif;
   font-style: italic;
   font-weight: 300;
-  ${({ theme }) => theme.windowWidth < 768 && "width: 100%;"}
+  ${({ theme }) => (theme.windowWidth < 768 ? "width: 100%;" : "width: 25%;")}
+  ${({ theme }) => theme.windowWidth > 768 && "margin-left: 4%;"}
+  ${({ theme }) => theme.windowWidth < 768 && "margin-top: .2rem;"}
+`;
+
+export const Time = styled.div`
+  font-size: 1rem;
+  font-weight: 300;
+  ${({ theme }) => (theme.windowWidth < 768 ? "width: 100%;" : "width: 21%;")}
+  ${({ theme }) => theme.windowWidth > 768 && "text-align: right;"}
   ${({ theme }) => theme.windowWidth < 768 && "margin-top: .2rem;"}
 `;

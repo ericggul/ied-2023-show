@@ -18,6 +18,10 @@ export default function handler(req, res) {
       socket.on("project-click", (data) => {
         socket.broadcast.emit("new-project-click", data);
       });
+
+      socket.on("event-click", (data) => {
+        socket.broadcast.emit("new-event-click", data);
+      });
     });
   }
 
