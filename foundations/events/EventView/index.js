@@ -31,14 +31,14 @@ export default function ListView({ socket, eventsData, handleEventClick }) {
 
       <S.ListContainer>
         {LIST.map((listItem, idx) => (
-          <SingleDay listItem={listItem} key={idx} eventsData={eventsData} />
+          <SingleDay socket={socket} listItem={listItem} key={idx} eventsData={eventsData} handleEventClick={handleEventClick} />
         ))}
       </S.ListContainer>
     </S.Container>
   );
 }
 
-function SingleDay({ listItem, eventsData }) {
+function SingleDay({ socket, listItem, eventsData, handleEventClick }) {
   return (
     <S.SingleDay>
       <S.Date>{listItem.display}</S.Date>
@@ -49,8 +49,6 @@ function SingleDay({ listItem, eventsData }) {
             month: "long",
             day: "numeric",
           });
-
-          console.log(el);
 
           return el.includes(listItem.filter);
         })

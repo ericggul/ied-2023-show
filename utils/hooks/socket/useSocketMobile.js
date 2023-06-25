@@ -9,7 +9,6 @@ export default function useSocketInit() {
 
   async function socketInitializer() {
     const res = await fetch("/api/socket");
-    console.log(res);
 
     socket.current = io({
       withCredentials: true,

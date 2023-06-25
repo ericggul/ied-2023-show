@@ -30,18 +30,28 @@ export const ModalContainer = styled.div`
 
 export const Header = styled.div`
   ${FlexCenterStyle}
-  flex-direction: column;
+
+  height: calc(50vh - 20vw);
+  width: 60%;
+  margin: auto;
+  margin-left: 20%;
+  text-align: center;
+  z-index: 2;
 
   h1 {
-    font-size: 4vw;
-    margin-bottom: 5vw;
+    text-align: center;
+    font-size: 2.4vw;
+    font-weight: 700;
+    width: 100%;
+    letter-spacing: 0.2vw;
   }
 `;
 
 export const ImageContainer = styled.div`
-  width: 45vw;
-  height: 30vw;
+  width: 60vw;
+  height: 40vw;
   img {
+    opacity: 0.6;
     width: 100%;
     height: 100%;
   }
@@ -49,6 +59,8 @@ export const ImageContainer = styled.div`
 
 export const TimeContainer = styled.div`
   ${FlexCenterStyle}
+  position: absolute;
+  bottom: 18vh;
 `;
 
 export const Days = styled.div`
@@ -88,4 +100,17 @@ export const Dot = styled.div`
   margin: 0.5vw 0;
 `;
 
-export const InfoContainer = styled.div``;
+export const InfoContainer = styled.div`
+  height: calc(50vh - 20vw);
+  font-size: 1.6vw;
+  width: 60vw;
+  ${FlexCenterStyle}
+  justify-content: space-between;
+  letter-spacing: 0.1vw;
+
+  div {
+    display: flex;
+    p {
+    }
+  }
+`;

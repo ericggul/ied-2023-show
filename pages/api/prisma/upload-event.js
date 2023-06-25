@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   try {
     //find project
     console.log(req.body);
-
     await prisma.events.upsert({
       where: {
         name,

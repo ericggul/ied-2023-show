@@ -5,7 +5,7 @@ export const MainVisual = styled.div`
   ${FlexCenterStyle}
   ${WholeContainer}
 
-  height: 90vh;
+  height: ${({ theme }) => (theme.windowWidth < 768 ? "90vh" : "98vh")};
   position: fixed !important;
   flex-direction: column;
   justify-content: space-between;
@@ -37,7 +37,7 @@ export const Image = styled.img`
 `;
 
 export const Info = styled.div`
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 1300)}px;
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.95, 1500)}px;
   display: flex;
   color: #fff;
   z-indes: 30;

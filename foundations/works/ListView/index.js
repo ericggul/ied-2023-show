@@ -12,7 +12,6 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
     if (filterWord === "") {
       setFilteredList(projectsData);
     } else {
-      console.log(projectsData);
       const filtered = projectsData.filter(
         (item) =>
           item.name.toLowerCase().includes(filterWord.toLowerCase()) ||

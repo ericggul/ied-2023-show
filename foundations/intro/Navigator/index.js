@@ -12,12 +12,10 @@ export default function Navigator({ show, scrollPos }) {
     setNavigatorVisualIntensity(Math.max(1 - Math.max((4 - scrollPos) * 0.5, 0), 0));
   }, [scrollPos]);
 
-  console.log(scrollPos, navigatorVisualIntensity);
-
   const router = useRouter();
 
   function handleClick(ev, type) {
-    router.push("/works");
+    router.push(`/${type}`);
   }
 
   return (
@@ -67,12 +65,12 @@ export default function Navigator({ show, scrollPos }) {
           <h1>Website Made by</h1>
           <h3>
             UI Designer:{" "}
-            <a href={"https://portfolio-jyc.org/"} target={"_blank"}>
+            <a href={"https://2023.rca.ac.uk/students/yue-song"} target={"_blank"}>
               Yue Song
             </a>
           </h3>
           <h3>
-            <a href={"https://portfolio-jyc.org/"} target={"_blank"}>
+            <a href={"https://2023.rca.ac.uk/students/jeanyoon-choi"} target={"_blank"}>
               Frontend & Backend Developer: Jeanyoon Choi
             </a>
           </h3>

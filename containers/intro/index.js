@@ -33,6 +33,11 @@ export default function Intro() {
     setScrollPos(Math.round((window.scrollY / windowHeight) * 100) / 100);
   };
 
+  useEffect(() => {
+    console.log("Welcome to RCA IED 2023 Website.");
+    console.log("Website developed by Jeanyoon Choi, 2023.");
+  }, []);
+
   const [show, setShow] = useState(0);
 
   return (

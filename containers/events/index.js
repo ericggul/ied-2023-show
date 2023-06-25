@@ -24,7 +24,6 @@ export default function Events() {
 
   async function getEvents() {
     const res = await axios.get("/api/prisma/retrive-all-events");
-    console.log(res.data);
 
     //res data sort by time
     let sorted = res.data.sort((a, b) => {

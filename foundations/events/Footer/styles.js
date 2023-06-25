@@ -48,6 +48,7 @@ export const Texts = styled.div`
   margin: 0 4vw;
   text-align: right;
 
+  cursor: pointer;
   h1 {
     color: white;
     font-size: 1rem;

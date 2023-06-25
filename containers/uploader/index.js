@@ -160,7 +160,6 @@ export default function Screen() {
   async function projectUpload(project) {
     try {
       await axios.post("/api/prisma/upload-project", project);
-      console.log(project, "uploaded");
     } catch (e) {
       console.log(e);
     }

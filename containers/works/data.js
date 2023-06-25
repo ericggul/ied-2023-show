@@ -3,27 +3,7 @@ import axios from "axios";
 export function connectionToNodeLink(data) {
   let nodes = data;
   let links = [];
-  console.log(data);
 
-  for (let i = 0; i < data.length; i++) {
-    let keywords = data[i].keywords.map((keyword) => keyword.name);
-    console.log(keywords);
-    //data : keyword
-    // for (let j = 0; j < data[i].targets.length; j++) {
-    //   let value = 1;
-    //   let isCycle = data[i].keyword === "≠";
-    //   let link = {
-    //     source: data[i].keyword,
-    //     target: data[i].targets[j],
-    //     value,
-    //     id: i * 100 + j,
-    //     isCycle,
-    //   };
-    //   links.push(link);
-    // }
-  }
-
-  // console.log({ nodes, links });
   return { nodes, links };
 }
 

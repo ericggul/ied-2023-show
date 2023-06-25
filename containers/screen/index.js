@@ -11,7 +11,8 @@ const ProjectModal = dynamic(() => import("foundations/screen/ProjectModal"), { 
 const EventModal = dynamic(() => import("foundations/screen/EventModal"), { ssr: false });
 
 export default function Screen({ projects, events }) {
-  const [showModal, setShowModal] = useState(false);
+  const [showProjectModal, setShowProjectModal] = useState(false);
+  const [showEventModal, setShowEventModal] = useState(false);
   const [modalProject, setModalProject] = useState(null);
   const [modalEvent, setModalEvent] = useState(null);
   const [clickedIteration, setClickedIteration] = useState(-1);
@@ -26,7 +27,10 @@ export default function Screen({ projects, events }) {
       setClickedIteration((c) => c + 1);
       const project = projects.find((project) => project.name === data);
       setModalProject(project || null);
-      if (project) setShowModal(true);
+      if (project) {
+        setShowProjectModal(true);
+        setShowEventModal(false);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -37,7 +41,10 @@ export default function Screen({ projects, events }) {
       setClickedIteration((c) => c + 1);
       const event = events.find((ev) => ev.name === data);
       setModalEvent(event || null);
-      if (event) setShowModal(true);
+      if (event) {
+        setShowEventModal(true);
+        setShowProjectModal(false);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -52,7 +59,8 @@ export default function Screen({ projects, events }) {
     if (modalProject || modalEvent) {
       const timeout = setTimeout(() => {
         setClickedIteration(0);
-        setShowModal(false);
+        setShowEventModal(false);
+        setShowProjectModal(false);
         setModalProject(null);
         setModalEvent(null);
 
@@ -65,9 +73,9 @@ export default function Screen({ projects, events }) {
   return (
     <>
       <S.Container>
-        <QuestionMap toneOn={!showModal} />
-        {showModal && modalEvent && <EventModal currentEvent={modalEvent} showModal={showModal && modalEvent !== null} setShowModal={setShowModal} />}
-        <ProjectModal currentProject={modalProject} showModal={showModal && modalProject != null} setShowModal={setShowModal} />
+        <QuestionMap toneOn={!showEventModal && !showProjectModal} />
+        {modalEvent && <EventModal currentEvent={modalEvent} showModal={showEventModal && modalEvent !== null} setShowModal={setShowEventModal} />}
+        <ProjectModal currentProject={modalProject} showModal={showProjectModal && modalProject != null} setShowModal={setShowProjectModal} />
       </S.Container>
     </>
   );

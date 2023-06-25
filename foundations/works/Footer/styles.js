@@ -41,6 +41,7 @@ export const Image = styled.div`
 
 export const Texts = styled.div`
   position: absolute;
+  cursor: pointer;
   padding-bottom: 0.5rem;
   right: 0;
   flex-direction: column;

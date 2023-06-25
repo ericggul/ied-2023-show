@@ -1,7 +1,6 @@
 export function connectionToNodeLink(data) {
   let nodes = [];
   let links = [];
-  console.log(data);
 
   for (let i = 0; i < data.length; i++) {
     let node = {
@@ -27,7 +26,6 @@ export function connectionToNodeLink(data) {
     }
   }
 
-  console.log({ nodes, links });
   return { nodes, links };
 }
 

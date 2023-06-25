@@ -8,6 +8,10 @@ export default function Modal({ event, showModal, setShowModal }) {
   function handleClick(e) {
     e.stopPropagation();
     //send to google.com
+    if (event.slug.includes("http")) {
+      window.open(event.slug, "_blank");
+    }
+
     window.open(`https://www.rca.ac.uk/students/${event.slug}`, "_blank");
   }
 

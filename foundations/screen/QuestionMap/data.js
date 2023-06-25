@@ -26,7 +26,6 @@ export function connectionToNodeLink(data) {
     }
   }
 
-  console.log({ nodes, links });
   return { nodes, links };
 }
 
