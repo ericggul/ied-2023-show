@@ -13,9 +13,9 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Event",
     // event schema
-    name: "RCA IED 2023, Royal College of Art Information Experience Design Public Event Degree Show 2023",
-    startDate: "2023-06-30T12:00-20:00",
-    endDate: "2025-07-03T12:00-18:00",
+    name: "RCA IED 2023, Royal College of Art Information Experience Design Public Event Degree Show 2023. RCA IED Public Event, Exhibition, Exhibition in London.",
+    startDate: "20230630T012345.678+0900",
+    endDate: "20230703T012345.678+0900",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     location: {
@@ -50,11 +50,17 @@ export default function Home() {
         <title>RCA IED 2023 || Royal College of Art Information Expereience Design Show Public Event</title>
         <meta name="title" content={"RCA IED 2023"} />
 
-        <meta name="description" content="RCA IED 2023: Royal College of Art Information Expereience Design Show, Public Event" />
+        <meta
+          name="description"
+          content="RCA IED 2023: Royal College of Art Information Expereience Design Show, Public Event, view the works and workshops of 80+ students studying Information Experience Design, IED at RCA."
+        />
         <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
         <meta property="og:title" content="RCA IED 2023 Show: Royal College of Art Information Experience Design" />
-        <meta property="og:description" content="RCA IED 2023 || Royal College of Art Information Experience Design Public Event 2023" />
+        <meta
+          property="og:description"
+          content="RCA IED 2023 || Royal College of Art Information Experience Design Public Event 2023, view the works and workshops of 80+ students studying Information Experience Design, IED at RCA."
+        />
         <meta property="og:image" content="/icons/android-chrome-512x512.png" />
 
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
