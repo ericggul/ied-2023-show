@@ -52,7 +52,7 @@ export default function Home() {
 
         <meta
           name="description"
-          content="RCA IED 2023: Royal College of Art Information Expereience Design Show, Public Event, view the works and workshops of 80+ students studying Information Experience Design, IED at RCA."
+          content="RCA IED 2023: RCA Summer Show, RCA Degree Show. Royal College of Art Information Expereience Design Show, Public Event, view the works and workshops of 80+ students studying Information Experience Design, IED at RCA. Degree Show in London, part of the RCA 2023."
         />
         <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 

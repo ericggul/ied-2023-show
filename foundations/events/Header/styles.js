@@ -53,6 +53,7 @@ export const UpperCenter = styled.div`
 
 export const CenterText = styled.div`
   width: 50vw;
+  margin: 0 0.1vw;
 `;
 
 export const List = styled.div`

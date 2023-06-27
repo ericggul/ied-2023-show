@@ -39,7 +39,7 @@ export const Container = styled.div`
 `;
 
 export const SearchContainer = styled.div`
-  margin-top: 8.5rem;
+  margin-top: ${({ theme }) => (theme.windowWidth < 768 ? "6rem" : "8.5rem")};
   display: flex;
   flex-direction: column;
 
@@ -82,7 +82,7 @@ export const SearchInput = styled.input`
 `;
 
 export const Description = styled.div`
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 630)}px;
   font-size: 1rem;
   text-align: center;
@@ -96,7 +96,7 @@ export const ListContainer = styled.div`
   align-items: center;
   display: flex;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 10rem;
   padding-bottom: 10rem;
 `;

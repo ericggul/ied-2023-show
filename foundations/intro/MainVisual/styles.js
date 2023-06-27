@@ -90,3 +90,9 @@ export const Info = styled.div`
     }
   }
 `;
+
+export const Invisible = styled.div`
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+`;

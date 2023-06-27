@@ -25,8 +25,9 @@ export const Container = styled.div`
 `;
 
 export const Description = styled.div`
-  margin-top: 8.5rem;
-  width: ${({ theme }) => Math.min(theme.windowWidth * 0.8, 630)}px;
+  margin-top: ${({ theme }) => (theme.windowWidth < 768 ? "6rem" : "8.5rem")};
+
+  width: ${({ theme }) => Math.min(theme.windowWidth * 0.9, 630)}px;
   font-size: 1rem;
   text-align: center;
   font-style: italic;
@@ -39,7 +40,7 @@ export const ListContainer = styled.div`
   align-items: center;
   display: flex;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 10rem;
   padding-bottom: 10rem;
 `;
@@ -112,7 +113,8 @@ export const ListItemContent = styled.div`
   font-weight: 300;
   ${({ theme }) => (theme.windowWidth < 768 ? "width: 100%;" : "width: 25%;")}
   ${({ theme }) => theme.windowWidth > 768 && "margin-left: 4%;"}
-  ${({ theme }) => theme.windowWidth < 768 && "margin-top: .2rem;"}
+  ${({ theme }) => theme.windowWidth < 768 && "margin-top: .6rem;"}
+  ${({ theme }) => theme.windowWidth < 768 && "font-size: .8rem;"}
 `;
 
 export const Time = styled.div`
@@ -120,5 +122,6 @@ export const Time = styled.div`
   font-weight: 300;
   ${({ theme }) => (theme.windowWidth < 768 ? "width: 100%;" : "width: 21%;")}
   ${({ theme }) => theme.windowWidth > 768 && "text-align: right;"}
-  ${({ theme }) => theme.windowWidth < 768 && "margin-top: .2rem;"}
+  ${({ theme }) => theme.windowWidth < 768 && "margin-top: 0rem;"}
+  ${({ theme }) => theme.windowWidth < 768 && "font-size: .8rem;"}
 `;

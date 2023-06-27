@@ -51,6 +51,7 @@ export const UpperCenter = styled.div`
 
 export const CenterText = styled.div`
   width: 30vw;
+  margin: 0 0.1vw;
 `;
 
 export const List = styled.div`
@@ -60,7 +61,7 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  font-size: ${({ theme }) => (theme.windowWidth < 768 ? ".8rem" : "1.1rem")};
+  font-size: ${({ theme }) => (theme.windowWidth < 768 ? ".9rem" : "1.1rem")};
   margin: 0 4vw;
   transition: all 0.3s;
   cursor: pointer;

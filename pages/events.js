@@ -3,7 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 const Events = dynamic(() => import("containers/events"), { ssr: false });
 
-export default function Home() {
+export default function Home({ events }) {
   return (
     <>
       <Head>
@@ -18,7 +18,21 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
 
-      <Events />
+      <Events events={events} />
     </>
   );
 }
+
+export const getStaticProps = async (context) => {
+  try {
+    const eventsData = await prisma.events.findMany();
+
+    return {
+      props: {
+        events: eventsData,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+  }
+};

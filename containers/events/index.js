@@ -14,23 +14,8 @@ import Footer from "foundations/events/Footer";
 import EventView from "foundations/events/EventView";
 const Modal = dynamic(() => import("foundations/events/Modal"), { ssr: false });
 
-export default function Events() {
+export default function Events({ events }) {
   const socket = useSocket();
-
-  const [events, setEvents] = useState([]);
-  useEffect(() => {
-    getEvents();
-  }, []);
-
-  async function getEvents() {
-    const res = await axios.get("/api/prisma/retrive-all-events");
-
-    //res data sort by time
-    let sorted = res.data.sort((a, b) => {
-      return new Date(a.date) - new Date(b.date);
-    });
-    setEvents(sorted);
-  }
 
   const [modelEvent, setModalEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);

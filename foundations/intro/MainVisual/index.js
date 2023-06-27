@@ -75,6 +75,13 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
           </h2>
         </div>
       </S.Info>
+      <S.Invisible>
+        <h1>RCA IED 2023 Show</h1>
+        <h2>RCA 2023 Summer Show, Graduation Show</h2>
+        <h3>Royal College of Art Kensington Campus</h3>
+        <h4>Enter from the Royal Albert Hall</h4>
+        <h4>Royal College of Art Information Experience Design</h4>
+      </S.Invisible>
     </S.MainVisual>
   );
 }

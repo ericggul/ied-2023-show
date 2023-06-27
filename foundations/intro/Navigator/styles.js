@@ -90,7 +90,7 @@ export const Button = styled.div`
 
 export const ArrowRight = styled.img`
   position: absolute;
-  left: 15.5rem;
+  left: 15rem;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -98,7 +98,7 @@ export const ArrowRight = styled.img`
 
 export const ArrowLeft = styled.img`
   position: absolute;
-  right: 16rem;
+  right: 15.5rem;
   top: 0;
   bottom: 0;
   margin: auto;
