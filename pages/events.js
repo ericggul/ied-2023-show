@@ -1,6 +1,7 @@
 import Head from "next/head";
-
+import prisma from "lib/prisma";
 import dynamic from "next/dynamic";
+
 const Events = dynamic(() => import("containers/events"), { ssr: false });
 
 export default function Home({ events }) {

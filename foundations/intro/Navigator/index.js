@@ -28,7 +28,7 @@ export default function Navigator({ show, scrollPos }) {
         <S.Upper>
           <h1>COUNTERPOINT</h1>
           <br />
-          <h2>is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the INFORMATION EXPERIENCE DESIGN MA1 cohort.</h2>
+          <h2>is a post-disciplinary festival featuring new installations, workshops and performances imagined and designed by the RCA INFORMATION EXPERIENCE DESIGN MA1 cohort.</h2>
         </S.Upper>
         <S.Overlay>{/* <img src="/assets/Overlay.png" /> */}</S.Overlay>
 
