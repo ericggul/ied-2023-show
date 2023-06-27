@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>RCA IED 2023 || Royal College of Art Information Expereience Design Public Event</title>
-        <meta name="title" content={"RCA IED 2023"} />
+        <title>RCA IED Show 2023 || Royal College of Art Information Expereience Design Public Event</title>
+        <meta name="title" content={"RCA IED Show 2023 || Royal College of Art Information Expereience Design"} />
 
-        <meta name="description" content="RCA IED 2023: Royal College of Art Information Expereience Design Public Event" />
+        <meta name="description" content="RCA IED Show 2023: Royal College of Art Information Expereience Design Public Event" />
         <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />

@@ -13,7 +13,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Event",
     // event schema
-    name: "RCA IED 2023, Royal College of Art Information Experience Design Public Event Degree Show 2023. RCA IED Public Event, Exhibition, Exhibition in London.",
+    name: "RCA IED Show 2023, Royal College of Art Information Experience Design Public Event Degree Show 2023. RCA IED Public Event, Exhibition, Exhibition in London.",
     startDate: "20230630T012345.678+0900",
     endDate: "20230703T012345.678+0900",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
