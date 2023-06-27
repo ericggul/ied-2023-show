@@ -65,7 +65,7 @@ export default function Screen({ projects, events }) {
         setModalEvent(null);
 
         window.location.reload();
-      }, 30 * 1000);
+      }, 60 * 1000);
       return () => clearTimeout(timeout);
     }
   }, [modalProject, modalEvent]);
