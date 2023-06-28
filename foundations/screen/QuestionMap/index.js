@@ -25,7 +25,6 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
   ////////////
 
   const [currentTarget, setCurrentTarget] = useState("Double Thinking");
-  const [highlightTarget, setHighlightTarget] = useState("Double Thinking");
   const svgRef = useRef();
   const [intervalTime, setIntervalTime] = useState(1500);
 
@@ -78,14 +77,6 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
       link.attr("d", linkArc);
       node.attr("transform", (d) => `translate(${d.x},${d.y})`);
     });
-
-    // ["mouseenter", "touch"].forEach((eventType) => {
-    //   node.on(eventType, (ev, d) => {
-    //     ev.stopPropagation();
-    //     const { id, text } = d;
-    //     setHighlightTarget(text);
-    //   });
-    // });
   }
   ////////////
   ///interaction///
@@ -160,21 +151,6 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
       });
     }
   }, [connectionData, currentTarget, keywordsChain, windowWidth, windowHeight]);
-
-  useEffect(() => {
-    if (toneOn) triggerTone();
-    let node = nodeRef.current;
-    let simulation = simulationRef.current;
-
-    let width = windowWidth;
-
-    if (node && simulation) {
-      const nodes = node.filter((d) => d.text === highlightTarget);
-      nodes.each((d) => {
-        updateHighlightNode({ d, node, width });
-      });
-    }
-  }, [connectionData, toneOn, highlightTarget, keywordsChain, windowWidth, windowHeight]);
 
   function triggerTone() {
     const NOTES = [
