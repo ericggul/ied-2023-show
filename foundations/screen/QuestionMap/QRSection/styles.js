@@ -39,7 +39,7 @@ export const Top = styled.div`
     font-size: 1.7vw;
   }
   margin: 2vw 0;
-  margin-top: 5vw;
+  margin-top: 4vw;
 `;
 
 export const ImageWrapper = styled.div`

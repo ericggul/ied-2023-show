@@ -128,6 +128,7 @@ export const SingleRelatedProject = styled.div`
   width: 18vw;
   margin: 1vw 0;
   position: absolute;
+  cursor: pointer;
 
   ${({ yIdx }) => `transform: translateY(${-yIdx * 19}vw);`}
   ${({ opacity }) => `opacity: ${opacity};`}

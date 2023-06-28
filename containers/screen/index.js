@@ -22,6 +22,12 @@ export default function Screen({ projects, events }) {
     handleNewEventClick,
   });
 
+  function handleClick() {
+    if (!showEventModal && !showProjectModal) {
+      handleNewProjectClick("≠");
+    }
+  }
+
   function handleNewProjectClick(data) {
     try {
       setClickedIteration((c) => c + 1);
@@ -72,10 +78,10 @@ export default function Screen({ projects, events }) {
 
   return (
     <>
-      <S.Container>
+      <S.Container onClick={handleClick}>
         <QuestionMap toneOn={!showEventModal && !showProjectModal} />
         {modalEvent && <EventModal currentEvent={modalEvent} showModal={showEventModal && modalEvent !== null} setShowModal={setShowEventModal} />}
-        <ProjectModal currentProject={modalProject} showModal={showProjectModal && modalProject != null} setShowModal={setShowProjectModal} />
+        <ProjectModal currentProject={modalProject} handleProjectClick={handleNewProjectClick} showModal={showProjectModal && modalProject != null} setShowModal={setShowProjectModal} />
       </S.Container>
     </>
   );

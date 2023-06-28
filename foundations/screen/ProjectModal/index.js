@@ -3,7 +3,7 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
 const IMG_DB_URL = "https://ied-2023-show.s3.eu-west-1.amazonaws.com/";
 
-export default function Modal({ currentProject, showModal, setShowModal }) {
+export default function Modal({ currentProject, handleProjectClick, showModal, setShowModal }) {
   const [transition, setTransition] = useState(false);
   const [imgLoading, setImgLoading] = useState(true);
   const [imgURL, setImgURL] = useState(false);
@@ -79,13 +79,13 @@ export default function Modal({ currentProject, showModal, setShowModal }) {
           </S.Left>
         )}
 
-        {currentProject && <RightCarousel relatedProjects={currentProject.relatedProjects} />}
+        {currentProject && <RightCarousel relatedProjects={currentProject.relatedProjects} handleProjectClick={handleProjectClick} />}
       </S.ModalContainer>
     </S.Container>
   );
 }
 
-function RightCarousel({ relatedProjects }) {
+function RightCarousel({ relatedProjects, handleProjectClick }) {
   const [currentLoc, setCurrentLoc] = useState(0);
 
   useEffect(() => {
@@ -111,7 +111,15 @@ function RightCarousel({ relatedProjects }) {
         const opacity = Math.abs(yIdx) >= 3 ? 0 : 1;
 
         return (
-          <S.SingleRelatedProject key={i} yIdx={yIdx} opacity={opacity}>
+          <S.SingleRelatedProject
+            key={i}
+            yIdx={yIdx}
+            opacity={opacity}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleProjectClick(prj.name);
+            }}
+          >
             <S.RelatedImage>
               <img src={IMG_DB_URL + prj.imgURL} alt="sample project" />
             </S.RelatedImage>

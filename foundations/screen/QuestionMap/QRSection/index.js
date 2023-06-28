@@ -21,7 +21,7 @@ export default function QRSection() {
           </p>
           <br />
           <p>MA1 Public Event</p>
-          <h1>Counterpoint</h1>
+          <h1>COUNTERPOINT</h1>
         </S.Top>
         <S.ImageWrapper>
           <QRCodeSVG value={qrURL} bgColor="transparent" fgColor="white" size={windowWidth * 0.16} />
