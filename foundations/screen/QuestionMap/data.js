@@ -826,7 +826,7 @@ export const DATA_NODES_LINKS = {
     {
       text: "≠",
       id: 131,
-      longDescription: "How to create Web Artwork that brings people together?",
+      longDescription: "How to create Web Artwork that brings people together, using participants' mobiles?",
       shortDescription: "Multi-Device Web Artwork",
     },
     {
@@ -1027,20 +1027,7 @@ export const DATA_NODES_LINKS = {
       id: 400,
       isCycle: true,
     },
-    {
-      source: "Berlin Nonequality",
-      target: "World War II",
-      value: 50,
-      id: 400,
-      isCycle: true,
-    },
-    {
-      source: "Berlin Nonequality",
-      target: "London",
-      value: 50,
-      id: 400,
-      isCycle: true,
-    },
+
     {
       source: "Not Equal",
       target: "Nonequlibrium",

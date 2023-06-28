@@ -81,6 +81,8 @@ export default function MainVisual({ show, scrollPos, handleImageLoaded }) {
         <h3>Royal College of Art Kensington Campus</h3>
         <h4>Enter from the Royal Albert Hall</h4>
         <h4>Royal College of Art Information Experience Design</h4>
+        <h2>Website Developed and Programmed by Jeanyoon Choi, RCA IED 2023</h2>
+        <h2>Website Designed by UI designer Yue Song, RCA IED 2023</h2>
       </S.Invisible>
     </S.MainVisual>
   );
