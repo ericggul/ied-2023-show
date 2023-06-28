@@ -9,8 +9,21 @@ export default function QRSection() {
   return (
     <S.RightWrapper animate={false}>
       <S.RightInner>
+        <S.Top>
+          <p>
+            <b>I</b>nformation
+          </p>
+          <p>
+            <b>E</b>xperience
+          </p>
+          <p>
+            <b>D</b>esign
+          </p>
+          <br />
+          <p>MA1 Public Event</p>
+          <h1>Counterpoint</h1>
+        </S.Top>
         <S.ImageWrapper>
-          {/* <img src={"/assets/images/term2/wooging/qr.png"} /> */}
           <QRCodeSVG value={qrURL} bgColor="transparent" fgColor="white" size={windowWidth * 0.16} />
         </S.ImageWrapper>
 

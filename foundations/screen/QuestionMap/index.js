@@ -14,7 +14,7 @@ import QRSection from "./QRSection";
 //helper
 import { DATA_NODES_LINKS } from "./data";
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
-import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode } from "./helper/update";
+import { updateTargetAndSourceNodes, updateKeywordChain, updateCurrentNode, updateHighlightNode } from "./helper/update";
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 const getRandomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
@@ -25,6 +25,7 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
   ////////////
 
   const [currentTarget, setCurrentTarget] = useState("Double Thinking");
+  const [highlightTarget, setHighlightTarget] = useState("Double Thinking");
   const svgRef = useRef();
   const [intervalTime, setIntervalTime] = useState(1500);
 
@@ -77,6 +78,14 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
       link.attr("d", linkArc);
       node.attr("transform", (d) => `translate(${d.x},${d.y})`);
     });
+
+    // ["mouseenter", "touch"].forEach((eventType) => {
+    //   node.on(eventType, (ev, d) => {
+    //     ev.stopPropagation();
+    //     const { id, text } = d;
+    //     setHighlightTarget(text);
+    //   });
+    // });
   }
   ////////////
   ///interaction///
@@ -125,11 +134,6 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
     }, intervalTime);
   }
 
-  function handleNewInteraction(data) {
-    setCurrentTarget(data.target);
-    setKeywordsChain((keywordsChain) => (data.keyword in keywordsChain ? keywordsChain : [...keywordsChain, data.keyword]));
-  }
-
   const targetNodesRef = useRef(null);
   const sourceNodesRef = useRef(null);
   const targetLinksRef = useRef(null);
@@ -142,8 +146,6 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
     let unitSize = windowWidth * 0.001;
 
     if (node && simulation) {
-      simulation.alphaTarget(0.2).restart();
-
       const nodes = node.filter((d) => d.text === currentTarget);
       nodes.each((d) => {
         d.x = 0;
@@ -158,6 +160,21 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
       });
     }
   }, [connectionData, currentTarget, keywordsChain, windowWidth, windowHeight]);
+
+  useEffect(() => {
+    if (toneOn) triggerTone();
+    let node = nodeRef.current;
+    let simulation = simulationRef.current;
+
+    let width = windowWidth;
+
+    if (node && simulation) {
+      const nodes = node.filter((d) => d.text === highlightTarget);
+      nodes.each((d) => {
+        updateHighlightNode({ d, node, width });
+      });
+    }
+  }, [connectionData, toneOn, highlightTarget, keywordsChain, windowWidth, windowHeight]);
 
   function triggerTone() {
     const NOTES = [
@@ -192,11 +209,6 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
         if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
         else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
       });
-      // let replyNotes = OTHER_NOTES[iteration % NOTES.length];
-      // replyNotes.forEach((note, i) => {
-      //   if (i < 3) synth.triggerAttackRelease(note, "32n", now + 0.14 * i);
-      //   else synth.triggerAttackRelease(note, "16n", now + 0.14 * i);
-      // });
     } catch (e) {
       console.log(e);
     }
@@ -207,7 +219,7 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
       <svg
         ref={svgRef}
         style={{
-          marginLeft: "-12vw",
+          marginLeft: "-14vw",
         }}
       />
       <S.Question>{question}</S.Question>

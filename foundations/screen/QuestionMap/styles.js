@@ -19,9 +19,9 @@ export const Question = styled.div`
   position: absolute;
   padding: 1vw 0;
   bottom: 0;
-  height: 3vw;
+  height: 4vw;
   z-index: 100;
-  backdrop-filter: blur(1vw) brightness(1.4);
+  backdrop-filter: blur(0.2vw) brightness(0.8);
   width: 100%;
   text-align: center;
   ${FlexCenterStyle}
@@ -32,10 +32,7 @@ export const Question = styled.div`
 
 export const Overlap = styled.div`
   font-size: 6vw;
-  // width: 35vw;
-  // height: 13vw;
-  // border-radius: 1vw;
-  // backdrop-filter: blur(1vw) brightness(1);
+
   font-family: Bebas Neue;
   position: absolute;
   top: 0;
@@ -44,6 +41,7 @@ export const Overlap = styled.div`
   right: 0;
   margin: auto;
   ${FlexCenterStyle}
+  pointer-events: none;
 
   ${({ show }) => (show ? "opacity: 1;" : "opacity: 0;")}
   transition: all 0.5s;
