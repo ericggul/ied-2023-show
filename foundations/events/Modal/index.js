@@ -12,7 +12,7 @@ export default function Modal({ event, showModal, setShowModal }) {
       window.open(event.slug, "_blank");
     }
 
-    window.open(`https://www.rca.ac.uk/students/${event.slug}`, "_blank");
+    window.open(`https://2023.rca.ac.uk/students/${event.slug}`, "_blank");
   }
 
   const [imgLoading, setImgLoading] = useState(false);

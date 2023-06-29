@@ -14,9 +14,9 @@ function initCreateSimulation({ nodes, links, width, height }) {
       "link",
       d3.forceLink(links).id((d) => d.text)
     )
-    .force("charge", d3.forceManyBody().strength(-60 * ((width + height) / 500) ** 2))
+    .force("charge", d3.forceManyBody().strength(-60 * (Math.min(width, height * 0.8) / 200) ** 2))
     .force("center", d3.forceCenter())
-    .force("boundary", forceBoundary(-width * 0.45, -height * 0.45, width * 0.45, height * 0.45));
+    .force("boundary", forceBoundary(-width * 0.5, -height * 0.3, width * 0.5, height * 0.3));
 
   return simulation;
 }
@@ -52,7 +52,7 @@ function initLinkStyling({ svg, links, width, height }) {
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
     .attr("stroke", (d) => "#cbc6e5")
     .attr("stroke-width", (d) => (width + height) * 0.0005)
-    .attr("opacity", "0.42");
+    .attr("opacity", "0.22");
 
   return link;
 }
@@ -70,9 +70,9 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
     .append("text")
     .attr("id", (d) => `text-${d.id}`)
     .attr("x", ".3rem")
-    .attr("y", ".4rem")
+    .attr("y", ".45rem")
     .attr("font-size", "1.4rem")
-    .attr("font-family", "Bebas Neue")
+    .attr("font-family", "Roboto Serif")
     .attr("fill", "rgba(255, 255, 255, 0.02)")
     .text((d) => d.text)
     .clone(true)

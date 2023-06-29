@@ -12,13 +12,13 @@ import * as d3 from "d3";
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
 import { updateTargetAndSourceNodes, updateCurrentNode } from "./helper/update";
 
-export const PRIMARY_COLOR = "#8A75F6";
+export const PRIMARY_COLOR = "hsl(106, 100%, 70%)";
 export const SECONDARY_COLOR = "#CBC6E5";
 const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Rhizome({ socket, isVisible, connectionData, handleProjectClick }) {
+export default function Rhizome({ projectsData, socket, isVisible, connectionData, handleProjectClick, handleCurrentTarget }) {
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -38,6 +38,7 @@ export default function Rhizome({ socket, isVisible, connectionData, handleProje
 
   useEffect(() => {
     currentTargetRef.current = currentTarget;
+    handleCurrentTarget(currentTarget);
     if (socket && socket.current) {
       socket.current.emit("project-click", currentTarget);
     }
@@ -123,23 +124,39 @@ export default function Rhizome({ socket, isVisible, connectionData, handleProje
     let simulation = simulationRef.current;
     let link = linkRef.current;
 
-    //link and main node clean up
     link
       .transition()
       .duration(DURATION)
-      .attr("stroke", primaryColor)
-      .attr("opacity", "0.8")
+      // .attr("stroke", `hsl(${currentTarget ? currentTarget.length * 30 : 0}, 100%, 70%)`)
+      .attr("stroke", (d) => {
+        //d get two connected nodes
+        const { source, target } = d;
+        const { text: sourceText } = source;
+        const { text: targetText } = target;
+
+        //get common keywords
+        const sourceKeywords = projectsData.find((project) => project.name === sourceText).keywords.map((el) => el.name);
+        const targetKeywords = projectsData.find((project) => project.name === targetText).keywords.map((el) => el.name);
+
+        const commonKeywords = sourceKeywords.filter((keyword) => targetKeywords.includes(keyword));
+        //add length of each commonkeywords
+        const keywordsLengthSum = commonKeywords.reduce((acc, keyword) => acc + keyword.length, 0);
+
+        return `hsl(${(keywordsLengthSum * 2 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
+      })
+      .attr("opacity", "0.4")
       .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
     node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("fill", "rgba(255, 255, 255, 0.02)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");
 
     if (node && simulation) {
       simulation.alphaTarget(0.1).restart();
-
+      //link and main node clean up
       const nodes = node.filter((d) => d.text === currentTarget);
+
       nodes.each((d) => {
         /////TARGET AND SOURCE NODES //////////////////////////////////
-        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, width: windowWidth, height: windowHeight, secondaryColor });
+        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, width: windowWidth, height: windowHeight, currentTargetLength: currentTarget.length });
         ////// CURRENT NODE //////////////////////////////////
         updateCurrentNode({ d, node });
       });

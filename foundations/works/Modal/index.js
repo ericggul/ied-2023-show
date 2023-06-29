@@ -8,7 +8,7 @@ export default function Modal({ project, showModal, setShowModal }) {
   function handleClick(e) {
     e.stopPropagation();
     //send to google.com
-    window.open(`https://www.rca.ac.uk/students/${project.slug}`, "_blank");
+    window.open(`https://2023.rca.ac.uk/students/${project.slug}`, "_blank");
   }
 
   const [imgLoading, setImgLoading] = useState(false);

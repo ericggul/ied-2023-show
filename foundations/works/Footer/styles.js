@@ -24,19 +24,19 @@ export const Container = styled.div`
   backdrop-filter: blur(1rem) brightness(1.5);
 `;
 
-export const Image = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 3vw;
-  position: relative;
-  width: 30vw;
+export const Center = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+  font-style: italic;
+  ${FlexCenterStyle}
+  text-align: center;
 
-  img {
-    position: absolute;
-    width: 100%;
-    // bottom: -2.1rem;
-    // left: -1.3rem;
-  }
+  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0;")}
+  transition: all 0.5s;
 `;
 
 export const Texts = styled.div`
@@ -48,6 +48,9 @@ export const Texts = styled.div`
   align-items: flex-end;
   margin: 0 4vw;
   text-align: right;
+
+  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0;")}
+  transition: all 0.5s;
 
   h1 {
     color: white;

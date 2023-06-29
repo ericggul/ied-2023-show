@@ -10,7 +10,7 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
 
   useEffect(() => {
     if (filterWord === "") {
-      setFilteredList(projectsData);
+      setFilteredList(projectsData.sort((a, b) => a.name.localeCompare(b.name)));
     } else {
       const filtered = projectsData.filter(
         (item) =>
