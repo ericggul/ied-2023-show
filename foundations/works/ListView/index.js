@@ -1,7 +1,6 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 import { BsSearch } from "react-icons/bs";
-import { DUMMY_LIST } from "containers/works/data";
 
 export default function ListView({ socket, projectsData, isVisible, handleProjectClick }) {
   const [filterWord, setFilterWord] = useState("");
@@ -23,7 +22,7 @@ export default function ListView({ socket, projectsData, isVisible, handleProjec
   }, [filterWord, projectsData]);
 
   return (
-    <S.Container isVisible={isVisible} length={DUMMY_LIST.length}>
+    <S.Container isVisible={isVisible}>
       {isVisible && (
         <S.SearchContainer>
           <S.P goUp={filterWord !== "" || focused}>

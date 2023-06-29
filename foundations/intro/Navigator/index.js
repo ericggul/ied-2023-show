@@ -64,9 +64,8 @@ export default function Navigator({ show, scrollPos }) {
         >
           <h1>Website Made by</h1>
           <h3>
-            UI Designer:{" "}
             <a href={"https://2023.rca.ac.uk/students/yue-song"} target={"_blank"}>
-              Yue Song
+              UI & UX Designer: Yue Song
             </a>
           </h3>
           <h3>

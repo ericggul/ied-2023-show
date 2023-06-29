@@ -4,9 +4,6 @@ import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 //resize
 import { useResizeDebounce } from "utils/hooks/useResize";
 
-//color-picker
-import { HexColorPicker } from "react-colorful";
-
 //d3
 import * as d3 from "d3";
 import { initCleanUp, initCreateSimulation, initMarkerStyling, initLinkStyling, initNodeStyling } from "./helper/init";
@@ -124,6 +121,8 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
     let simulation = simulationRef.current;
     let link = linkRef.current;
 
+    let targetConnectedWords = connectionData.links.filter((l) => l.source === currentTarget || l.target === currentTarget).map((l) => (l.source === currentTarget ? l.target : l.source));
+
     link
       .transition()
       .duration(DURATION)
@@ -165,7 +164,18 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
       nodes.each((d) => {
         /////TARGET AND SOURCE NODES //////////////////////////////////
-        updateTargetAndSourceNodes({ data: connectionData, d, node, link, targetNodesRef, sourceNodesRef, width: windowWidth, height: windowHeight, currentTargetLength: currentTarget.length });
+        updateTargetAndSourceNodes({
+          data: connectionData,
+          d,
+          node,
+          link,
+          targetNodesRef,
+          sourceNodesRef,
+          width: windowWidth,
+          height: windowHeight,
+          currentTargetLength: currentTarget.length,
+          targetConnectedWordsLength: targetConnectedWords.length,
+        });
         ////// CURRENT NODE //////////////////////////////////
         updateCurrentNode({ d, node });
       });

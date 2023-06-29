@@ -21,18 +21,17 @@ function updateCurrentNode({ d, node }) {
     .attr("fill", "white");
 }
 
-function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef, width, height, currentTargetLength }) {
+function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourceNodesRef, width, height, currentTargetLength, targetConnectedWordsLength }) {
   let linksDataStartingFromTarget = data.links.filter((l) => l.source === d.text).map((d) => d.target);
   let linksDataEndingAtSource = data.links.filter((l) => l.target === d.text).map((d) => d.source);
 
   let targetNodes = node.filter((n) => linksDataStartingFromTarget.includes(n.text));
   let sourceNodes = node.filter((n) => linksDataEndingAtSource.includes(n.text));
 
+  let opacity = Math.min(0.1 + 3 / targetConnectedWordsLength, 1);
   //new styling
-  // targetNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
-  targetNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.3)");
-  // sourceNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
-  sourceNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.3)");
+  targetNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", `rgba(255, 255, 255, ${opacity})`);
+  sourceNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", `rgba(255, 255, 255, ${opacity})`);
 
   //update ref
   targetNodesRef.current = targetNodes;

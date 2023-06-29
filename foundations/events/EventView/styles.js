@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Appear } from "styles/common";
 
 export const Container = styled.div`
-  height: ${({ length }) => length * 1.3 + 20}rem;
   width: 100%;
   display: flex;
   top: 0;

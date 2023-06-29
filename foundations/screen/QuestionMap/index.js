@@ -10,7 +10,6 @@ import * as d3 from "d3";
 
 //foundation
 import QRSection from "./QRSection";
-import Background from "./Background";
 
 //helper
 import { DATA_NODES_LINKS } from "./data";

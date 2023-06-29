@@ -1,7 +1,4 @@
 import * as S from "./styles";
-import { Fragment, useState, useEffect, useRef, useMemo } from "react";
-import { BsSearch } from "react-icons/bs";
-import { DUMMY_LIST } from "containers/works/data";
 
 const LIST = [
   {
@@ -24,7 +21,7 @@ const LIST = [
 
 export default function ListView({ socket, eventsData, handleEventClick }) {
   return (
-    <S.Container length={DUMMY_LIST.length}>
+    <S.Container>
       <S.Description>
         Among other things, COUNTERPOINT has a packed programme of live performances including generative composition, artificial intelligence, multi-device web art, and film screenings.
       </S.Description>

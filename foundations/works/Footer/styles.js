@@ -36,6 +36,7 @@ export const Center = styled.div`
   cursor: pointer;
   z-index: 4;
   text-align: center;
+  font-family: Roboto Serif;
 
   ${({ show }) => (show ? "opacity: 1;" : "opacity: 0; pointer-events: none;")}
   transition: all 0.5s;
