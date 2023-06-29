@@ -43,6 +43,7 @@ function SingleDay({ socket, listItem, eventsData, handleEventClick }) {
     <S.SingleDay>
       <S.Date>{listItem.display}</S.Date>
       {eventsData
+
         .filter((item) => {
           let el = new Date(item.date).toLocaleDateString("en-UK", {
             year: "numeric",
@@ -52,6 +53,7 @@ function SingleDay({ socket, listItem, eventsData, handleEventClick }) {
 
           return el.includes(listItem.filter);
         })
+        .sort((a, b) => new Date(a.date) - new Date(b.date))
         .map((item, idx) => (
           <S.ListItem
             key={idx}

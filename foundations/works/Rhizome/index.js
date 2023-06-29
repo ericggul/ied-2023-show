@@ -140,17 +140,26 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
         const commonKeywords = sourceKeywords.filter((keyword) => targetKeywords.includes(keyword));
         //add length of each commonkeywords
-        const keywordsLengthSum = commonKeywords.reduce((acc, keyword) => acc + keyword.length, 0);
+        const keywordsFirstLettersAvg =
+          commonKeywords.reduce(
+            (acc, keyword) =>
+              acc +
+              keyword
+                .split("")
+                .map((letter) => letter.charCodeAt(0))
+                .reduce((acc, code) => acc + code, 0),
+            0
+          ) / commonKeywords.length;
 
-        return `hsl(${(keywordsLengthSum * 2 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
+        return `hsl(${(keywordsFirstLettersAvg * 0.03 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
       })
       .attr("opacity", "0.4")
       .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
-    node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
+    // node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
     node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");
 
     if (node && simulation) {
-      simulation.alphaTarget(0.1).restart();
+      simulation.alphaTarget(0.01).restart();
       //link and main node clean up
       const nodes = node.filter((d) => d.text === currentTarget);
 

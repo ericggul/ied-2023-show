@@ -10,7 +10,7 @@ function updateCurrentNode({ d, node }) {
   let circle = d3.select(`#circle-${d.id}`);
   let text = node.filter((n) => n.text === d.text).selectAll("text");
 
-  circle.transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.9)");
+  // circle.transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.9)");
   text
     .transition()
     .duration(DURATION_IN)
@@ -29,9 +29,9 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
   let sourceNodes = node.filter((n) => linksDataEndingAtSource.includes(n.text));
 
   //new styling
-  targetNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
+  // targetNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
   targetNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.3)");
-  sourceNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
+  // sourceNodes.selectAll("circle").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.7)");
   sourceNodes.selectAll("text").transition().duration(DURATION_IN).attr("fill", "rgba(255, 255, 255, 0.3)");
 
   //update ref

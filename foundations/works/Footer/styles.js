@@ -30,12 +30,14 @@ export const Center = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-style: italic;
   ${FlexCenterStyle}
+  cursor: pointer;
+  z-index: 4;
   text-align: center;
 
-  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0;")}
+  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0; pointer-events: none;")}
   transition: all 0.5s;
 `;
 
@@ -49,7 +51,7 @@ export const Texts = styled.div`
   margin: 0 4vw;
   text-align: right;
 
-  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0;")}
+  ${({ show }) => (show ? "opacity: 1;" : "opacity: 0; pointer-events: none;")}
   transition: all 0.5s;
 
   h1 {

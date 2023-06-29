@@ -63,8 +63,8 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
   node
     .append("circle")
     .attr("id", (d) => `circle-${d.id}`)
-    .attr("r", (width + height) * 0.001)
-    .attr("fill", "rgba(255, 255, 255, 0.05)");
+    .attr("r", (width + height) * 0.01)
+    .attr("fill", "transparent");
 
   node
     .append("text")
@@ -83,7 +83,7 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
 
 function drag(simulation, setCurrentTarget) {
   function dragstarted(event, d) {
-    if (!event.active) simulation.alphaTarget(0.5).restart();
+    if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
     setCurrentTarget(d.text);

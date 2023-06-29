@@ -28,6 +28,7 @@ export default function Screen() {
           console.log(results.data);
           results.data.forEach((el) => {
             // projectUpload(el);
+            eventUpload(el);
           });
         },
       });

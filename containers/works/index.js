@@ -39,6 +39,9 @@ export default function Works({ projectsData, connectionData }) {
   }
 
   const [currentTarget, setCurrentTarget] = useState(null);
+  useEffect(() => {
+    setCurrentTarget(null);
+  }, [isRhizome]);
 
   return (
     <>
@@ -54,7 +57,7 @@ export default function Works({ projectsData, connectionData }) {
         <ListView socket={socket} isVisible={!isRhizome} projectsData={projectsData} handleProjectClick={handleProjectClick} />
         <Modal showModal={showModal && modalProject != null} project={modalProject} setShowModal={setShowModal} />
         <Header isRhizome={isRhizome} setIsRhizome={setIsRhizome} />
-        <Footer currentTarget={currentTarget} />
+        <Footer currentTarget={currentTarget} handleTargetClick={handleProjectClickFromRhizome} />
       </S.Container>
     </>
   );

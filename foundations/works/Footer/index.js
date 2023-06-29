@@ -1,11 +1,19 @@
 import * as S from "./styles";
 import { useRouter } from "next/router";
 
-export default function HeaderEl({ currentTarget }) {
+export default function HeaderEl({ currentTarget, handleTargetClick }) {
   const router = useRouter();
   return (
     <S.Container>
-      <S.Center show={currentTarget != null}>{currentTarget}</S.Center>
+      <S.Center
+        show={currentTarget != null}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleTargetClick(currentTarget);
+        }}
+      >
+        {currentTarget}
+      </S.Center>
       <S.Texts
         show={currentTarget == null}
         onClick={() => {
