@@ -62,7 +62,7 @@ export const CurrImg = styled.img`
   object-fit: cover;
   opacity: 1;
 
-  transition: all 0.25s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
 
 export const InformationContainer = styled.div`

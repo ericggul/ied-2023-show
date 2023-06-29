@@ -71,7 +71,7 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
     .attr("id", (d) => `text-${d.id}`)
     .attr("x", ".3rem")
     .attr("y", ".45rem")
-    .attr("font-size", "1.4rem")
+    .attr("font-size", "1rem")
     .attr("font-family", "Roboto Serif")
     .attr("fill", "rgba(255, 255, 255, 0.02)")
     .text((d) => d.text)
