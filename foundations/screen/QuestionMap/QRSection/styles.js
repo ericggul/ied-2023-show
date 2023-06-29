@@ -5,17 +5,17 @@ export const RightWrapper = styled.div`
   // box-shadow: 0 0 0.5vw 0.5vw rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(0.2vw) brightness(0.8);
   position: absolute;
-  right: 0;
+  left: 0;
   height: 100%;
   color: white;
-  width: 18vw;
+  width: 24vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 export const RightInner = styled.div`
-  padding-left: 1vw;
+  padding-left: 3vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

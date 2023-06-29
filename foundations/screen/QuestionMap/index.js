@@ -196,7 +196,7 @@ export default function QuestionMap({ connectionData = DATA_NODES_LINKS, toneOn 
       <svg
         ref={svgRef}
         style={{
-          marginLeft: "-14vw",
+          marginLeft: "7vw",
         }}
       />
       <S.Question>{question}</S.Question>
