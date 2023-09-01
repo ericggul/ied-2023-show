@@ -3,14 +3,13 @@ import prisma from "lib/prisma";
 
 import dynamic from "next/dynamic";
 
-const Works = dynamic(() => import("containers/works"), { ssr: false });
+const Map = dynamic(() => import("containers/vna/map"), { ssr: false });
 
 export default function WorksPage({ projectsData, connectionData }) {
-  console.log(projectsData, connectionData);
   return (
     <>
       <Head>
-        <title>RCA IED 2023 || Royal College of Art Information Expereience Design Public Event</title>
+        <title></title>
         <meta name="title" content={"RCA IED 2023"} />
 
         <meta name="description" content="RCA IED 2023: Royal College of Art Information Expereience Design Public Event" />
@@ -21,7 +20,7 @@ export default function WorksPage({ projectsData, connectionData }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
 
-      <Works projectsData={projectsData} connectionData={connectionData} />
+      <Map />
     </>
   );
 }
