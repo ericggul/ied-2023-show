@@ -1,8 +1,6 @@
 //d3
 import * as d3 from "d3";
 
-import { SECONDARY_COLOR } from "../index";
-
 export const DURATION_IN = 350;
 export const DURATION_OUT = 350;
 

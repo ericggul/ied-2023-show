@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
+import { Leva, useControls } from "leva";
+
 //resize
 import { useResizeDebounce } from "utils/hooks/useResize";
 
@@ -16,6 +18,10 @@ const DURATION = 150;
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
 export default function Rhizome({ projectsData, socket, isVisible, connectionData, handleProjectClick, handleCurrentTarget }) {
+  const params = useControls("linkArc", {
+    AVal: { value: 10, min: 0, max: 10, step: 1 },
+  });
+
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -88,7 +94,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
       //tick simulation
       simulation.on("tick", () => {
-        link.attr("d", linkArc);
+        link.attr("d", (d) => linkArc(d, params));
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
       });
 
@@ -107,7 +113,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         });
       });
     }
-  }, [isVisible, connectionData, windowWidth, windowHeight]);
+  }, [params, isVisible, connectionData, windowWidth, windowHeight]);
 
   ////////////
   ///interaction///
@@ -184,6 +190,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
   return (
     <S.Container isVisible={isVisible}>
+      <Leva />
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>
   );
@@ -191,10 +198,21 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
 ///helper functions
 
-function linkArc(d) {
+function numberAdjuster(number) {
+  //number: 10 -> 1
+  //number: 8 -> 08
+
+  if (number < 10) {
+    return `0${number}`;
+  } else {
+    return 1;
+  }
+}
+
+function linkArc(d, params) {
   const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
   return `
        M${d.source.x},${d.source.y}
-       A${r},${r} 0 0,08 ${d.target.x},${d.target.y}
+       A${r},${r} 1 1,${numberAdjuster(params.AVal)} ${d.target.x},${d.target.y}
      `;
 }

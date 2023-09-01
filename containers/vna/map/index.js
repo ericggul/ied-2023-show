@@ -12,10 +12,6 @@ import dynamic from "next/dynamic";
 const Rhizome = dynamic(() => import("foundations/vna/works/Rhizome"), { ssr: false });
 const Modal = dynamic(() => import("foundations/vna/works/Modal"), { ssr: false });
 
-const roundUpFloat = (float, roundUp) => {
-  return Math.round(float * roundUp) / roundUp;
-};
-
 export default function Works({ projectsData = PROJECTS, connectionData = CONNECTIONS }) {
   const socket = useSocket();
 
