@@ -210,7 +210,7 @@ function numberAdjuster(number) {
 }
 
 function linkArc(d, params) {
-  const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
+  const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y) * 0.7;
   return `
        M${d.source.x},${d.source.y}
        A${r},${r} 1 1,${numberAdjuster(params.AVal)} ${d.target.x},${d.target.y}
