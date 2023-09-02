@@ -156,7 +156,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
             0
           ) / commonKeywords.length;
 
-        return `hsl(${(keywordsFirstLettersAvg * 0.03 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
+        return `hsl(${(keywordsFirstLettersAvg * 0.04 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
       })
       .attr("opacity", "0.4")
       .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
