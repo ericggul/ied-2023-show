@@ -85,13 +85,17 @@ export default function Modal({ project, showModal, setShowModal }) {
             >
               <S.Text>
                 <h1>{project.name}</h1>
-                <h2>{project.studentName}</h2>
+                <h2>
+                  {project.studentNames.map((el, i) => (
+                    <p key={i}>{el}</p>
+                  ))}
+                </h2>
               </S.Text>
               {windowWidth > 768 && <S.Abstract>{project.abstract}</S.Abstract>}
               {windowWidth < 768 && (
                 <S.Tags>
-                  {project.keywords.map((keyword, i) => (
-                    <S.Tag key={i}>#{keyword.name}</S.Tag>
+                  {project.relatedKeywords.map((keyword, i) => (
+                    <S.Tag key={i}>#{keyword}</S.Tag>
                   ))}
                 </S.Tags>
               )}
@@ -106,8 +110,8 @@ export default function Modal({ project, showModal, setShowModal }) {
             {windowWidth > 768 && (
               <S.RightArray>
                 <S.Tags>
-                  {project.keywords.map((keyword, i) => (
-                    <S.Tag key={i}>#{keyword.name}</S.Tag>
+                  {project.relatedKeywords.map((keyword, i) => (
+                    <S.Tag key={i}>#{keyword}</S.Tag>
                   ))}
                 </S.Tags>
                 <S.Link onClick={handleClick}>

@@ -18,10 +18,6 @@ const DURATION = 150;
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
 export default function Rhizome({ projectsData, socket, isVisible, connectionData, handleProjectClick, handleCurrentTarget }) {
-  const params = useControls("linkArc", {
-    AVal: { value: 10, min: 0, max: 10, step: 1 },
-  });
-
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -94,7 +90,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
       //tick simulation
       simulation.on("tick", () => {
-        link.attr("d", (d) => linkArc(d, params));
+        link.attr("d", (d) => linkArc(d));
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
       });
 
@@ -113,7 +109,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         });
       });
     }
-  }, [params, isVisible, connectionData, windowWidth, windowHeight]);
+  }, [isVisible, connectionData, windowWidth, windowHeight]);
 
   ////////////
   ///interaction///
@@ -140,23 +136,23 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         const { text: targetText } = target;
 
         //get common keywords
-        const sourceKeywords = projectsData.find((project) => project.name === sourceText).keywords.map((el) => el.name);
-        const targetKeywords = projectsData.find((project) => project.name === targetText).keywords.map((el) => el.name);
+        // const sourceKeywords = projectsData.find((project) => project.name === sourceText).relatedKeywords;
+        // const targetKeywords = projectsData.find((project) => project.name === targetText).relatedKeywords;
 
-        const commonKeywords = sourceKeywords.filter((keyword) => targetKeywords.includes(keyword));
-        //add length of each commonkeywords
-        const keywordsFirstLettersAvg =
-          commonKeywords.reduce(
-            (acc, keyword) =>
-              acc +
-              keyword
-                .split("")
-                .map((letter) => letter.charCodeAt(0))
-                .reduce((acc, code) => acc + code, 0),
-            0
-          ) / commonKeywords.length;
+        // const commonKeywords = sourceKeywords.filter((keyword) => targetKeywords.includes(keyword));
+        // //add length of each commonkeywords
+        // const keywordsFirstLettersAvg =
+        //   commonKeywords.reduce(
+        //     (acc, keyword) =>
+        //       acc +
+        //       keyword
+        //         .split("")
+        //         .map((letter) => letter.charCodeAt(0))
+        //         .reduce((acc, code) => acc + code, 0),
+        //     0
+        //   ) / commonKeywords.length;
 
-        return `hsl(${(keywordsFirstLettersAvg * 0.04 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
+        return `hsl(${(0 * 0.04 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
       })
       .attr("opacity", "0.4")
       .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
@@ -196,23 +192,10 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
   );
 }
 
-///helper functions
-
-function numberAdjuster(number) {
-  //number: 10 -> 1
-  //number: 8 -> 08
-
-  if (number < 10) {
-    return `0${number}`;
-  } else {
-    return 1;
-  }
-}
-
-function linkArc(d, params) {
+function linkArc(d) {
   const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y) * 0.7;
   return `
        M${d.source.x},${d.source.y}
-       A${r},${r} 1 1,${numberAdjuster(params.AVal)} ${d.target.x},${d.target.y}
+       A${r},${r} 0 0,1 ${d.target.x},${d.target.y}
      `;
 }
