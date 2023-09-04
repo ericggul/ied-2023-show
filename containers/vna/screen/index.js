@@ -27,10 +27,10 @@ export default function Screen() {
     <S.Container>
       {new Array(4).fill(0).map((_, j) => (
         <S.Row key={j}>
-          {new Array(25).fill(0).map((_, i) => (
+          {new Array(10).fill(0).map((_, i) => (
             <S.Img key={i}>
               {(i + j) % 2 === 0 && <img src={"/assets/vna/ev.png"} />}
-              {(i + j) % 2 === 1 && <img src={`/assets/vna/ev${currKeyword.length % 2 == 0 ? 1 : 2}.png`} />}
+              {(i + j) % 2 === 1 && <img src={`/assets/vna/ev${(currKeyword.length % 3) + 1}.png`} />}
             </S.Img>
           ))}
         </S.Row>

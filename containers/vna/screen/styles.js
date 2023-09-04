@@ -8,15 +8,17 @@ export const Container = styled.div`
   color: white;
   overflow-y: hidden;
 
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 `;
 
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
   height: 25vh;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+  width: 400vh;
+  flex-shrink: 0;
 `;
 
 export const Img = styled.div`
