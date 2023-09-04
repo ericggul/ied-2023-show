@@ -39,7 +39,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
     currentTargetRef.current = currentTarget;
     handleCurrentTarget(currentTarget);
     if (socket && socket.current) {
-      socket.current.emit("project-click", currentTarget);
+      socket.current.emit("vna-project-click", currentTarget);
     }
   }, [currentTarget]);
 

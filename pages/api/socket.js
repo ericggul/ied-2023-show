@@ -22,6 +22,10 @@ export default function handler(req, res) {
       socket.on("event-click", (data) => {
         socket.broadcast.emit("new-event-click", data);
       });
+
+      socket.on("vna-project-click", (data) => {
+        socket.broadcast.emit("new-vna-project-click", data);
+      });
     });
   }
 

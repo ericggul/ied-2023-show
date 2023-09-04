@@ -1,10 +1,11 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
-import { PROJECTS, CONNECTIONS } from "./constant";
+import { PROJECTS, CONNECTIONS } from "../data/constant";
+import { projectsToConnection, deriveKeywords } from "../data/utils";
 
 //hooks
-import useSocket from "utils/hooks/socket/useSocketMobile";
+import useSocket from "utils/hooks/socket/vna/useSocketMobile";
 
 //foundations
 import dynamic from "next/dynamic";
@@ -12,7 +13,13 @@ import dynamic from "next/dynamic";
 const Rhizome = dynamic(() => import("foundations/vna/works/Rhizome"), { ssr: false });
 const Modal = dynamic(() => import("foundations/vna/works/Modal"), { ssr: false });
 
-export default function Works({ projectsData = PROJECTS, connectionData = CONNECTIONS }) {
+export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS }) {
+  //async call deriveKeywords
+
+  useEffect(() => {
+    // deriveKeywords();
+  }, []);
+
   const socket = useSocket();
 
   const [isRhizome, setIsRhizome] = useState(true);
