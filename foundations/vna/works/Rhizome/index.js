@@ -132,8 +132,8 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
       .attr("stroke", (d) => {
         //d get two connected nodes
         const { source, target } = d;
-        const { text: sourceText } = source;
-        const { text: targetText } = target;
+        const { text: sourceText, projectIdx: sourceProjectIdx } = source;
+        const { text: targetText, projectIdx: targetProjectIdx } = target;
 
         //get common keywords
         // const sourceKeywords = projectsData.find((project) => project.name === sourceText).relatedKeywords;
@@ -152,12 +152,16 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         //     0
         //   ) / commonKeywords.length;
 
-        return `hsl(${(0 * 0.04 + (currentTarget ? currentTarget.length * 30 : 200)) % 360}, 100%, 70%)`;
+        return `hsl(${(sourceProjectIdx + targetProjectIdx) * 10 + ((currentTarget ? currentTarget.length * 30 : 200) % 360)}, 100%, 70%)`;
       })
       .attr("opacity", "0.4")
-      .attr("stroke-width", () => (windowWidth + windowHeight) * 0.0005);
+      .attr("stroke-width", (d) => {
+        const { weight } = d;
+
+        return (windowWidth + windowHeight) * 0.0008 * weight;
+      });
     // node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.04)");
 
     if (node && simulation) {
       simulation.alphaTarget(0.01).restart();

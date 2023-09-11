@@ -17,7 +17,7 @@ export default function Map({ projectsData = PROJECTS, connectionData = CONNECTI
   //async call deriveKeywords
 
   useEffect(() => {
-    // deriveKeywords();
+    projectsToConnection();
   }, []);
 
   const socket = useSocket();

@@ -26,8 +26,8 @@ export const Img = styled.div`
   height: 25vh;
 
   // transform: translateY(${({ transitioning }) => (transitioning ? "-100%" : "0")});
-  transform: rotateY(${({ transitioning }) => (transitioning ? "90deg" : "0deg")});
-  // opacity: ${({ transitioning }) => (transitioning ? "0" : "1")};
+  // transform: rotateY(${({ transitioning }) => (transitioning ? "90deg" : "0deg")});
+  opacity: ${({ transitioning }) => (transitioning ? "0" : "1")};
   transition: all 0.2s ease-in-out;
 
   img {
