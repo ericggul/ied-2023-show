@@ -72,9 +72,9 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
     .attr("x", ".3rem")
     .attr("y", ".45rem")
     .attr("font-size", "1rem")
-    .attr("font-family", "Roboto Serif")
-    .attr("font-style", "italic")
-    .attr("fill", "rgba(255, 255, 255, 0.02)")
+    .attr("font-family", "Barlow")
+    .attr("font-weight", "500")
+    .attr("fill", "rgba(255, 255, 255, 0.01)")
     .text((d) => d.text)
     .clone(true)
     .lower();

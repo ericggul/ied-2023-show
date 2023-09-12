@@ -40,7 +40,7 @@ function updateTargetAndSourceNodes({ data, d, node, link, targetNodesRef, sourc
   let sourceLinks = links.filter((l) => l.source.text === d.text);
   let targetLinks = links.filter((l) => l.target.text === d.text);
 
-  const secondaryColor = `hsl(${(currentTargetLength * 30) % 360}, 100%, 80%)`;
+  const secondaryColor = `hsl(250, 100%, 90%)`;
   targetLinks
     .transition()
     .duration(DURATION_IN)

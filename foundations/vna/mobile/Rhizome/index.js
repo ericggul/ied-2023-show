@@ -152,16 +152,17 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         //     0
         //   ) / commonKeywords.length;
 
-        return `hsl(${(sourceProjectIdx + targetProjectIdx) * 10 + ((currentTarget ? currentTarget.length * 30 : 200) % 360)}, 100%, 70%)`;
+        return `hsl(${(sourceProjectIdx + targetProjectIdx) * 5 + 250}, 100%, 70%)`;
+        // return `hsl(${(sourceProjectIdx + targetProjectIdx) * 10 + ((currentTarget ? currentTarget.length * 30 : 200) % 360)}, 100%, 70%)`;
       })
-      .attr("opacity", "0.4")
+      .attr("opacity", "1")
       .attr("stroke-width", (d) => {
         const { weight } = d;
 
-        return (windowWidth + windowHeight) * 0.0008 * weight;
+        return (windowWidth + windowHeight) * 0.0005 * weight;
       });
     // node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.04)");
+    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");
 
     if (node && simulation) {
       simulation.alphaTarget(0.01).restart();
@@ -197,7 +198,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 }
 
 function linkArc(d) {
-  const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y) * 0.7;
+  const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y + 20) * 0.9;
   return `
        M${d.source.x},${d.source.y}
        A${r},${r} 0 0,1 ${d.target.x},${d.target.y}

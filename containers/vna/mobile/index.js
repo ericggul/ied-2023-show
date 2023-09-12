@@ -10,8 +10,8 @@ import useSocket from "utils/hooks/socket/vna/useSocketMobile";
 //foundations
 import dynamic from "next/dynamic";
 
-const Rhizome = dynamic(() => import("foundations/vna/works/Rhizome"), { ssr: false });
-const Modal = dynamic(() => import("foundations/vna/works/Modal"), { ssr: false });
+const Rhizome = dynamic(() => import("foundations/vna/mobile/Rhizome"), { ssr: false });
+const UI = dynamic(() => import("foundations/vna/mobile/UI"), { ssr: false });
 
 export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS }) {
   //async call deriveKeywords
@@ -55,7 +55,7 @@ export default function Map({ projectsData = PROJECTS, connectionData = CONNECTI
           connectionData={connectionData}
           handleProjectClick={handleProjectClickFromRhizome}
         />
-        <Modal showModal={showModal && modalProject != null} project={modalProject} setShowModal={setShowModal} />
+        <UI />
       </S.Container>
     </>
   );

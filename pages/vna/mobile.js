@@ -3,7 +3,7 @@ import prisma from "lib/prisma";
 
 import dynamic from "next/dynamic";
 
-const Map = dynamic(() => import("containers/vna/map"), { ssr: false });
+const Mobile = dynamic(() => import("containers/vna/mobile"), { ssr: false });
 
 export default function WorksPage({ projectsData, connectionData }) {
   return (
@@ -20,7 +20,7 @@ export default function WorksPage({ projectsData, connectionData }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
 
-      <Map />
+      <Mobile />
     </>
   );
 }
