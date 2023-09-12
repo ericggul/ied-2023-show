@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 const Rhizome = dynamic(() => import("foundations/vna/mobile/Rhizome"), { ssr: false });
 const BackgroundRhizome = dynamic(() => import("foundations/vna/mobile/BackgroundRhizome"), { ssr: false });
 
-export default function Rhizome({ projectsData = PROJECTS, connectionData = CONNECTIONS, backgroundConnectionData = BACKGROUND_CONNECTIONS }) {
+export default function El({ projectsData = PROJECTS, connectionData = CONNECTIONS, backgroundConnectionData = BACKGROUND_CONNECTIONS }) {
   //async call deriveKeywords
 
   const socket = useSocket();
