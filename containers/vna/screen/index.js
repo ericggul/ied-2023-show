@@ -27,7 +27,7 @@ export default function Screen() {
   return (
     <S.Container>
       {/* <Idle /> */}
-      <Work />
+      {currKeyword && <Work currKeyword={currKeyword} />}
     </S.Container>
   );
 }
