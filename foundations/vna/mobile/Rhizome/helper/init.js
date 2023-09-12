@@ -61,12 +61,6 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
   const node = svg.append("g").attr("fill", "#cbc6e5").attr("stroke-linecap", "round").attr("stroke-linejoin", "round").selectAll("g").data(nodes).join("g").call(drag(simulation, setCurrentTarget));
 
   node
-    .append("circle")
-    .attr("id", (d) => `circle-${d.id}`)
-    .attr("r", (width + height) * 0.01)
-    .attr("fill", "transparent");
-
-  node
     .append("text")
     .attr("id", (d) => `text-${d.id}`)
     .attr("x", ".3rem")

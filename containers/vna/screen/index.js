@@ -12,6 +12,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const Idle = dynamic(() => import("foundations/vna/screen/Idle"), { ssr: false });
+const Work = dynamic(() => import("foundations/vna/screen/Work"), { ssr: false });
 
 export default function Screen() {
   const socket = useSocket({ handleNewProjectClick });
@@ -25,7 +26,8 @@ export default function Screen() {
 
   return (
     <S.Container>
-      <Idle />
+      {/* <Idle /> */}
+      <Work />
     </S.Container>
   );
 }

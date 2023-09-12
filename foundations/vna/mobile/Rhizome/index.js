@@ -17,7 +17,7 @@ const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Rhizome({ projectsData, socket, isVisible, connectionData, handleProjectClick, handleCurrentTarget }) {
+export default function Rhizome({ projectsData, isScreen = false, socket, connectionData, handleProjectClick, handleCurrentTarget }) {
   const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
   const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
 
@@ -58,7 +58,6 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
 
   useEffect(() => {
     if (windowWidth === 0 || windowHeight === 0) return;
-    if (!isVisible) return;
 
     triggerInit();
     function triggerInit() {
@@ -109,7 +108,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         });
       });
     }
-  }, [isVisible, connectionData, windowWidth, windowHeight]);
+  }, [connectionData, windowWidth, windowHeight]);
 
   ////////////
   ///interaction///
@@ -164,8 +163,17 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         let weight = type === 1 ? 1 : 3;
         return (windowWidth + windowHeight) * 0.0008 * weight;
       });
-    // node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
-    node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");
+
+    node
+      .selectAll("text")
+      .transition()
+      .duration(DURATION)
+      .attr("font-size", "1.4rem")
+      .attr("x", ".3rem")
+      .attr("y", ".45rem")
+      .attr("fill", (d) => {
+        return d.type === "project" && isScreen ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.02)";
+      });
 
     if (node && simulation) {
       simulation.alphaTarget(0.09).restart();
@@ -190,10 +198,10 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         updateCurrentNode({ d, node });
       });
     }
-  }, [connectionData, currentTarget, windowWidth, windowHeight, primaryColor, secondaryColor]);
+  }, [connectionData, currentTarget, windowWidth, windowHeight, primaryColor, secondaryColor, isScreen]);
 
   return (
-    <S.Container isVisible={isVisible}>
+    <S.Container>
       <Leva />
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>

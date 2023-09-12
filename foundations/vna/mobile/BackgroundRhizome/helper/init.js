@@ -41,7 +41,7 @@ function initMarkerStyling({ svg, types, width, height }) {
     .attr("d", "M0,-5L10,0L0,5");
 }
 
-function initLinkStyling({ svg, links, width, height }) {
+function initLinkStyling({ svg, links, width, height, isScreen }) {
   const link = svg
     .append("g")
     .attr("fill", "none")
@@ -52,7 +52,7 @@ function initLinkStyling({ svg, links, width, height }) {
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
     .attr("stroke", (d) => `hsl(${250 + d.source.text.length}, 100%, 70%)`)
     .attr("stroke-width", (d) => (width + height) * 0.001)
-    .attr("opacity", "0.27");
+    .attr("opacity", isScreen ? "0.28" : "0.27");
 
   return link;
 }

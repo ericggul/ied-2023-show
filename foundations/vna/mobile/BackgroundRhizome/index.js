@@ -15,10 +15,7 @@ const DURATION = 150;
 
 const getRandom = (a, b) => Math.random() * (b - a) + a;
 
-export default function Rhizome({ connectionData }) {
-  const [primaryColor, setPrimaryColor] = useState(PRIMARY_COLOR);
-  const [secondaryColor, setSecondaryColor] = useState(SECONDARY_COLOR);
-
+export default function Rhizome({ isScreen, connectionData }) {
   const svgRef = useRef();
 
   //size
@@ -52,7 +49,7 @@ export default function Rhizome({ connectionData }) {
       //create simulation
       const simulation = initCreateSimulation({ nodes, links, width, height });
       //link styling
-      const link = initLinkStyling({ svg, links, width, height });
+      const link = initLinkStyling({ svg, links, width, height, isScreen });
       //node styling
       const node = initNodeStyling({ svg, nodes, simulation, width, height });
 
