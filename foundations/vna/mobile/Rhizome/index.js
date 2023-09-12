@@ -162,7 +162,7 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
       .attr("stroke-width", (d) => {
         const { type } = d;
         let weight = type === 1 ? 1 : 3;
-        return (windowWidth + windowHeight) * 0.0005 * weight;
+        return (windowWidth + windowHeight) * 0.0008 * weight;
       });
     // node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
     node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");

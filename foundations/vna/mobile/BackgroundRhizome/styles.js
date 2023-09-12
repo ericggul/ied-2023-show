@@ -9,30 +9,15 @@ export const Container = styled.div`
   top: 0;
   flex-direction: column;
 
+  background: transparent;
   color: white;
   font-size: 48px;
-  z-index: 20;
 
   svg {
     cursor: pointer;
     ${WholeContainer}
-    background: white;
   }
 
-  ${({ isVisible }) =>
-    isVisible
-      ? `
-    opacity: 1;
-    pointer-events: all;
-    transform: translateX(0);
-    transform-origin: left;
-  `
-      : `
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-10%);
-    transform-origin: left;
-  `}
   transition: all 1s ease-in-out;
 `;
 export const ColorPickers = styled.div`

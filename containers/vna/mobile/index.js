@@ -11,9 +11,10 @@ import useSocket from "utils/hooks/socket/vna/useSocketMobile";
 import dynamic from "next/dynamic";
 
 const Rhizome = dynamic(() => import("foundations/vna/mobile/Rhizome"), { ssr: false });
+const BackgroundRhizome = dynamic(() => import("foundations/vna/mobile/BackgroundRhizome"), { ssr: false });
 const UI = dynamic(() => import("foundations/vna/mobile/UI"), { ssr: false });
 
-export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS }) {
+export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS, backgroundConnectionData }) {
   //async call deriveKeywords
 
   useEffect(() => {
@@ -47,6 +48,10 @@ export default function Map({ projectsData = PROJECTS, connectionData = CONNECTI
   return (
     <>
       <S.Container>
+        {/* <S.BackgroundContainer>
+          <img src="/assets/vna/background/test.png" />
+        </S.BackgroundContainer> */}
+        <BackgroundRhizome connectionData={backgroundConnectionData} />
         <Rhizome
           handleCurrentTarget={(t) => setCurrentTarget(t)}
           socket={socket}

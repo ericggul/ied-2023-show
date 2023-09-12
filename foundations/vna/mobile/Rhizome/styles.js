@@ -9,7 +9,6 @@ export const Container = styled.div`
   top: 0;
   flex-direction: column;
 
-  background: black;
   color: white;
   font-size: 48px;
   z-index: 20;

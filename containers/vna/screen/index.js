@@ -45,51 +45,5 @@ export default function Screen() {
     setAiImgTransitioningIdx((i) => i + 1);
   }, [aiImg]);
 
-  return (
-    <S.Container>
-      {new Array(4).fill(0).map((_, j) => (
-        <S.Row key={j}>
-          {new Array(10).fill(0).map((_, i) => (
-            <Fragment key={i}>
-              {(i + j) % 2 === 0 && <ImageComp i={i} j={j} globalImgURL={projectImg} />}
-              {(i + j) % 2 === 1 && <ImageComp i={i} j={j} globalImgURL={aiImg} />}
-            </Fragment>
-          ))}
-        </S.Row>
-      ))}
-    </S.Container>
-  );
-}
-
-function ImageComp({ i, j, globalImgURL }) {
-  const [imgURL, setImgURL] = useState(false);
-  const transitioningIdx = useRef(0);
-  const [transitioning, setTransitioning] = useState(false);
-  const timeoutSeconds = useMemo(() => (i + j) * 50, [i, j]);
-
-  const [windowWidth, windowHeight] = useResize();
-
-  useEffect(() => {
-    let timeout1, timeout2;
-
-    transitioningIdx.current++;
-    timeout1 = setTimeout(() => {
-      setTransitioning(true);
-    }, timeoutSeconds);
-    timeout2 = setTimeout(() => {
-      setImgURL(globalImgURL);
-      setTransitioning(false);
-    }, timeoutSeconds + 300);
-
-    return () => {
-      timeout1 && clearTimeout(timeout1);
-      timeout2 && clearTimeout(timeout2);
-    };
-  }, [globalImgURL, i, j, timeoutSeconds]);
-
-  return (
-    <S.Img transitioning={transitioning} transitioningIdx={transitioningIdx.current}>
-      <Image src={`/assets/vna/${imgURL}.png`} width={windowHeight / 4} height={windowHeight / 4} alt="Image" />
-    </S.Img>
-  );
+  return <S.Container></S.Container>;
 }

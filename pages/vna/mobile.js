@@ -20,7 +20,7 @@ export default function WorksPage({ projectsData, connectionData }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
 
-      <Mobile />
+      <Mobile backgroundConnectionData={connectionData} />
     </>
   );
 }

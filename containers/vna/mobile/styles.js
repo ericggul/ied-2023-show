@@ -12,3 +12,14 @@ export const Container = styled.div`
   overflow-y: hidden;
   overflow-x: hidden;
 `;
+
+export const BackgroundContainer = styled.div`
+  ${WholeContainer}
+  ${FlexCenterStyle}
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
