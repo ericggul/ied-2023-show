@@ -52,7 +52,7 @@ function initLinkStyling({ svg, links, width, height }) {
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
     .attr("stroke", (d) => `hsl(${250 + d.source.text.length}, 100%, 70%)`)
     .attr("stroke-width", (d) => (width + height) * 0.001)
-    .attr("opacity", "0.22");
+    .attr("opacity", "0.27");
 
   return link;
 }

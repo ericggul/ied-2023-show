@@ -1,8 +1,7 @@
 import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
-import { PROJECTS, CONNECTIONS } from "../data/constant";
-import { projectsToConnection, deriveKeywords } from "../data/utils";
+import { PROJECTS, CONNECTIONS, BACKGROUND_CONNECTIONS } from "../data/constant";
 
 //hooks
 import useSocket from "utils/hooks/socket/vna/useSocketMobile";
@@ -14,52 +13,22 @@ const Rhizome = dynamic(() => import("foundations/vna/mobile/Rhizome"), { ssr: f
 const BackgroundRhizome = dynamic(() => import("foundations/vna/mobile/BackgroundRhizome"), { ssr: false });
 const UI = dynamic(() => import("foundations/vna/mobile/UI"), { ssr: false });
 
-export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS, backgroundConnectionData }) {
+export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS, backgroundConnectionData = BACKGROUND_CONNECTIONS }) {
+  console.log(backgroundConnectionData);
   //async call deriveKeywords
 
-  useEffect(() => {
-    projectsToConnection();
-  }, []);
-
   const socket = useSocket();
-
-  const [isRhizome, setIsRhizome] = useState(true);
-
-  const [modalProject, setModalProject] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
   function handleProjectClickFromRhizome(projectName) {
     //select project with project from projectsdata
     const project = projectsData.find((project) => project.name === projectName);
-    setModalProject(project || null);
-    if (project) setShowModal(true);
   }
-
-  function handleProjectClick(project) {
-    setModalProject(project);
-    setShowModal(true);
-  }
-
-  const [currentTarget, setCurrentTarget] = useState(null);
-  useEffect(() => {
-    setCurrentTarget(null);
-  }, [isRhizome]);
 
   return (
     <>
       <S.Container>
-        {/* <S.BackgroundContainer>
-          <img src="/assets/vna/background/test.png" />
-        </S.BackgroundContainer> */}
         <BackgroundRhizome connectionData={backgroundConnectionData} />
-        <Rhizome
-          handleCurrentTarget={(t) => setCurrentTarget(t)}
-          socket={socket}
-          isVisible={isRhizome}
-          projectsData={projectsData}
-          connectionData={connectionData}
-          handleProjectClick={handleProjectClickFromRhizome}
-        />
+        <Rhizome handleCurrentTarget={() => {}} socket={socket} isVisible={true} projectsData={projectsData} connectionData={connectionData} handleProjectClick={handleProjectClickFromRhizome} />
         <UI />
       </S.Container>
     </>

@@ -16,7 +16,6 @@ export const Container = styled.div`
   svg {
     cursor: pointer;
     ${WholeContainer}
-    background: white;
   }
 
   ${({ isVisible }) =>
