@@ -5,28 +5,69 @@ export const Background = styled.div`
   ${WholeContainer}
   ${FlexCenterStyle}
 
-  opacity: ${({ transitioning }) => (transitioning ? "0" : "1")};
+
+  opacity: ${({ transitioning, workDeanimated }) => (transitioning ? "0" : workDeanimated ? "0" : "1")};
+
   transition: all 0.2s ease-in-out;
 
-  @keyframes background-move {
+  @keyframes vibrate {
     0% {
-      transform: translateX(-3%) translateY(-3%);
+      transform: translateX(0%) scale(1);
     }
-    25% {
-      transform: translateX(3%) translateY(-3%);
+    1% {
+      transform: translateX(-3%) scale(1.05) rotate(-1deg);
     }
-    50% {
-      transform: translateX(3%) translateY(3%);
+    2% {
+      transform: translateX(3%) scale(1.05) rotate(1deg);
     }
-    75% {
-      transform: translateX(-3%) translateY(3%);
+    3% {
+      transform: translateX(-2.5%) scale(1.04) rotate(-0.8deg);
     }
-    100% {
-      transform: translateX(-3%) translateY(-3%);
+    4% {
+      transform: translateX(2.5%) scale(1.04) rotate(0.8deg);
+    }
+    4.8% {
+      transform: translateX(-2%) scale(1.03) rotate(-0.6deg);
+    }
+    5.6% {
+      transform: translateX(2%) scale(1.03) rotate(0.6deg);
+    }
+    6.3% {
+      transform: translateX(-2%) scale(1.02) rotate(-0.4deg);
+    }
+    7.0% {
+      transform: translateX(2%) scale(1.02) rotate(0.4deg);
+    }
+    7.6% {
+      transform: translateX(-2%) scale(1.01) rotate(-0.2deg);
+    }
+    8.2% {
+      transform: translateX(2%) scale(1.01) rotate(0.2deg);
+    }
+    8.8% {
+      transform: translateX(-2%) scale(1) rotate(0deg);
+    }
+    9.4% {
+      transform: translateX(2%) scale(1) rotate(0deg);
+    }
+    10. 100% {
+      transform: translateX(0%) scale(1);
     }
   }
 
-  // animation: background-move 20s infinite linear;
+  @keyframes vibrate-2 {
+    0% {
+      transform: translateX(-1%) scale(1.1);
+    }
+    50% {
+      transform: translateX(1%) scale(1.1);
+    }
+    100% {
+      transform: translateX(-1%) scale(1.1);
+    }
+  }
+
+  animation: vibrate-2 0.1s infinite linear;
 `;
 
 export const Container = styled.div`
@@ -36,6 +77,9 @@ export const Container = styled.div`
   pointer-events: none;
   backdrop-filter: blur(1vw) brightness(0.85);
   background: linear-gradient(black 0%, rgba(0, 0, 0, 0.1) 42%, rgba(0, 0, 0, 0.1) 52%, black 100%);
+
+  opacity: ${({ workDeanimated }) => (workDeanimated ? "0" : "1")};
+  transition: all 1s;
 `;
 
 export const Left = styled.div`

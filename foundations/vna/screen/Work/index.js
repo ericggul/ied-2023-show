@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { PROJECTS } from "containers/vna/data/constant";
 
-export default function Work({ currKeyword }) {
+export default function Work({ currKeyword, workDeanimated }) {
   const [windowWidth, windowHeight] = useResize();
 
   const [currProjectIdx, setCurrProjectIdx] = useState(0);
@@ -46,10 +46,10 @@ export default function Work({ currKeyword }) {
 
   return (
     <>
-      <S.Background transitioning={transitioning}>
-        <Image src={imgURL} alt={PROJECTS[currProjectIdx].name} width={windowWidth * 1.25} height={(windowWidth * 1.25 * 9) / 16} />
+      <S.Background workDeanimated={workDeanimated} transitioning={transitioning}>
+        <Image src={imgURL} alt={PROJECTS[currProjectIdx].name} width={windowWidth * 1.15} height={(windowWidth * 1.15 * 9) / 16} />
       </S.Background>
-      <S.Container>
+      <S.Container workDeanimated={workDeanimated}>
         <S.Left>
           {PROJECTS[currProjectIdx].relatedKeywords.map((keyword, idx) => {
             return (

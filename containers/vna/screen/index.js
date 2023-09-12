@@ -15,8 +15,8 @@ const Idle = dynamic(() => import("foundations/vna/screen/Idle"), { ssr: false }
 const Work = dynamic(() => import("foundations/vna/screen/Work"), { ssr: false });
 
 export default function Screen() {
+  ///socket handler
   const socket = useSocket({ handleNewProjectClick });
-
   const [currKeyword, setCurrKeyword] = useState("");
 
   function handleNewProjectClick(keyword) {
@@ -24,10 +24,33 @@ export default function Screen() {
     setCurrKeyword(keyword);
   }
 
+  ///idle state handler
+  const [workDeanimated, setWorkDeanimated] = useState(false);
+  const [isIdle, setIsIdle] = useState(true);
+  useEffect(() => {
+    let timeout1, timeout2;
+    if (currKeyword) {
+      setIsIdle(false);
+      timeout2 = setTimeout(() => {
+        setWorkDeanimated(true);
+      }, 29 * 1000);
+      timeout1 = setTimeout(() => {
+        setCurrKeyword("");
+      }, 30 * 1000);
+    } else {
+      setIsIdle(true);
+      setWorkDeanimated(false);
+    }
+    return () => {
+      timeout1 && clearTimeout(timeout1);
+      timeout2 && clearTimeout(timeout2);
+    };
+  }, [currKeyword]);
+
   return (
     <S.Container>
-      {/* <Idle /> */}
-      {currKeyword && <Work currKeyword={currKeyword} />}
+      {isIdle && <Idle />}
+      {currKeyword && <Work workDeanimated={workDeanimated} currKeyword={currKeyword} />}
     </S.Container>
   );
 }
