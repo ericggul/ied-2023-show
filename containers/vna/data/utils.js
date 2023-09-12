@@ -28,7 +28,7 @@ export function projectsToConnection() {
       links.push({
         source: project.name,
         target: keyword,
-        weight: 1,
+        type: 1,
       });
     }
   }
@@ -39,7 +39,7 @@ export function projectsToConnection() {
       links.push({
         source: PROJECTS[i].name,
         target: PROJECTS[j].name,
-        weight: 2,
+        type: 2,
       });
     }
   }

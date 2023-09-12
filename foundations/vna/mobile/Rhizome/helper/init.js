@@ -14,9 +14,9 @@ function initCreateSimulation({ nodes, links, width, height }) {
       "link",
       d3.forceLink(links).id((d) => d.text)
     )
-    .force("charge", d3.forceManyBody().strength(-60 * (Math.min(width, height * 0.8) / 200) ** 2))
+    .force("charge", d3.forceManyBody().strength(-70 * (Math.min(width, height * 0.8) / 200) ** 2))
     .force("center", d3.forceCenter())
-    .force("boundary", forceBoundary(-width * 0.5, -height * 0.3, width * 0.5, height * 0.3));
+    .force("boundary", forceBoundary(-width * 0.5, -height * 0.4, width * 0.5, height * 0.4));
 
   return simulation;
 }
@@ -84,7 +84,7 @@ function initNodeStyling({ svg, nodes, simulation, width, height, setCurrentTarg
 
 function drag(simulation, setCurrentTarget) {
   function dragstarted(event, d) {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
+    if (!event.active) simulation.alphaTarget(0.9).restart();
     d.fx = d.x;
     d.fy = d.y;
     setCurrentTarget(d.text);

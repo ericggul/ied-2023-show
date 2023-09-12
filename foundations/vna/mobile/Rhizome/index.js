@@ -128,7 +128,6 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
     link
       .transition()
       .duration(DURATION)
-      // .attr("stroke", `hsl(${currentTarget ? currentTarget.length * 30 : 0}, 100%, 70%)`)
       .attr("stroke", (d) => {
         //d get two connected nodes
         const { source, target } = d;
@@ -155,17 +154,21 @@ export default function Rhizome({ projectsData, socket, isVisible, connectionDat
         return `hsl(${(sourceProjectIdx + targetProjectIdx) * 5 + 250}, 100%, 70%)`;
         // return `hsl(${(sourceProjectIdx + targetProjectIdx) * 10 + ((currentTarget ? currentTarget.length * 30 : 200) % 360)}, 100%, 70%)`;
       })
-      .attr("opacity", "1")
+      .attr("opacity", (d) => {
+        const { type } = d;
+        let opacity = type === 1 ? 1 : 0.6;
+        return opacity;
+      })
       .attr("stroke-width", (d) => {
-        const { weight } = d;
-
+        const { type } = d;
+        let weight = type === 1 ? 1 : 3;
         return (windowWidth + windowHeight) * 0.0005 * weight;
       });
     // node.selectAll("circle").transition().duration(DURATION).attr("fill", "rgba(255, 255, 255, 0.05)");
     node.selectAll("text").transition().duration(DURATION).attr("font-size", "1.4rem").attr("x", ".3rem").attr("y", ".45rem").attr("fill", "rgba(255, 255, 255, 0.02)");
 
     if (node && simulation) {
-      simulation.alphaTarget(0.01).restart();
+      simulation.alphaTarget(0.09).restart();
       //link and main node clean up
       const nodes = node.filter((d) => d.text === currentTarget);
 
