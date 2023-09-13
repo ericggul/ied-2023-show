@@ -142,6 +142,16 @@ export const Right = styled.div`
   letter-spacing: 0.07vw;
   font-weight: regular;
 `;
+
+export const Loc = styled.div`
+  margin-top: 2vw;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+`;
+
 export const Bottom = styled.div`
   position: absolute;
   bottom: 3vw;

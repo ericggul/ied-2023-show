@@ -7,45 +7,50 @@ export const Container = styled.div`
   flex-direction: column;
   z-index: 300;
   pointer-events: none;
+  font-family: Barlow;
+  font-weight: bold;
+  font-size: 1.3vw;
+  letter-spacing: 0.07vw;
 `;
 
 export const TopLeft = styled.div`
   position: absolute;
-  top: 17px;
-  left: 10px;
-  width: 51px;
-
-  img {
-    width: 100%;
-  }
+  top: 1.5vw;
+  left: 2vw;
 `;
+
 export const TopRight = styled.div`
   position: absolute;
-  top: 17px;
-  right: 10px;
-  font-size: 10px;
-  font-family: Barlow;
-  text-align: right;
-  font-weight: bold;
-  color: white;
+  top: 1.5vw;
+  right: 2vw;
 `;
+
 export const BottomLeft = styled.div`
   position: absolute;
-  bottom: 17px;
-  left: 10px;
-
-  img {
-    width: 96px;
-  }
+  bottom: 1.5vw;
+  left: 2vw;
 `;
+
 export const BottomRight = styled.div`
   position: absolute;
-  bottom: 17px;
-  right: 10px;
-  font-size: 10px;
-  font-family: Barlow;
-  text-align: right;
-  font-weight: semi-bold;
-  color: white;
-  opacity: 0.75;
+  bottom: 1.5vw;
+  right: 2vw;
+  display: flex;
+  align-items: flex-end;
+
+  div {
+    text-align: right;
+    margin-right: 1.5vw;
+  }
 `;
+
+export const Logo = styled.div`
+  height: 2vw;
+  margin-left: 1vw;
+  img {
+    width: auto;
+    height: 100%;
+  }
+`;
+
+export const QRWrapper = styled.div``;

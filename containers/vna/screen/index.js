@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 
 const Idle = dynamic(() => import("foundations/vna/screen/Idle"), { ssr: false });
 const Work = dynamic(() => import("foundations/vna/screen/Work"), { ssr: false });
+const UI = dynamic(() => import("foundations/vna/screen/UI"), { ssr: false });
 
 export default function Screen() {
   ///socket handler
@@ -49,6 +50,7 @@ export default function Screen() {
 
   return (
     <S.Container>
+      <UI uiMode={isIdle ? 0 : 1} />
       {isIdle && <Idle />}
       {currKeyword && <Work workDeanimated={workDeanimated} currKeyword={currKeyword} />}
     </S.Container>

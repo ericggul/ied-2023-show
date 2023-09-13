@@ -62,7 +62,12 @@ export default function Work({ currKeyword, workDeanimated }) {
         <S.Center transitioning={transitioning}>
           <Image src={imgURL} alt={PROJECTS[currProjectIdx].name} width={windowWidth * 0.6} height={windowWidth * 0.3375} />
         </S.Center>
-        <S.Right>{PROJECTS[currProjectIdx].abstract}</S.Right>
+        <S.Right>
+          <p>{PROJECTS[currProjectIdx].abstract}</p>
+          <S.Loc>
+            <img src={PROJECTS[currProjectIdx].locURL} />
+          </S.Loc>
+        </S.Right>
 
         <S.Bottom>{PROJECTS[currProjectIdx].name}</S.Bottom>
         <S.CenterKeyword visible={centerKeywordVisible}>{currKeyword}</S.CenterKeyword>

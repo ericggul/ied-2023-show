@@ -2,28 +2,51 @@ import * as S from "./styles";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 import useResize from "utils/hooks/useResize";
 
-export default function UI() {
+import { QRCodeSVG } from "qrcode.react";
+
+const qrURL = "https://www.rca-ied-2023.co.uk/vna/mobile";
+
+export default function UI({ uiMode }) {
+  const [windowWidth, windowHeight] = useResize();
+
   return (
     <S.Container>
       <S.TopLeft>
-        <img src="/assets/vna/logo/ldf.png" alt="London Design Festival" />
+        <p>RCA INFORMATION</p>
+        <p>EXPERIENCE DESIGN</p>
       </S.TopLeft>
-      <S.TopRight>
+      {uiMode === 0 && (
+        <S.TopRight>
+          <S.Logo>
+            <img src="/assets/vna/logo/vna-logo.jpeg" />
+          </S.Logo>
+          <S.Logo>
+            <img src="/assets/vna/logo/rca-logo.png" />
+          </S.Logo>
+        </S.TopRight>
+      )}
+      {uiMode === 1 && <S.TopRight style={{ opacity: "0.75" }}>VIBRANT MATTERS</S.TopRight>}
+      <S.BottomLeft>
+        <p style={{ opacity: "0.75" }}>LONDON</p>
+        <p style={{ opacity: "0.75" }}>DESIGN FESTIVAL</p>
+        <br />
+
         <p>DIGITAL DESIGN</p>
         <p>WEEKEND 2023</p>
-        <br />
-        <p>X</p>
-        <br />
-        <p>INFORMATION</p>
-        <p>EXPERIENCE DESIGN</p>
-      </S.TopRight>
-      <S.BottomLeft>
-        <img src="/assets/vna/logo/rca.png" alt="London Design Festival" />
       </S.BottomLeft>
-      <S.BottomRight>
-        <p>Credit: Jeanyoon</p>
-        <p>Choi, Yue Song</p>
-      </S.BottomRight>
+      {uiMode === 0 && (
+        <S.BottomRight>
+          <div>
+            <p>SCAN FOR</p>
+            <p>INTERACTIVE OVERVIEW</p>
+          </div>
+
+          <S.QRWrapper>
+            <QRCodeSVG value={qrURL} bgColor="transparent" fgColor="white" size={windowWidth * 0.08} />
+          </S.QRWrapper>
+        </S.BottomRight>
+      )}
+      {uiMode === 1 && <S.BottomRight></S.BottomRight>}
     </S.Container>
   );
 }
