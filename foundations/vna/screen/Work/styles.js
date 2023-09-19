@@ -154,8 +154,8 @@ export const Loc = styled.div`
 
 export const Bottom = styled.div`
   position: absolute;
-  bottom: 3vw;
-  font-size: 4vw;
+  bottom: 0.9vw;
+  font-size: 3.65vw;
   font-weight: 500;
   font-style: italic;
   opacity: 0.75;

@@ -20,7 +20,11 @@ export default function UI({ uiMode }) {
           <S.Logo>
             <img src="/assets/vna/logo/vna.svg" />
           </S.Logo>
-          <S.Logo>
+          <S.Logo
+            style={{
+              transform: "scale(1.2)",
+            }}
+          >
             <img src="/assets/vna/logo/rca.png" />
           </S.Logo>
         </S.TopRight>
@@ -31,7 +35,11 @@ export default function UI({ uiMode }) {
           <S.Logo>
             <img src="/assets/vna/logo/vna.svg" />
           </S.Logo>
-          <S.Logo>
+          <S.Logo
+            style={{
+              transform: "scale(1.2)",
+            }}
+          >
             <img src="/assets/vna/logo/rca.png" />
           </S.Logo>
         </S.BottomRight>
@@ -61,7 +69,6 @@ export default function UI({ uiMode }) {
           </S.QRWrapper>
         </S.BottomRight>
       )}
-      {uiMode === 1 && <S.BottomRight></S.BottomRight>}
     </S.Container>
   );
 }

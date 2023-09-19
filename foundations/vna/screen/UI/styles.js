@@ -48,9 +48,9 @@ export const BottomRight = styled.div`
 `;
 
 export const Logo = styled.div`
-  height: 3vw;
+  height: 2.9vw;
   margin-left: 1.7vw;
-  margin-right: 0.4vw;
+  margin-right: 0.7vw;
   img {
     width: auto;
     height: 100%;
