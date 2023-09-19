@@ -6,7 +6,7 @@ export default function UI() {
   return (
     <S.Container>
       <S.TopLeft>
-        <img src="/assets/vna/logo/ldf.png" alt="London Design Festival" />
+        <img src="/assets/vna/logo/vna.svg" />
       </S.TopLeft>
       <S.TopRight>
         <p>DIGITAL DESIGN</p>
@@ -17,7 +17,11 @@ export default function UI() {
         <p>INFORMATION</p>
         <p>EXPERIENCE DESIGN</p>
       </S.TopRight>
-      <S.BottomLeft>
+      <S.BottomLeft
+        style={{
+          marginBottom: "-3px",
+        }}
+      >
         <img src="/assets/vna/logo/rca.png" alt="London Design Festival" />
       </S.BottomLeft>
       <S.BottomRight>

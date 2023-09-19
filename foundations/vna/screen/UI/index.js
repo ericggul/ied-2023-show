@@ -18,17 +18,28 @@ export default function UI({ uiMode }) {
       {uiMode === 0 && (
         <S.TopRight>
           <S.Logo>
-            <img src="/assets/vna/logo/vna-logo.jpeg" />
+            <img src="/assets/vna/logo/vna.svg" />
           </S.Logo>
           <S.Logo>
-            <img src="/assets/vna/logo/rca-logo.png" />
+            <img src="/assets/vna/logo/rca.png" />
           </S.Logo>
         </S.TopRight>
       )}
-      {uiMode === 1 && <S.TopRight style={{ opacity: "0.75" }}>VIBRANT MATTERS</S.TopRight>}
+
+      {uiMode === 1 && (
+        <S.BottomRight>
+          <S.Logo>
+            <img src="/assets/vna/logo/vna.svg" />
+          </S.Logo>
+          <S.Logo>
+            <img src="/assets/vna/logo/rca.png" />
+          </S.Logo>
+        </S.BottomRight>
+      )}
+      {uiMode === 1 && <S.TopRight style={{ opacity: "0.75", marginRight: "1.9vw" }}>VIBRANT MATTERS</S.TopRight>}
       <S.BottomLeft>
-        <p style={{ opacity: "0.75" }}>LONDON</p>
-        <p style={{ opacity: "0.75" }}>DESIGN FESTIVAL</p>
+        {/* <p style={{ opacity: "0.75" }}>LONDON</p>
+        <p style={{ opacity: "0.75" }}>DESIGN FESTIVAL</p> */}
         <br />
 
         <p>DIGITAL DESIGN</p>
@@ -36,7 +47,11 @@ export default function UI({ uiMode }) {
       </S.BottomLeft>
       {uiMode === 0 && (
         <S.BottomRight>
-          <div>
+          <div
+            style={{
+              marginRight: "1.5vw",
+            }}
+          >
             <p>SCAN FOR</p>
             <p>INTERACTIVE OVERVIEW</p>
           </div>

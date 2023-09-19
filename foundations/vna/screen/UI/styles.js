@@ -23,6 +23,9 @@ export const TopRight = styled.div`
   position: absolute;
   top: 1.5vw;
   right: 2vw;
+
+  display: flex;
+  flex-direction: row;
 `;
 
 export const BottomLeft = styled.div`
@@ -40,13 +43,14 @@ export const BottomRight = styled.div`
 
   div {
     text-align: right;
-    margin-right: 1.5vw;
+    // margin-right: 1.5vw;
   }
 `;
 
 export const Logo = styled.div`
-  height: 2vw;
-  margin-left: 1vw;
+  height: 3vw;
+  margin-left: 1.7vw;
+  margin-right: 0.4vw;
   img {
     width: auto;
     height: 100%;

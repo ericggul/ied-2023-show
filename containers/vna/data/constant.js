@@ -5,7 +5,7 @@ export const PROJECTS = [
     studentNames: ["Yue Song"],
     abstract: `Root for Thought - Immersive and interactive mixed-media installation that explores mycelium's "underground" communication system! Fabric meets technology, illuminating nature's wisdom and the beauty of coexistence. 🍄🌿`,
     imgURL: "/assets/vna/project-image/1.png",
-    locURL: "/assets/vna/location/1.png",
+    locURL: "/assets/vna/maps/rft.png",
     relatedKeywords: [
       "Pluriverse",
       "Post-Anthropocentrism",
@@ -30,7 +30,7 @@ export const PROJECTS = [
     studentNames: ["Matthew Woodham"],
     abstract: `Emergent Forms is an installation featuring encapsulated pseudo-organic structures. The algorithmically generated forms undergo continual transformations with changing conditions.`,
     imgURL: "/assets/vna/project-image/2.png",
-    locURL: "/assets/vna/location/2.png",
+    locURL: "/assets/vna/maps/emergent.png",
     relatedKeywords: ["Emergence", "Encapsulate", "Phenomena", "Networks", "Embedded", "Distributed", "Non-linear", "Fluidity", "Entities", "Non-living", "Reactive", "Agency", "Artificial"],
   },
 
@@ -38,13 +38,9 @@ export const PROJECTS = [
     id: 3,
     name: "Evolution",
     studentNames: ["Bryan Yueshen Wu", "Ke Peng"],
-    abstract: `Evolution is an immersive audiovisual installation  that celebrates the vitality of inorganic materials.
-
-    The project takes its inspiration from the physics phenomenon of Cymatics, which has demonstrated that certain substances can autonomously form complex patterns in response to vibrations. This phenomenon challenges the traditional understanding of life and poses the question: can inorganic materials be considered as life forms if they can respond to external stimuli?
-    
-    This project aims to inspire a new perception of non-living substances, and contribute to an ongoing philosophical debate on the nature of life and the relationship between the animate and the inanimate.`,
+    abstract: `Evolution is an immersive audiovisual installation that celebrates the vitality of inorganic materials. Inspired by Cymatics, this project aims to inspire a new perception of non-living substances, and contribute to an ongoing philosophical debate on the nature of life and the relationship between the animate and the inanimate.`,
     imgURL: "/assets/vna/project-image/3.png",
-    locURL: "/assets/vna/location/3.png",
+    locURL: "/assets/vna/maps/evolution.png",
     relatedKeywords: [
       "Materiality",
       "New materialism",
@@ -68,7 +64,7 @@ export const PROJECTS = [
     studentNames: ["Bryan Yueshen Wu", "Devanshi Rungta", "Laura Selby"],
     abstract: `MYcorrhizal is an extended-reality sonic experience mapping an interconnection between mycelium and beings. A duet of worlds between data signals, entities and scales of existence. Audiences can encounter and influence the sonic ecosystem around them, and reflect upon their role in the acoustic ecology of the spaces we exist within.`,
     imgURL: "/assets/vna/project-image/4.png",
-    locURL: "/assets/vna/location/4.png",
+    locURL: "/assets/vna/maps/mycorrhriza.png",
     relatedKeywords: [
       "Acoustic-Ecology",
       "Ecosystem",
@@ -89,14 +85,9 @@ export const PROJECTS = [
     id: 5,
     name: "Sonic Contamination",
     studentNames: ["Laura Selby"],
-    abstract: `Contamination is Collaboration 
-
-    How can we become more consciously connected to the microworlds within and beyond us? 
-    Is it possible to develop deeper relational understanding and care in listening?
-    
-    Sonic Contamination is a series of outcomes challenging our role and perceptions towards species existing on different scales of being and time, primarily the mico-scale. The collection of pieces attempts to bridge audiences empathetically to the intermingling microworlds around us, through forms of sound, chromatography, touch, performance and story-led works. Creating experiences stemming from field recording and listening to living systems and environments.`,
+    abstract: `Contamination is Collaboration Sonic Contamination is a series of outcomes challenging our role and perceptions towards species existing on different scales of being, primarily the mico-scale. How can we become more consciously connected to the microworlds within and beyond us? Is it possible to develop deeper relational understanding and care in listening?`,
     imgURL: "/assets/vna/project-image/5.png",
-    locURL: "/assets/vna/location/5.png",
+    locURL: "/assets/vna/maps/sonic.png",
     relatedKeywords: [
       "Contamination",
       "Acoustic-Ecology",
