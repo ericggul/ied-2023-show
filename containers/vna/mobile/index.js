@@ -14,7 +14,6 @@ const BackgroundRhizome = dynamic(() => import("foundations/vna/mobile/Backgroun
 const UI = dynamic(() => import("foundations/vna/mobile/UI"), { ssr: false });
 
 export default function Map({ projectsData = PROJECTS, connectionData = CONNECTIONS, backgroundConnectionData = BACKGROUND_CONNECTIONS }) {
-  console.log(backgroundConnectionData);
   //async call deriveKeywords
 
   const socket = useSocket();
@@ -29,7 +28,7 @@ export default function Map({ projectsData = PROJECTS, connectionData = CONNECTI
       <S.Container>
         <BackgroundRhizome connectionData={backgroundConnectionData} />
         <Rhizome handleCurrentTarget={() => {}} socket={socket} isVisible={true} projectsData={projectsData} connectionData={connectionData} handleProjectClick={handleProjectClickFromRhizome} />
-        <UI />
+        <UI socket={socket} />
       </S.Container>
     </>
   );

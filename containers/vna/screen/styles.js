@@ -12,6 +12,25 @@ export const Container = styled.div`
   // flex-direction: column;
 `;
 
+export const Reply = styled.div`
+  ${FlexCenterStyle}
+  ${WholeContainer}
+pointer-events: none;
+  margin: auto;
+  font-size: 8vw;
+  font-style: italic;
+
+  ${({ visible }) => (visible ? "opacity: 1;" : "opacity: 0;")}
+  transition: all 0.1s ease-in-out;
+  z-index: 300;
+  font-weight: 500;
+  mix-blend-mode: exclusion;
+  text-shadow: 0 0 1vw white;
+  color: white;
+
+  text-align: center;
+`;
+
 export const Row = styled.div`
   display: flex;
   flex-direction: row;

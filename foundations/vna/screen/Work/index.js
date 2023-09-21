@@ -27,7 +27,7 @@ export default function Work({ currKeyword, workDeanimated }) {
     setCenterKeywordVisible(true);
     let timeout = setTimeout(() => {
       setCenterKeywordVisible(false);
-    }, 1000);
+    }, 2000);
     return () => timeout && clearTimeout(timeout);
   }, [currKeyword]);
 

@@ -26,6 +26,10 @@ export default function handler(req, res) {
       socket.on("vna-project-click", (data) => {
         socket.broadcast.emit("new-vna-project-click", data);
       });
+
+      socket.on("vna-keyword-input", (data) => {
+        socket.broadcast.emit("new-vna-keyword-input", data);
+      });
     });
   }
 

@@ -4,7 +4,7 @@ import useResize from "utils/hooks/useResize";
 
 import { QRCodeSVG } from "qrcode.react";
 
-const qrURL = "https://www.rca-ied-2023.co.uk/vna/mobile";
+const qrURL = "https://www.rca-ied-2023.co.uk/vam/mobile";
 
 export default function UI({ uiMode }) {
   const [windowWidth, windowHeight] = useResize();
@@ -16,7 +16,11 @@ export default function UI({ uiMode }) {
         <p>EXPERIENCE DESIGN</p>
       </S.TopLeft>
       {uiMode === 0 && (
-        <S.TopRight>
+        <S.TopRight
+          style={{
+            marginRight: "-0.6vw",
+          }}
+        >
           <S.Logo>
             <img src="/assets/vna/logo/vna.svg" />
           </S.Logo>

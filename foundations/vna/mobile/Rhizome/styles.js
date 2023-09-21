@@ -6,6 +6,7 @@ import { Appear } from "styles/common";
 export const Container = styled.div`
   ${WholeContainer}
   ${FlexCenterStyle}
+  margin-top: 5%;
   top: 0;
   flex-direction: column;
 

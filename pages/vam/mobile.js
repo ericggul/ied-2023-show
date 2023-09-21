@@ -1,11 +1,12 @@
 import Head from "next/head";
-import prisma from "lib/prisma";
 
 import dynamic from "next/dynamic";
 
+import { BACKGROUND_CONNECTIONS } from "containers/vna/data/constant";
+
 const Mobile = dynamic(() => import("containers/vna/mobile"), { ssr: false });
 
-export default function WorksPage({ projectsData, connectionData }) {
+export default function WorksPage() {
   return (
     <>
       <Head>
@@ -20,60 +21,61 @@ export default function WorksPage({ projectsData, connectionData }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       </Head>
 
-      <Mobile backgroundConnectionData={connectionData} />
+      <Mobile backgroundConnectionData={BACKGROUND_CONNECTIONS} />
     </>
   );
 }
 
-export const getStaticProps = async (context) => {
-  try {
-    const projectsData = await prisma.projects.findMany({
-      include: {
-        keywords: {
-          select: {
-            name: true,
-          },
-        },
-      },
-    });
-    const connectionData = await connectionToNodeLink(projectsData);
+// export const getStaticProps = async (context) => {
+//   try {
+//     const projectsData = await prisma.projects.findMany({
+//       include: {
+//         keywords: {
+//           select: {
+//             name: true,
+//           },
+//         },
+//       },
+//     });
+//     const connectionData = await connectionToNodeLink(projectsData);
+//     console.log(connectionData);
 
-    return {
-      props: {
-        projectsData,
-        connectionData,
-      },
-    };
-  } catch (e) {
-    console.log(e);
-  }
-};
+//     return {
+//       props: {
+//         projectsData,
+//         connectionData,
+//       },
+//     };
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 
-async function connectionToNodeLink(data) {
-  let nodes = data.map((item) => ({
-    text: item.name,
-  }));
-  let links = [];
+// async function connectionToNodeLink(data) {
+//   let nodes = data.map((item) => ({
+//     text: item.name,
+//   }));
+//   let links = [];
 
-  for (let i = 0; i < data.length; i++) {
-    let keywords = data[i].keywords.map((keyword) => keyword.name);
-    let relatedProjects = [];
-    for (const keyword of keywords) {
-      let commonKeywords = data.filter((project) => project.keywords.map((keyword) => keyword.name).includes(keyword)).map((project) => project.name);
-      relatedProjects.push(...commonKeywords);
-    }
+//   for (let i = 0; i < data.length; i++) {
+//     let keywords = data[i].keywords.map((keyword) => keyword.name);
+//     let relatedProjects = [];
+//     for (const keyword of keywords) {
+//       let commonKeywords = data.filter((project) => project.keywords.map((keyword) => keyword.name).includes(keyword)).map((project) => project.name);
+//       relatedProjects.push(...commonKeywords);
+//     }
 
-    //delete redundant
-    relatedProjects = [...new Set(relatedProjects)];
-    relatedProjects.forEach((project) => {
-      if (links.find((link) => link.target === data[i].name && link.source === project)) return;
+//     //delete redundant
+//     relatedProjects = [...new Set(relatedProjects)];
+//     relatedProjects.forEach((project) => {
+//       if (links.find((link) => link.target === data[i].name && link.source === project)) return;
 
-      links.push({
-        source: data[i].name,
-        target: project,
-        value: 1,
-      });
-    });
-  }
-  return { nodes, links };
-}
+//       links.push({
+//         source: data[i].name,
+//         target: project,
+//         value: 1,
+//       });
+//     });
+//   }
+//   return { nodes, links };
+// }

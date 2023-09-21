@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { useEffect, useRef } from "react";
 
-export default function useSocketInit({ handleNewProjectClick }) {
+export default function useSocketInit({ handleNewProjectClick, handleNewKeywordInput }) {
   const socket = useRef(null);
   useEffect(() => {
     socketInitializer();
@@ -27,6 +27,7 @@ export default function useSocketInit({ handleNewProjectClick }) {
     });
 
     socket.current.on("new-vna-project-click", handleNewProjectClick);
+    socket.current.on("new-vna-keyword-input", handleNewKeywordInput);
   }
 
   return socket;

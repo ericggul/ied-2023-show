@@ -17,13 +17,30 @@ const UI = dynamic(() => import("foundations/vna/screen/UI"), { ssr: false });
 
 export default function Screen() {
   ///socket handler
-  const socket = useSocket({ handleNewProjectClick });
+  const socket = useSocket({ handleNewProjectClick, handleNewKeywordInput });
   const [currKeyword, setCurrKeyword] = useState("");
 
   function handleNewProjectClick(keyword) {
     if (!keyword) return;
     setCurrKeyword(keyword);
   }
+
+  const [reply, setReply] = useState("");
+  const [showReply, setShowReply] = useState(false);
+  function handleNewKeywordInput(word) {
+    setReply(word);
+    setShowReply(true);
+  }
+
+  useEffect(() => {
+    let timeout;
+    if (showReply) {
+      timeout = setTimeout(() => {
+        setShowReply(false);
+      }, 3000);
+    }
+    return () => timeout && clearTimeout(timeout);
+  }, [showReply]);
 
   ///idle state handler
   const [workDeanimated, setWorkDeanimated] = useState(false);
@@ -34,10 +51,10 @@ export default function Screen() {
       setIsIdle(false);
       timeout2 = setTimeout(() => {
         setWorkDeanimated(true);
-      }, 29 * 1000);
+      }, 39 * 1000);
       timeout1 = setTimeout(() => {
         setCurrKeyword("");
-      }, 30 * 1000);
+      }, 40 * 1000);
     } else {
       setIsIdle(true);
       setWorkDeanimated(false);
@@ -50,6 +67,7 @@ export default function Screen() {
 
   return (
     <S.Container>
+      <S.Reply visible={showReply}>{reply}</S.Reply>
       <UI uiMode={isIdle ? 0 : 1} />
       {isIdle && <Idle />}
       {currKeyword && <Work workDeanimated={workDeanimated} currKeyword={currKeyword} />}
