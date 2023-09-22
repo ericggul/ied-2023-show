@@ -165,8 +165,8 @@ export default function Rhizome({ projectsData, isScreen = false, socket, connec
       })
       .attr("stroke-width", (d) => {
         const { type } = d;
-        let weight = type === 1 ? 1 : 3;
-        return (windowWidth + windowHeight) * 0.0007 * weight;
+        let weight = type === 1 ? 1 : 2.5;
+        return (windowWidth + windowHeight) * 0.00065 * weight;
       });
 
     node

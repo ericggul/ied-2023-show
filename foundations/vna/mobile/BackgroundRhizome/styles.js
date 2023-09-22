@@ -8,7 +8,7 @@ export const Container = styled.div`
   ${FlexCenterStyle}
   top: 0;
 
-  ${({ isScreen }) => isScreen && "margin-top: 8%;"}
+  ${({ isScreen }) => !isScreen && "margin-top: 8%;"}
 
   flex-direction: column;
 

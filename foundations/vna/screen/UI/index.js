@@ -69,7 +69,7 @@ export default function UI({ uiMode }) {
           </div>
 
           <S.QRWrapper>
-            <QRCodeSVG value={qrURL} bgColor="transparent" fgColor="white" size={windowWidth * 0.1} />
+            <QRCodeSVG value={qrURL} bgColor="transparent" fgColor="white" size={windowWidth * 0.12} />
           </S.QRWrapper>
         </S.BottomRight>
       )}
