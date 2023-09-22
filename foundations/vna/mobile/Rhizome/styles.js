@@ -6,7 +6,8 @@ import { Appear } from "styles/common";
 export const Container = styled.div`
   ${WholeContainer}
   ${FlexCenterStyle}
-  margin-top: 8%;
+  ${({ isScreen }) => (!isScreen ? `margin-top: 8%;` : "margin-top: 0;")}
+
   top: 0;
   flex-direction: column;
 

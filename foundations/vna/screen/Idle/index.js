@@ -45,7 +45,7 @@ export default function Idle() {
   return (
     <>
       <Video />
-      {rhizomeAttached && <Rhizome showRhizome={showRhizome} />}
+      <Rhizome showRhizome={showRhizome} />
     </>
   );
 }

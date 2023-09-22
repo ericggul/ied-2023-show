@@ -38,10 +38,10 @@ export default function Rhizome({ projectsData, isScreen = false, socket, connec
   useEffect(() => {
     currentTargetRef.current = currentTarget;
     handleCurrentTarget(currentTarget);
-    if (socket && socket.current) {
+    if (socket && socket.current && !isScreen) {
       socket.current.emit("vna-project-click", currentTarget);
     }
-  }, [currentTarget]);
+  }, [currentTarget, isScreen]);
 
   function handleNewKeywordClick(e, target) {
     e.stopPropagation();
@@ -166,7 +166,7 @@ export default function Rhizome({ projectsData, isScreen = false, socket, connec
       .attr("stroke-width", (d) => {
         const { type } = d;
         let weight = type === 1 ? 1 : 3;
-        return (windowWidth + windowHeight) * 0.0008 * weight;
+        return (windowWidth + windowHeight) * 0.0007 * weight;
       });
 
     node
@@ -206,7 +206,7 @@ export default function Rhizome({ projectsData, isScreen = false, socket, connec
   }, [connectionData, currentTarget, windowWidth, windowHeight, primaryColor, secondaryColor, isScreen]);
 
   return (
-    <S.Container>
+    <S.Container isScreen={isScreen}>
       <Leva />
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>
