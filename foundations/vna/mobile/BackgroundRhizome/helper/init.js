@@ -51,7 +51,7 @@ function initLinkStyling({ svg, links, width, height, isScreen }) {
     .attr("id", (d) => `link-${d.source.id}-${d.target.id}`)
     .attr("class", (d) => `link-source-${d.source.id} link-target-${d.target.id}`)
     .attr("stroke", (d) => `hsl(${250 + d.source.text.length}, 100%, 70%)`)
-    .attr("stroke-width", (d) => (width + height) * 0.001)
+    .attr("stroke-width", (d) => (width + height) * 0.0007)
     .attr("opacity", isScreen ? "0.28" : "0.27");
 
   return link;

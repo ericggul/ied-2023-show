@@ -72,7 +72,7 @@ export default function Rhizome({ isScreen, connectionData }) {
   const sourceNodesRef = useRef(null);
 
   return (
-    <S.Container>
+    <S.Container isScreen={isScreen}>
       <svg ref={svgRef} width={windowWidth} height={windowHeight} viewBox={`0 0 ${windowWidth} ${windowHeight}`} />
     </S.Container>
   );
