@@ -95,20 +95,25 @@ export default function Rhizome({ projectsData, isScreen = false, socket, connec
 
       //on click
       node.on("click", (ev, d) => {
-        const { id, text } = d;
-        handleNewKeywordClick(ev, text);
+        if (!isScreen) {
+          const { id, text } = d;
+          handleNewKeywordClick(ev, text);
+        }
       });
 
       ["mouseenter", "touch"].forEach((eventType) => {
         node.on(eventType, (ev, d) => {
           ev.stopPropagation();
-          const { id, text } = d;
-          setCurrentTarget(text);
-          lastInteractionTimeRef.current = Date.now();
+
+          if (!isScreen) {
+            const { id, text } = d;
+            setCurrentTarget(text);
+            lastInteractionTimeRef.current = Date.now();
+          }
         });
       });
     }
-  }, [connectionData, windowWidth, windowHeight]);
+  }, [connectionData, isScreen, windowWidth, windowHeight]);
 
   ////////////
   ///interaction///

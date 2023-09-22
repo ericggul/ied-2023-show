@@ -7,7 +7,7 @@ export const Container = styled.div`
   ${WholeContainer}
   ${FlexCenterStyle}
   top: 0;
-  margin-top: 5%;
+  margin-top: 8%;
   flex-direction: column;
 
   background: transparent;
